@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/size_config.dart';
 import 'package:hod_app/onboarding_contents.dart';
+import 'package:hod_app/theme.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -20,10 +21,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   int _currentPage = 0;
 
-  List colors = const [
-    Color(0xffDAD3C8),
-    Color(0xffFFE5DE),
-    Color(0xffDCF6E6),
+  List colors = [
+    theme.colorScheme.primaryContainer,
+    theme.colorScheme.surfaceVariant,
+    theme.colorScheme.tertiary,
   ];
 
   AnimatedContainer _buildDots({
@@ -108,79 +109,79 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: List.generate(
                       contents.length,
-                          (int index) => _buildDots(
+                      (int index) => _buildDots(
                         index: index,
                       ),
                     ),
                   ),
                   _currentPage + 1 == contents.length
                       ? Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text("START"),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50),
-                        ),
-                        padding: (width <= 550)
-                            ? const EdgeInsets.symmetric(
-                            horizontal: 100, vertical: 20)
-                            : EdgeInsets.symmetric(
-                            horizontal: width * 0.2, vertical: 25),
-                        textStyle:
-                        TextStyle(fontSize: (width <= 550) ? 13 : 17),
-                      ),
-                    ),
-                  )
+                          padding: const EdgeInsets.all(30),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text("START"),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(50),
+                              ),
+                              padding: (width <= 550)
+                                  ? const EdgeInsets.symmetric(
+                                      horizontal: 100, vertical: 20)
+                                  : EdgeInsets.symmetric(
+                                      horizontal: width * 0.2, vertical: 25),
+                              textStyle:
+                                  TextStyle(fontSize: (width <= 550) ? 13 : 17),
+                            ),
+                          ),
+                        )
                       : Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        TextButton(
-                          onPressed: () {
-                            _controller.jumpToPage(2);
-                          },
-                          child: const Text(
-                            "SKIP",
-                            style: TextStyle(color: Colors.black),
+                          padding: const EdgeInsets.all(30),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  _controller.jumpToPage(2);
+                                },
+                                child: const Text(
+                                  "SKIP",
+                                  style: TextStyle(color: Colors.black),
+                                ),
+                                style: TextButton.styleFrom(
+                                  elevation: 0,
+                                  textStyle: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: (width <= 550) ? 13 : 17,
+                                  ),
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  _controller.nextPage(
+                                    duration: const Duration(milliseconds: 200),
+                                    curve: Curves.easeIn,
+                                  );
+                                },
+                                child: const Text("NEXT"),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.black,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  elevation: 0,
+                                  padding: (width <= 550)
+                                      ? const EdgeInsets.symmetric(
+                                          horizontal: 30, vertical: 20)
+                                      : const EdgeInsets.symmetric(
+                                          horizontal: 30, vertical: 25),
+                                  textStyle: TextStyle(
+                                      fontSize: (width <= 550) ? 13 : 17),
+                                ),
+                              ),
+                            ],
                           ),
-                          style: TextButton.styleFrom(
-                            elevation: 0,
-                            textStyle: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: (width <= 550) ? 13 : 17,
-                            ),
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            _controller.nextPage(
-                              duration: const Duration(milliseconds: 200),
-                              curve: Curves.easeIn,
-                            );
-                          },
-                          child: const Text("NEXT"),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50),
-                            ),
-                            elevation: 0,
-                            padding: (width <= 550)
-                                ? const EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 20)
-                                : const EdgeInsets.symmetric(
-                                horizontal: 30, vertical: 25),
-                            textStyle: TextStyle(
-                                fontSize: (width <= 550) ? 13 : 17),
-                          ),
-                        ),
-                      ],
-                    ),
-                  )
+                        )
                 ],
               ),
             ),
