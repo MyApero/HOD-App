@@ -37,28 +37,74 @@ class AppScaffold extends StatelessWidget {
                 Container(
                   height: 100,
                   width: 100,
-                  color: Theme.of(context).colorScheme.primary,
+                  child: const Image(
+                    image: AssetImage("assets/images/logo_1_heaven_of_dice.png"),
+                    fit: BoxFit.cover,
+                  )
                 ),
                 Container(
                   padding: const EdgeInsets.all(20),
                   child: Text(
                     title,
-                    style: Theme.of(context).textTheme.headline4,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontFamily: 'MulishSemiBold'
+                    )
                   ),
+                ),
+                SizedBox(height: MediaQuery.of(context).viewPadding.top + 50),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  child: const TextField(
+              decoration: InputDecoration(
+                labelText: 'Email', // Placeholder text
+                border: OutlineInputBorder(), // Border style
+              ),
+            ),
                 ),
                 Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.white,
-                      width: 5,
-                    ),
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                  ),
                   padding: const EdgeInsets.all(20),
-                  child: child,
+                  child: const TextField(
+              decoration: InputDecoration(
+                labelText: 'Mot de passe', // Placeholder text
+                border: OutlineInputBorder(), // Border style
+              ),
+            ),
                 ),
+                Container(
+                  padding: const EdgeInsets.all(20),
+                  child: FilledButton(
+                    style: ButtonStyle(
+                      padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(100, 20, 100, 20))
+                      // backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.background),
+                    ),
+                    onPressed: () {},
+                    child: Text(
+                      "Me connecter",
+                      style: TextStyle(
+                      fontSize: 24,
+                      fontFamily: 'MulishSemiBold',
+                      color: Theme.of(context).colorScheme.surface,
+                    )
+                    ),
+                  )
+                ),
+                const Text(
+                      "J'ai oublié mon mot de passe",
+                      style: TextStyle(
+                      fontSize: 12,
+                      fontFamily: 'MulishSemiBold',
+                      color: Color(0xFFAEAED7),
+                    )
+                  ),
+                const Text(
+                      "M'inscrire",
+                      style: TextStyle(
+                      fontSize: 12,
+                      fontFamily: 'MulishSemiBold',
+                      color: Color(0xFFAEAED7),
+                    )
+                  ),
               ],
             ),
           ),

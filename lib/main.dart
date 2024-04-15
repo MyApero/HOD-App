@@ -16,7 +16,12 @@ class MyApp extends StatelessWidget {
       title: 'HOD App',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const AppScaffold(title: "Me connecter", child: Text('dd'),),
+      home: const AppScaffold(title: "Me connecter", child: TextField(
+              decoration: InputDecoration(
+                labelText: 'Email', // Placeholder text
+                border: OutlineInputBorder(), // Border style
+              ),
+            ),),
     );
   }
 }
