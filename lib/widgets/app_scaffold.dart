@@ -92,7 +92,7 @@ class AppScaffold extends StatelessWidget {
                 const Text(
                       "J'ai oublié mon mot de passe",
                       style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 16,
                       fontFamily: 'MulishSemiBold',
                       color: Color(0xFFAEAED7),
                     )
@@ -100,7 +100,7 @@ class AppScaffold extends StatelessWidget {
                 const Text(
                       "M'inscrire",
                       style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 16,
                       fontFamily: 'MulishSemiBold',
                       color: Color(0xFFAEAED7),
                     )
