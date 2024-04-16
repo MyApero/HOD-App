@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/theme/theme.dart';
-import 'package:hod_app/widgets/app_scaffold.dart';
+import 'package:hod_app/widgets/login_page.dart';
 import 'features/onboarding/onboarding_screen.dart';
 
 void main() {
@@ -16,10 +16,10 @@ class MyApp extends StatelessWidget {
       title: 'HOD App',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const AppScaffold(title: "Me connecter", child: TextField(
+      home: const LoginPage(title: "Me connecter", child: TextField(
               decoration: InputDecoration(
-                labelText: 'Email', // Placeholder text
-                border: OutlineInputBorder(), // Border style
+                labelText: 'Email',
+                border: OutlineInputBorder(),
               ),
             ),),
     );
