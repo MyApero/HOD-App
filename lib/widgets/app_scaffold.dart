@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'dart:math';
 
+import 'package:flutter/widgets.dart';
+
 class AppScaffold extends StatelessWidget {
   const AppScaffold({super.key, this.child, required this.title});
 
@@ -30,83 +32,34 @@ class AppScaffold extends StatelessWidget {
               return y;
             },
           ),
-          Center(
-            child: Column(
-              children: [
-                SizedBox(height: MediaQuery.of(context).viewPadding.top + 50),
-                Container(
-                  height: 100,
-                  width: 100,
-                  child: const Image(
-                    image: AssetImage("assets/images/logo_1_heaven_of_dice.png"),
-                    fit: BoxFit.cover,
-                  )
+          Column(
+            children: [
+              SizedBox(height: MediaQuery.of(context).viewPadding.top + 50),
+              const SizedBox(
+                height: 100,
+                width: 100,
+                child: Image(
+                  image: AssetImage("assets/images/logo_1_heaven_of_dice.png"),
+                  fit: BoxFit.cover,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontFamily: 'MulishSemiBold'
-                    )
-                  ),
-                ),
-                SizedBox(height: MediaQuery.of(context).viewPadding.top + 50),
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  child: const TextField(
-              decoration: InputDecoration(
-                labelText: 'Email', // Placeholder text
-                border: OutlineInputBorder(), // Border style
               ),
-            ),
+              Container(
+                padding: const EdgeInsets.all(20),
+                child: Text(
+                  title,
+                  style: Theme.of(context).textTheme.headline4,
                 ),
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  child: const TextField(
-              decoration: InputDecoration(
-                labelText: 'Mot de passe', // Placeholder text
-                border: OutlineInputBorder(), // Border style
               ),
-            ),
-                ),
-                Container(
-                  padding: const EdgeInsets.all(20),
-                  child: FilledButton(
-                    style: ButtonStyle(
-                      padding: MaterialStateProperty.all(const EdgeInsets.fromLTRB(100, 20, 100, 20))
-                      // backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.background),
-                    ),
-                    onPressed: () {},
-                    child: Text(
-                      "Me connecter",
-                      style: TextStyle(
-                      fontSize: 24,
-                      fontFamily: 'MulishSemiBold',
-                      color: Theme.of(context).colorScheme.surface,
-                    )
-                    ),
-                  )
-                ),
-                const Text(
-                      "J'ai oublié mon mot de passe",
-                      style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'MulishSemiBold',
-                      color: Color(0xFFAEAED7),
-                    )
+              Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
                   ),
-                const Text(
-                      "M'inscrire",
-                      style: TextStyle(
-                      fontSize: 16,
-                      fontFamily: 'MulishSemiBold',
-                      color: Color(0xFFAEAED7),
-                    )
-                  ),
-              ],
-            ),
+                ),
+                padding: const EdgeInsets.all(20),
+                child: child,
+              ),
+            ],
           ),
         ],
       ),
