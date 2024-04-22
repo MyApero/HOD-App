@@ -6,11 +6,16 @@ import 'package:hod_app/widgets/app_scaffold.dart';
 import 'features/onboarding/onboarding_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
+
+  final List<Widget> _pages = [
+    LoginPage(),
+    ThemeCard(boxColor: Colors.red, textColor: Colors.black,)
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +23,8 @@ class MyApp extends StatelessWidget {
       title: 'HOD App',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      home: const AppScaffold(
-        title: "Me connecter",
-        child: LoginPage()
+      home: AppScaffold(
+        pages: _pages
       ),
       // home: ThemeTestScreen()
     );
