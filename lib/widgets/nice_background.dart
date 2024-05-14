@@ -29,8 +29,9 @@ class NiceBackground extends StatelessWidget {
           },
         ),
         Column(
+          mainAxisSize: MainAxisSize.max,
           children: [
-            SizedBox(height: MediaQuery.of(context).viewPadding.top + 50),
+            SizedBox(height: MediaQuery.of(context).viewPadding.top),
             header ?? const SizedBox(),
             Container(
               decoration: const BoxDecoration(
