@@ -9,57 +9,58 @@ class AppBackground extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-        children: [
-          ClippedPartsWidget(
-            top: Container(
-              color: Theme.of(context).colorScheme.surfaceVariant,
-            ),
-            bottom: Container(
-              color: Theme.of(context).colorScheme.surface,
-            ),
-            splitFunction: (Size size, double x) {
-              // normalizing x to make it exactly one wave
-              final normalizedX = x / size.width * 2 * pi;
-              final waveHeight = size.height / 15;
-              final y =
-                  200 + -x + size.height / 2 + sin(normalizedX) * waveHeight;
+      children: [
+        ClippedPartsWidget(
+          top: Container(
+            color: Theme.of(context).colorScheme.surfaceVariant,
+          ),
+          bottom: Container(
+            color: Theme.of(context).colorScheme.surface,
+          ),
+          splitFunction: (Size size, double x) {
+            // normalizing x to make it exactly one wave
+            final normalizedX = x / size.width * 2 * pi;
+            final waveHeight = size.height / 15;
+            final y =
+                200 + -x + size.height / 2 + sin(normalizedX) * waveHeight;
 
-              return y;
-            },
-          ),
-          Column(
-            children: [
-              SizedBox(height: MediaQuery.of(context).viewPadding.top + 50),
-              const SizedBox(
-                height: 100,
-                width: 100,
-                child: Image(
-                  image: AssetImage("assets/images/logo_1_heaven_of_dice.png"),
-                  fit: BoxFit.cover,
+            return y;
+          },
+        ),
+        Column(
+          children: [
+            SizedBox(height: MediaQuery.of(context).viewPadding.top + 50),
+            const SizedBox(
+              height: 100,
+              width: 100,
+              child: Image(
+                image: AssetImage("assets/images/logo_1_heaven_of_dice.png"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.all(20),
+              child: Text(
+                "cc",
+                style: Theme.of(context).textTheme.headlineLarge,
+              ),
+            ),
+            Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.all(20),
-                child: Text(
-                  "cc",
-                  style: Theme.of(context).textTheme.headlineLarge,
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(10),
-                  ),
-                ),
-                padding: const EdgeInsets.all(20),
-                child: child,
-              ),
-            ],
-          ),
-        ],
-      );
+              padding: const EdgeInsets.all(20),
+              child: child,
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
+
 class ClippedPartsWidget extends StatelessWidget {
   final Widget top;
   final Widget bottom;
