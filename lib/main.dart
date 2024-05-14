@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hod_app/features/authentification/login.dart';
 import 'package:hod_app/features/onboarding/onboarding_screen.dart';
 import 'package:hod_app/features/theme/theme.dart';
-import 'package:hod_app/features/theme/theme_screen.dart';
-import 'package:hod_app/widgets/FlexTest.dart';
+import 'package:hod_app/tests/theme_screen.dart';
+import 'package:hod_app/tests/FlexTest.dart';
 import 'package:hod_app/widgets/app_scaffold.dart';
 
 void main() {
