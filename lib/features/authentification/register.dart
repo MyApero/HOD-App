@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/authentification/register.dart';
-import 'package:hod_app/widgets/hod_button.dart';
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatelessWidget {
+  const RegisterPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +10,7 @@ class LoginPage extends StatelessWidget {
         Container(
           padding: const EdgeInsets.fromLTRB(15, 100, 15, 20),
           child: TextField(
-            style: TextStyle(
+             style: TextStyle(
               fontSize: 18,
               fontFamily: 'MulishSemiBold',
               color: Theme.of(context).colorScheme.surface,
@@ -40,31 +38,32 @@ class LoginPage extends StatelessWidget {
         ),
         Container(
             padding: const EdgeInsets.all(15),
-            child: HodButton(
-              label: "Me connecter",
-              onTapped: () {},
+            child: FilledButton(
+              style: ButtonStyle(
+                  padding: MaterialStateProperty.all(
+                      const EdgeInsets.fromLTRB(93, 15, 93, 15))
+                  // backgroundColor: MaterialStateProperty.all(Theme.of(context).colorScheme.background),
+                  ),
+              onPressed: () {},
+              child: Text("Me connecter",
+                  style: TextStyle(
+                    fontSize: 24,
+                    fontFamily: 'MulishSemiBold',
+                    color: Theme.of(context).colorScheme.surface,
+                  )),
             )),
-        TextButton(
-            onPressed: () {},
-            child: const Text("J'ai oublié mon mot de passe",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'MulishSemiBold',
-                  color: Color(0xFFAEAED7),
-                ))),
-        TextButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const RegisterPage()));
-            },
-            child: const Text("M'inscrire",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'MulishSemiBold',
-                  color: Color(0xFFAEAED7),
-                ))),
+        const Text("J'ai oublié mon mot de passe",
+            style: TextStyle(
+              fontSize: 16,
+              fontFamily: 'MulishSemiBold',
+              color: Color(0xFFAEAED7),
+            )),
+        const Text("M'inscrire",
+            style: TextStyle(
+              fontSize: 16,
+              fontFamily: 'MulishSemiBold',
+              color: Color(0xFFAEAED7),
+            )),
       ]),
     );
   }
