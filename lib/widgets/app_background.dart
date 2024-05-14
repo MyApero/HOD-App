@@ -42,7 +42,7 @@ class AppBackground extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 child: Text(
                   "cc",
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ),
               Container(
