@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/authentification/login.dart';
+import 'package:hod_app/features/authentification/register.dart';
 import 'package:hod_app/features/onboarding/onboarding_screen.dart';
 import 'package:hod_app/features/theme/theme.dart';
 import 'package:hod_app/tests/theme_screen.dart';
@@ -24,11 +25,10 @@ class MyApp extends StatelessWidget {
       title: 'HOD App',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      // home: AppScaffold(
-      //   pages: _pages
-      // ),
+      home: AppScaffold(
+        pages: _pages
+      ),
       // home: ThemeTestScreen()
-      home: OnboardingScreen(),
     );
   }
 }

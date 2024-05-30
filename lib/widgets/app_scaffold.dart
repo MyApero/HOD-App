@@ -23,6 +23,7 @@ class _AppScaffoldState extends State<AppScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppBackground(child: widget.pages[_selectedIndex]),
+      // body: widget.pages[_selectedIndex],
       bottomNavigationBar: _selectedIndex > 1 ? BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
