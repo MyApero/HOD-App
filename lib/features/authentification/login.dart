@@ -12,12 +12,13 @@ class LoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppBackground(
+        title: "Me connecter",
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            Container(color: Colors.transparent, height: 70),
             Column(
               children: [
-                const SizedBox(height: 120),
                 TextBox(label: "Email", isPassword: false),
                 const SizedBox(height: 30),
                 TextBox(
