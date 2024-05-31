@@ -15,9 +15,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     String formattedDate =
         "${dateParse.day}/${dateParse.month}/${dateParse.year}";
-    return Container(
-      margin: const EdgeInsets.fromLTRB(30, 10, 15, 10),
-      child: FilledButton(
+    return FilledButton(
         style: ButtonStyle(
           backgroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.primary),
           padding: const WidgetStatePropertyAll(
@@ -45,7 +43,6 @@ class EventCard extends StatelessWidget {
               Text("Pole $pole"),
           ],
         ),
-      ),
     );
   }
 }

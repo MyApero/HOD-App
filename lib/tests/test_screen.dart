@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/widgets/calendar.dart';
 import 'package:hod_app/widgets/card.dart';
+import 'package:hod_app/widgets/select_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 import 'package:hod_app/widgets/text_box.dart';
 
@@ -31,7 +32,7 @@ class TestScreen extends StatelessWidget {
                 EventCard(large: false, date: DateTime.now(), name: "aller se faire foutre", pole: "Oui"),
               ],
             ),
-          Calendar(),
+          SelectButton(label: "bouton test", icon: Icons.view_agenda),
         ],
       ),
     );
