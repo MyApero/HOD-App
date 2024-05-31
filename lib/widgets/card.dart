@@ -3,9 +3,10 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 
 class EventCard extends StatelessWidget {
-  EventCard({super.key, required this.date, required this.name, required this.pole})
+  EventCard({super.key, required this.large, required this.date, required this.name, this.pole = ""})
       : dateParse = DateTime.parse(date.toString());
   DateTime date;
+  final bool large;
   final String name;
   final String pole;
   DateTime dateParse;
@@ -27,8 +28,8 @@ class EventCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(18.0),
             ),
           ),
-          fixedSize: const WidgetStatePropertyAll(
-            Size(150, 220),
+          fixedSize: WidgetStatePropertyAll(
+            Size(!large ? 150 : 320, 220),
           ),
         ),
         onPressed: () {},
@@ -40,7 +41,8 @@ class EventCard extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             Text("[$name]"),
-            Text("Pole $pole"),
+            if (pole.isNotEmpty)
+              Text("Pole $pole"),
           ],
         ),
       ),
