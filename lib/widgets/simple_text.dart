@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SimpleText extends StatelessWidget {
-  const SimpleText({super.key, required this.text, this.textSize = 20});
+  const SimpleText({super.key, required this.text, this.textSize = 15});
 
   final double textSize;
   final String text;
@@ -10,7 +10,11 @@ class SimpleText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: TextStyle(fontWeight: FontWeight.bold, fontSize: textSize)
+      style: TextStyle(
+        fontWeight: FontWeight.bold,
+        fontSize: textSize,
+        color: Theme.of(context).colorScheme.onSurface,
+      ),
     );
   }
 }

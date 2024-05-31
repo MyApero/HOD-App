@@ -1,61 +1,79 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/widgets/background/app_background.dart';
 import 'package:hod_app/widgets/hod_button.dart';
+import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod_app/widgets/small_text.dart';
+import 'package:hod_app/widgets/text_box.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
+  bool cguValue = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppBackground(
-        child: Center(
-          child: Column(children: [
+        title: "M'inscrire",
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
             Container(
-              padding: const EdgeInsets.fromLTRB(15, 100, 15, 20),
-              child: TextField(
-                 style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: 'MulishSemiBold',
-                  color: Theme.of(context).colorScheme.surface,
-                ),
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
-                ),
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: SimpleText(text: "Mes informations personnelles"),
+                  ),
+                  TextBox(label: "Prénom", isPassword: false),
+                  const SizedBox(height: 20),
+                  TextBox(label: "Nom", isPassword: false),
+                  const SizedBox(height: 20),
+                  TextBox(label: "Adresse email", isPassword: false),
+                ],
               ),
             ),
-            Container(
-              padding: const EdgeInsets.fromLTRB(15, 10, 15, 30),
-              child: TextField(
-                style: TextStyle(
-                  fontSize: 18,
-                  fontFamily: 'MulishSemiBold',
-                  color: Theme.of(context).colorScheme.surface,
+            Column(
+              children: [
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: SimpleText(text: "Mon mot de passe"),
                 ),
-                decoration: const InputDecoration(
-                  // fillColor: Theme.of(context).colorScheme.,
-                  labelText: 'Mot de passe', // Placeholder text
-                  border: OutlineInputBorder(), // Border style
+                TextBox(
+                  label: "Mot de passe",
+                  isPassword: true,
                 ),
-              ),
+                const SizedBox(height: 15),
+                TextBox(
+                  label: "Confirmation",
+                  isPassword: true,
+                ),
+                CheckboxListTile(
+                  title: Text("J’accepte les Conditions Générales d’Utilisation"),
+                  value: cguValue,
+                  onChanged: (newValue) { 
+                    setState(() {
+                      cguValue = newValue!;
+                    });
+                   },
+                  controlAffinity:
+                      ListTileControlAffinity.leading, //  <-- leading Checkbox
+                ),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  child: HodButton(
+                    label: "Créer mon compte",
+                    onTapped: () {},
+                  ),
+                ),
+              ],
             ),
-            Container(
-                padding: const EdgeInsets.all(15),
-                child: HodButton(label: "Me connecter", onTapped: () {},)),
-            const Text("J'ai oublié mon mot de passe",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'MulishSemiBold',
-                  color: Color(0xFFAEAED7),
-                )),
-            const Text("M'inscrire",
-                style: TextStyle(
-                  fontSize: 16,
-                  fontFamily: 'MulishSemiBold',
-                  color: Color(0xFFAEAED7),
-                )),
-          ]),
+          ],
         ),
       ),
     );
