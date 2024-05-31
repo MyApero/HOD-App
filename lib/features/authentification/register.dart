@@ -28,7 +28,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   Container(
                     alignment: Alignment.centerLeft,
-                    child: SimpleText(text: "Mes informations personnelles"),
+                    child: const Row(
+                      children: [
+                        SizedBox(width: 12),
+                        SimpleText(text: "Mes informations personnelles"),
+                      ],
+                    ),
                   ),
                   TextBox(label: "Prénom", isPassword: false),
                   const SizedBox(height: 20),
@@ -42,7 +47,12 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: SimpleText(text: "Mon mot de passe"),
+                  child: const Row(
+                    children: [
+                      SizedBox(width: 12),
+                      SimpleText(text: "Mon mot de passe"),
+                    ],
+                  ),
                 ),
                 TextBox(
                   label: "Mot de passe",
@@ -54,13 +64,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   isPassword: true,
                 ),
                 CheckboxListTile(
-                  title: Text("J’accepte les Conditions Générales d’Utilisation"),
+                  title:
+                      Text("J’accepte les Conditions Générales d’Utilisation"),
                   value: cguValue,
-                  onChanged: (newValue) { 
+                  onChanged: (newValue) {
                     setState(() {
                       cguValue = newValue!;
                     });
-                   },
+                  },
                   controlAffinity:
                       ListTileControlAffinity.leading, //  <-- leading Checkbox
                 ),

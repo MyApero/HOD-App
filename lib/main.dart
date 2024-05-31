@@ -33,7 +33,7 @@ class MyApp extends StatelessWidget {
       // ),
       // home: LoginPage(),
       // home: AppScaffold(pages: _pages),
-      home: RegisterPage(),
+      home: TestScreen(),
     );
   }
 }
