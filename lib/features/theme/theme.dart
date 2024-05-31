@@ -13,4 +13,12 @@ ThemeData theme = ThemeData().copyWith(
     surfaceVariant: const Color(0xFFe3e3f1),
     // secondaryContainer: const Color(0xFFaeaed7),
   ),
+  textTheme: TextTheme(
+    headlineLarge: TextStyle(
+      fontSize: 30,
+      // fontWeight: FontWeight.bold,
+      color: Colors.black,
+      fontFamily: "Coolvetica",
+    ),
+  ),
 );

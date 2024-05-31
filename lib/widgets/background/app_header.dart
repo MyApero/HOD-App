@@ -9,13 +9,10 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      const HodLogo(),
-      Container(
-        padding: const EdgeInsets.all(20),
-        child: Text(
-          title ?? "NO TEXT",
-          style: Theme.of(context).textTheme.headlineLarge,
-        ),
+      const HodLogo(width: 110),
+      Text(
+        title ?? "NO TEXT",
+        style: Theme.of(context).textTheme.headlineLarge,
       ),
     ]);
   }

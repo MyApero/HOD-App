@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/app_background.dart';
+import 'package:hod_app/widgets/background/app_background.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 
 class RegisterPage extends StatelessWidget {
