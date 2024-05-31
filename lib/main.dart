@@ -26,10 +26,10 @@ class MyApp extends StatelessWidget {
       title: 'HOD App',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      // home: AppScaffold(
-      //   pages: _pages
-      // ),
-      home: TestScreen()
+      home: AppScaffold(
+        pages: _pages
+      ),
+      // home: TestScreen()
     );
   }
 }
