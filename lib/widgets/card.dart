@@ -18,6 +18,7 @@ class EventCard extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(30, 10, 15, 10),
       child: FilledButton(
         style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.all(Theme.of(context).colorScheme.primary),
           padding: const WidgetStatePropertyAll(
             EdgeInsets.fromLTRB(0, 30, 0, 20),
           ),
