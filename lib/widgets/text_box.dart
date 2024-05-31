@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class TextBox extends StatefulWidget {
-  TextBox({super.key, required this.label, required this.isPassword});
+  const TextBox({super.key, required this.label, required this.isPassword});
 
   final String label;
-  bool isPassword;
+  final bool isPassword;
 
   @override
   State<TextBox> createState() => _TextBoxState();

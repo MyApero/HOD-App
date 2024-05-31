@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class SelectButton extends StatelessWidget {
-  SelectButton({super.key, required this.label, this.icon});
+  const SelectButton({super.key, required this.label, this.icon});
 
   final String label;
-  IconData? icon;
+  final IconData? icon;
 
   @override
   Widget build(BuildContext context) {

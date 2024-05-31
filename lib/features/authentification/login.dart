@@ -19,25 +19,25 @@ class LoginPage extends StatelessWidget {
             Container(color: Colors.transparent, height: 70),
             Column(
               children: [
-                TextBox(label: "Email", isPassword: false),
+                const TextBox(label: "Email", isPassword: false),
                 const SizedBox(height: 30),
-                TextBox(
+                const TextBox(
                   label: "Mot de passe",
                   isPassword: true,
                 ),
                 const SizedBox(height: 30),
                 Container(
-                padding: const EdgeInsets.all(15),
-                child: HodButton(
-                  label: "Me connecter",
-                  onTapped: () {},
-                )),
+                    padding: const EdgeInsets.all(15),
+                    child: HodButton(
+                      label: "Me connecter",
+                      onTapped: () {},
+                    )),
               ],
             ),
             Column(
               children: [
                 const SmallText(title: "J'ai oublié mon mot de passe"),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 SmallText(
                     title: "M'inscrire",
                     onPressed: () {
