@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class Calendar extends StatelessWidget {
@@ -6,13 +7,31 @@ class Calendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.primary,
-      child: TableCalendar(
-          
-          focusedDay: DateTime.now(),
-          firstDay: DateTime.utc(2000, 12, 1),
-          lastDay: DateTime.utc(2030, 12, 31)),
+    return SfCalendar(
+      view: CalendarView.week,
+      dataSource: MeetingDataSource(
+        getAppointments()
+      ),
     );
+  }
+
+
+  // TODO: fonction à changer plus tard pour récupérer les vraies events du joueur
+  List<Appointment> getAppointments() {
+    List<Appointment> appointments = <Appointment>[];
+
+    appointments.add(Appointment(
+        startTime: DateTime.utc(2024, 6, 3, 9, 0, 0),
+        endTime: DateTime.utc(2024, 6, 3, 10, 30, 0),
+        subject: 'PCP',
+        color: Colors.blue));
+
+    return appointments;
+  }
+}
+
+class MeetingDataSource extends CalendarDataSource {
+  MeetingDataSource(List<Appointment> source) {
+    appointments = source;
   }
 }
