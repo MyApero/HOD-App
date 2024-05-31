@@ -14,6 +14,12 @@ class _TextBoxState extends State<TextBox> {
   bool viewPwd = false;
 
   @override
+  void initState() {
+    viewPwd = !widget.isPassword;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return TextField(
       style: TextStyle(
