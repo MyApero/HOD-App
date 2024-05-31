@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/widgets/card.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 import 'package:hod_app/widgets/text_box.dart';
 
@@ -23,6 +24,12 @@ class TestScreen extends StatelessWidget {
               width: 200,
               color: Colors.blue,
               child: SimpleText(text: "bonsoir les amiiiiiis :")),
+          Row(
+              children: [
+                EventCard(date: DateTime.utc(2024, 12, 12), name: "manger des chips", pole: "Bouffeur"),
+                EventCard(date: DateTime.now(), name: "aller se faire foutre", pole: "Oui"),
+              ],
+            ),
         ],
       ),
     );
