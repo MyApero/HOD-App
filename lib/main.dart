@@ -19,7 +19,24 @@ class MyApp extends StatelessWidget {
   MyApp({super.key});
 
   final List<Widget> _pages = [
-    ThemeCard(boxColor: Colors.red, textColor: Colors.black,)
+    AppBackground(
+        title: "ME CONNECTER",
+        child: ThemeCard(
+          boxColor: Colors.red,
+          textColor: Colors.black,
+        )),
+    AppBackground(
+        title: "Biffler des ia ?",
+        child: ThemeCard(
+          boxColor: Colors.red,
+          textColor: Colors.black,
+        )),
+    AppBackground(
+        title: "zappou zappy",
+        child: ThemeCard(
+          boxColor: Colors.red,
+          textColor: Colors.black,
+        ))
   ];
 
   @override
@@ -28,12 +45,10 @@ class MyApp extends StatelessWidget {
       title: 'HOD App',
       debugShowCheckedModeBanner: false,
       theme: theme,
-      // home: AppScaffold(
-      //   pages: _pages
-      // ),
+      home: AppScaffold(pages: _pages),
       // home: LoginPage(),
       // home: AppScaffold(pages: _pages),
-      home: TestScreen(),
+      // home: TestScreen(),
     );
   }
 }

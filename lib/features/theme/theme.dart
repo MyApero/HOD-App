@@ -15,10 +15,9 @@ ThemeData theme = ThemeData().copyWith(
   ),
   textTheme: TextTheme(
     headlineLarge: TextStyle(
-      fontSize: 30,
-      // fontWeight: FontWeight.bold,
+      fontSize: 47,
       color: Colors.black,
-      fontFamily: "Coolvetica",
+      fontFamily: "CoolveticaCompressedHv",
     ),
   ),
 );
