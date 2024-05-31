@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/app_background.dart';
+import 'package:hod_app/widgets/background/app_background.dart';
 
 class AppScaffold extends StatefulWidget {
   const AppScaffold({super.key, required this.pages});
@@ -23,7 +23,7 @@ class _AppScaffoldState extends State<AppScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AppBackground(child: widget.pages[_selectedIndex]),
-      bottomNavigationBar: _selectedIndex > 1 ? BottomNavigationBar(
+      bottomNavigationBar: BottomNavigationBar(
           currentIndex: _selectedIndex,
           onTap: _onItemTapped,
           items: const [
@@ -40,7 +40,7 @@ class _AppScaffoldState extends State<AppScaffold> {
               label: 'Profile',
             ),
           ],
-      ) : null,
+      ),
     );
   }
 }

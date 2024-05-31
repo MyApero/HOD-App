@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class NiceBackground extends StatelessWidget {
-  const NiceBackground({super.key, this.child, this.header});
+  const NiceBackground({super.key, this.child});
 
   final Widget? child;
-  final Widget? header;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.topCenter,
       children: [
         ClippedPartsWidget(
           top: Container(
@@ -28,21 +28,9 @@ class NiceBackground extends StatelessWidget {
             return y;
           },
         ),
-        Column(
-          children: [
-            SizedBox(height: MediaQuery.of(context).viewPadding.top),
-            header ?? const SizedBox(),
-            Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
-                ),
-              ),
-              padding: const EdgeInsets.all(20),
-              child: child,
-            ),
-          ],
-        ),
+        Container(
+          padding: const EdgeInsets.all(20),
+          child: child),
       ],
     );
   }

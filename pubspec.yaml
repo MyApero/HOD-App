@@ -74,9 +74,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: MulishLight
+    - family: Coolvetica
       fonts:
-        - asset: assets/fonts/Mulish-Light.ttf
+        - asset: assets/fonts/coolvetica rg.otf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
     - family: MulishSemiBold
