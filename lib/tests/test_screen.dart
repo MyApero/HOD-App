@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/card.dart';
 import 'package:hod_app/widgets/player_card.dart';
-import 'package:hod_app/widgets/select_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 import 'package:hod_app/widgets/text_box.dart';
 

@@ -36,6 +36,12 @@ class MyApp extends StatelessWidget {
         child: ThemeCard(
           boxColor: Colors.red,
           textColor: Colors.black,
+        )),
+    AppBackground(
+        title: "North pole",
+        child: ThemeCard(
+          boxColor: Colors.red,
+          textColor: Colors.black,
         ))
   ];
 
