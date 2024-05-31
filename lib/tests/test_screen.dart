@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/calendar.dart';
 import 'package:hod_app/widgets/card.dart';
 import 'package:hod_app/widgets/select_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
@@ -18,14 +17,14 @@ class TestScreen extends StatelessWidget {
           Container(
               color: Colors.red,
               child: TextBox(label: "coucou", isPassword: false)),
-          SizedBox(
+          const SizedBox(
             width: 20,
             height: 20,
           ),
           Container(
               width: 200,
               color: Colors.blue,
-              child: SimpleText(text: "bonsoir les amiiiiiis :")),
+              child: const SimpleText(text: "bonsoir les amiiiiiis :")),
           Row(
               children: [
                 EventCard(large: false, date: DateTime.utc(2024, 12, 12), name: "manger des chips", pole: "Bouffeur"),

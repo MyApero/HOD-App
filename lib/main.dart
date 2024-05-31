@@ -32,9 +32,8 @@ class MyApp extends StatelessWidget {
       //   pages: _pages
       // ),
       // home: LoginPage(),
-      home: AppScaffold(pages: _pages),
-      // home: ThemeTestScreen()
-      // home: const OnboardingScreen(),
+      // home: AppScaffold(pages: _pages),
+      home: LoginPage(),
     );
   }
 }

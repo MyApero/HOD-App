@@ -33,7 +33,7 @@ class _TextBoxState extends State<TextBox> {
           border: const OutlineInputBorder(), // Border style
           suffixIcon: widget.isPassword
               ? IconButton(
-                  icon: const Icon(Icons.remove_red_eye_outlined),
+                  icon: Icon(viewPwd ? Icons.visibility : Icons.visibility_off),
                   onPressed: () {
                     setState(() {
                       viewPwd = !viewPwd;
