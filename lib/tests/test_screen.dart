@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/widgets/player_card.dart';
 import 'package:hod_app/widgets/simple_text.dart';
-import 'package:hod_app/widgets/text_box.dart';
+import 'package:hod_app/widgets/auth_field.dart';
 
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});
@@ -15,7 +15,7 @@ class TestScreen extends StatelessWidget {
         children: [
           Container(
               color: Colors.red,
-              child: TextBox(label: "coucou", isPassword: false)),
+              child: AuthField(label: "coucou")),
           const SizedBox(
             width: 20,
             height: 20,
@@ -23,7 +23,7 @@ class TestScreen extends StatelessWidget {
           Container(
             width: 200,
             color: Colors.blue,
-            child: const SimpleText(text: "bonsoir les amiiiiiis :"),
+            child: const SimpleText("bonsoir les amiiiiiis :"),
           ),
           PlayerCard()
         ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/background/nice_background.dart';
+import 'package:hod_app/widgets/background/nice/nice_background.dart';
 import 'package:hod_app/widgets/hod_logo.dart';
 import 'package:hod_app/widgets/small_text.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -26,15 +26,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             HodButton(
                 label: "Bienvenue dans HOD", onTapped: () {}, textFontSize: 31),
             const SizedBox(height: 30),
-            SmallText(
-              title: "Mentions légales et CGU",
+            SmallClickableText(
+              "Mentions légales et CGU",
               onPressed: () {
                 launchUrlString(
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/640px-Cat03.jpg");
               },
             ),
-            SmallText(
-                title: "Contactez nous",
+            SmallClickableText(
+                "Contactez nous",
                 onPressed: () {
                   launchUrlString("https://discord.gg/CBSRt6mvsR");
                 }),
