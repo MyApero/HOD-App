@@ -29,7 +29,7 @@ class NiceBackground extends StatelessWidget {
           },
         ),
         Container(
-          padding: const EdgeInsets.all(20),
+          padding: EdgeInsets.symmetric(horizontal: 10),
           child: child),
       ],
     );

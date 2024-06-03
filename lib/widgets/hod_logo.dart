@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/theme/palette.dart';
 
 const double proportion = 1.15779;
 
@@ -9,11 +10,14 @@ class HodLogo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image(
-      width: width,
-      height: width * proportion,
-      image: const AssetImage("assets/images/logo_1_heaven_of_dice.png"),
-      fit: BoxFit.fill,
+    return Container(
+      // color: Palette.lightBlue,
+      child: Image(
+        width: width,
+        height: width * proportion,
+        image: const AssetImage("assets/images/logo_1_heaven_of_dice.png"),
+        fit: BoxFit.fill,
+      ),
     );
   }
 }

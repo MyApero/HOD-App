@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/theme/palette.dart';
 import 'package:hod_app/widgets/hod_logo.dart';
 
 class AppHeader extends StatelessWidget {
@@ -9,11 +10,24 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      const HodLogo(width: 110),
-      Text(
-        title ?? "NO TEXT",
-        style: Theme.of(context).textTheme.headlineLarge,
+      SizedBox(
+        height: 10,
       ),
+      HodLogo(width: MediaQuery.of(context).size.height * 10 / 100),
+      Container(
+        // color: Colors.red,
+        child: Text(
+          textAlign: TextAlign.center,
+          title ?? "NO TEXT",
+          style: TextStyle(
+            height: 0.8,
+            fontSize: MediaQuery.of(context).size.height * 5 / 100,
+            color: Palette.black,
+            fontFamily: "CoolveticaCompressedHv",
+          ),
+        ),
+      ),
+      SizedBox(height: 15)
     ]);
   }
 }

@@ -26,7 +26,7 @@ class _AppScaffoldState extends State<AppScaffold> {
         type: BottomNavigationBarType.fixed,
         showUnselectedLabels: false,
         showSelectedLabels: false,
-        iconSize: 50,
+        iconSize: MediaQuery.of(context).size.height * 5 / 100,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
         items: const [

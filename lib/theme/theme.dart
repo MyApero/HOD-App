@@ -14,11 +14,4 @@ ThemeData theme = ThemeData().copyWith(
     surfaceVariant: Palette.whitePurple,
     // secondaryContainer: const Color(0xFFaeaed7),
   ),
-  textTheme: const TextTheme(
-    headlineLarge: TextStyle(
-      fontSize: 47,
-      color: Palette.black,
-      fontFamily: "CoolveticaCompressedHv",
-    ),
-  ),
 );

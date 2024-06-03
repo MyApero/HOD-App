@@ -12,7 +12,7 @@ class AppBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GyroNiceBackground(
+    return NiceBackground(
       child: Column(
         children: [
           SizedBox(height: MediaQuery.of(context).viewPadding.top),

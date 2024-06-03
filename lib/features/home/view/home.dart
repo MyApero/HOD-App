@@ -18,7 +18,7 @@ class HomeScreen extends StatelessWidget {
           textColor: Colors.black,
         )),
     const AppBackground(
-        title: "Ma carte",
+        title: "Ma carte très très très très très très très trèes longue",
         child: CardScreen()),
     const AppBackground(
         title: "North pole",

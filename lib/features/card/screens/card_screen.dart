@@ -14,7 +14,6 @@ class CardScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             PlayerCard(),
-            SizedBox(height: 40),
             SelectButton(label: "Personnalisation", icon: Icons.arrow_circle_right_outlined),
             SelectButton(label: "Réglages", icon: Icons.arrow_circle_right_outlined),
           ],
