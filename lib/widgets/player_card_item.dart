@@ -17,7 +17,7 @@ class PlayerCardItem extends StatelessWidget {
           Radius.circular(20),
         ),
       ),
-      height: 30,
+      height: 25,
       margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
       padding: EdgeInsets.all(5.0),
       child: Row(
@@ -26,7 +26,7 @@ class PlayerCardItem extends StatelessWidget {
           SizedBox(width: 5),
           Text(
               style: TextStyle(
-                fontSize: 18,
+                fontSize: 12,
                 fontFamily: "CoolveticaCondensed",
                 color: Colors.black,
               ),

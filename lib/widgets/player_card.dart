@@ -9,15 +9,14 @@ class PlayerCard extends StatelessWidget {
     return Card(
       color: Theme.of(context).colorScheme.primary,
       //color: Theme.of(context).colorScheme.primary,
-      clipBehavior: Clip.hardEdge,
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {},
         child: SizedBox(
             width: double.infinity,
-            height: 320,
+            height: 285,
             child: Container(
-              padding: EdgeInsets.fromLTRB(5, 5, 0, 5),
+              padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
               child: Column(
                 children: [
                   const Text(
@@ -26,49 +25,54 @@ class PlayerCard extends StatelessWidget {
                       fontSize: 15,
                     ),
                   ),
-                  Row(
-                    children: [
-                      Container(
-                        // color: Colors.red,
-                        width: 300,
-                        height: 200,
-                        child: Row(
-                          children: [
-                            Container(
-                              // color: Colors.yellow,
-                              height: 200,
-                              width: 220,
-                              child: const Column(
-                                children: [
-                                  PlayerCardItem(
-                                    fieldKey: "N°ID",
-                                    fieldValue: "4721",
-                                  ),
-                                  PlayerCardItem(
-                                      fieldKey: "Pseudo",
-                                      fieldValue: "sambrus"),
-                                  SizedBox(height: 18),
-                                  PlayerCardItem(
-                                    fieldKey: "Status",
-                                    fieldValue: "Membre",
-                                  ),
-                                  PlayerCardItem(
-                                      fieldKey: "Score",
-                                      fieldValue: "100000000000"),
-                                  SizedBox(height: 18),
-                                ],
+                  Container(
+                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    color: Colors.yellow,
+                    child: Container(
+                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                      // color: Colors.red,
+                      width: double.infinity,
+                      height: 170,
+                      child: Row(
+                        children: [
+                          Container(
+                            color: Colors.purple,
+                            width: 180,
+                            child: const Column(
+                              children: [
+                                PlayerCardItem(
+                                  fieldKey: "N°ID",
+                                  fieldValue: "4721",
+                                ),
+                                PlayerCardItem(
+                                    fieldKey: "Pseudo", fieldValue: "sambrus"),
+                                SizedBox(height: 14),
+                                PlayerCardItem(
+                                  fieldKey: "Status",
+                                  fieldValue: "Membre",
+                                ),
+                                PlayerCardItem(
+                                    fieldKey: "Score",
+                                    fieldValue: "100000000000"),
+                                SizedBox(height: 14),
+                              ],
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                            width: 120,
+                            height: 200,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFAEAED7),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(20),
                               ),
                             ),
-                            Container(
-                              color: Colors.red,
-                              height: 200,
-                              width: 250,
-                              child: Text("salut bonsoir"),
-                            ),
-                          ],
-                        ),
+                            child: Text("salut bonsoir"),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                   PlayerCardItem(fieldKey: "Duree de jeu", fieldValue: "1000h"),
                   PlayerCardItem(
