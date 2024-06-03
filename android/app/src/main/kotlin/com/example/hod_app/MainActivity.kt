@@ -1,4 +1,4 @@
-package com.example.hod_app
+package com.heavenofdice.hod
 
 import io.flutter.embedding.android.FlutterActivity
 

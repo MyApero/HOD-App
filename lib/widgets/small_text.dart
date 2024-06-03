@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SmallText extends StatelessWidget {
-  const SmallText({super.key, required this.title, this.onPressed});
+class SmallClickableText extends StatelessWidget {
+  const SmallClickableText(this.title, {super.key, this.onPressed});
 
   final String title;
   final void Function()? onPressed;

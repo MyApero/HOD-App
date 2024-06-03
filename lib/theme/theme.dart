@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/theme/palette.dart';
 
 ThemeData theme = ThemeData().copyWith(
   colorScheme: ColorScheme.fromSeed(
-    seedColor: const Color(0xFF4A148C),
-    primary: const Color(0xFF6520BA),
-    onPrimary: const Color(0xFFCCCCF5),
-    secondary: const Color(0xFF8f8fff),
-    tertiary: const Color(0xFFFFFFFF),
+    seedColor: Palette.darkPurple,
+    primary: Palette.purple,
+    onPrimary: Palette.lightPurple,
+    secondary: Palette.lightBlue,
+    tertiary: Palette.white,
     // onSurfaceVariant: const Color,
     // secondaryContainer: const Color(0xFFe3e3f1),
-    secondaryContainer: const Color(0xFFd9d9fc),
-    surfaceVariant: const Color(0xFFe3e3f1),
+    secondaryContainer: Palette.softPurple,
+    surfaceVariant: Palette.whitePurple,
     // secondaryContainer: const Color(0xFFaeaed7),
   ),
-  textTheme: TextTheme(
+  textTheme: const TextTheme(
     headlineLarge: TextStyle(
       fontSize: 47,
-      color: Colors.black,
+      color: Palette.black,
       fontFamily: "CoolveticaCompressedHv",
     ),
   ),
