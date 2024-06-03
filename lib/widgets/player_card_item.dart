@@ -1,10 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/widgets/hod_button.dart';
 
 class PlayerCardItem extends StatelessWidget {
-  const PlayerCardItem({super.key});
+  const PlayerCardItem(
+      {super.key, required this.fieldKey, required this.fieldValue});
+
+  final String fieldKey;
+  final String fieldValue;
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      decoration: BoxDecoration(
+        color: Color(0xFFAEAED7),
+        borderRadius: BorderRadius.all(
+          Radius.circular(20),
+        ),
+      ),
+      height: 30,
+      margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+      padding: EdgeInsets.all(5.0),
+      child: Row(
+        textDirection: TextDirection.ltr,
+        children: [
+          SizedBox(width: 5),
+          Text(
+              style: TextStyle(
+                fontSize: 18,
+                fontFamily: "CoolveticaCondensed",
+                color: Colors.black,
+              ),
+              fieldKey.toUpperCase()),
+          Spacer(),
+          Text(fieldValue),
+        ],
+      ),
+    );
   }
 }

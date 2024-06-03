@@ -35,20 +35,20 @@ class MyApp extends ConsumerWidget {
         debugShowCheckedModeBanner: false,
         theme: theme,
         // home: AppScaffold(pages: _pages),
-        // home: RegisterScreen(),
+        home: TestScreen(),
         
-        home: ref.watch(currentUserProvider).when(
-              data: (user) {
-                if (user != null) {
-                  return HomeScreen();
-                }
-                return const RegisterScreen();
-              },
-              error: (error, st) => ErrorScreen(
-                errorMessage: error.toString(),
-              ),
-              loading: () => const LoadingScreen(),
-            )
+        // home: ref.watch(currentUserProvider).when(
+        //       data: (user) {
+        //         if (user != null) {
+        //           return HomeScreen();
+        //         }
+        //         return const RegisterScreen();
+        //       },
+        //       error: (error, st) => ErrorScreen(
+        //         errorMessage: error.toString(),
+        //       ),
+        //       loading: () => const LoadingScreen(),
+        //     )
 
         );
   }

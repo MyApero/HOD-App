@@ -79,7 +79,11 @@ flutter:
   fonts:
     - family: Coolvetica
       fonts:
-        - asset: assets/fonts/coolvetica rg.otf
+        - asset: assets/fonts/CoolveticaRg.otf
+
+    - family: CoolveticaCondensed
+      fonts:
+        - asset: assets/fonts/CoolveticaCondensedRg.otf
 
     - family: CoolveticaCompressedHv
       fonts:

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/widgets/player_card.dart';
+import 'package:hod_app/widgets/player_card_item.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 import 'package:hod_app/widgets/auth_field.dart';
 
@@ -25,7 +26,9 @@ class TestScreen extends StatelessWidget {
             color: Colors.blue,
             child: const SimpleText("bonsoir les amiiiiiis :"),
           ),
-          PlayerCard()
+          PlayerCard(),
+          PlayerCardItem(fieldKey: "Duree de jeu", fieldValue: "2h",),
+          PlayerCardItem(fieldKey: "Debut de l'aventure", fieldValue: "20/04/2024",)
         ],
       ),
     );
