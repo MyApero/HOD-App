@@ -4,7 +4,6 @@ import 'package:hod_app/features/auth/controller/auth_controller.dart';
 import 'package:hod_app/features/auth/view/login.dart';
 import 'package:hod_app/features/auth/widgets/cgu_checkbox.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';
-import 'package:hod_app/features/auth/widgets/text_end_clickable.dart';
 import 'package:hod_app/widgets/background/app_background.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
@@ -53,6 +52,8 @@ class _RegisterPageState extends ConsumerState<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isLoading = ref.watch(authControllerProvider);
+
     return Scaffold(
       body: AppBackground(
         title: "M'inscrire",
@@ -161,6 +162,7 @@ class _RegisterPageState extends ConsumerState<RegisterScreen> {
                         onRegister();
                       }
                     },
+                    isLoading: isLoading,
                   ),
                 ),
               ],

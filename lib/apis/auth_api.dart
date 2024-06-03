@@ -14,6 +14,13 @@ final authAPIProvider = Provider((ref) {
 abstract class IAuthAPI {
   MyFutureEither<User> register(
       {required String email, required String password});
+
+  MyFutureEither<Session> login(
+      {required String email, required String password});
+
+  Future<User?> currentUser();
+
+  Future<void> logout();
 }
 
 class AuthAPI implements IAuthAPI {
@@ -31,9 +38,44 @@ class AuthAPI implements IAuthAPI {
       );
       return Right(account);
     } on AppwriteException catch (e, stackTrace) {
-      return Left(Failure(e.message ?? 'Some unexpected AppwriteException occured', stackTrace));
+      return Left(Failure(
+          e.message ?? 'Some unexpected AppwriteException occured',
+          stackTrace));
     } catch (e, stackTrace) {
       return Left(Failure(e.toString(), stackTrace));
     }
+  }
+
+  @override
+  MyFutureEither<Session> login(
+      {required String email, required String password}) async {
+    try {
+      final session = await _account.createEmailPasswordSession(
+          email: email, password: password);
+      return Right(session);
+    } on AppwriteException catch (e, stackTrace) {
+      return Left(Failure(
+          e.message ?? 'Some unexpected AppwriteException occured',
+          stackTrace));
+    } catch (e, stackTrace) {
+      return Left(Failure(e.toString(), stackTrace));
+    }
+  }
+
+  @override
+  Future<User?> currentUser() async {
+    try {
+      final user = await _account.get();
+      return user;
+    } on AppwriteException catch (e) {
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  @override
+  Future<dynamic> logout() async {
+    return await _account.deleteSession(sessionId: 'current');
   }
 }
