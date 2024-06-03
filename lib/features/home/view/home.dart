@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/features/card/screens/card_screen.dart';
 import 'package:hod_app/features/ragequit/ragequit_screen.dart';
 import 'package:hod_app/tests/theme_screen.dart';
 import 'package:hod_app/widgets/background/app_background.dart';
@@ -17,11 +18,8 @@ class HomeScreen extends StatelessWidget {
           textColor: Colors.black,
         )),
     const AppBackground(
-        title: "zappou zappy",
-        child: ThemeCard(
-          boxColor: Colors.red,
-          textColor: Colors.black,
-        )),
+        title: "Ma carte",
+        child: CardScreen()),
     const AppBackground(
         title: "North pole",
         child: ThemeCard(

@@ -30,7 +30,7 @@ class PlayerCard extends StatelessWidget {
                     children: [
                       Container(
                         // color: Colors.red,
-                        width: 100,
+                        width: 300,
                         height: 200,
                         child: Row(
                           children: [
