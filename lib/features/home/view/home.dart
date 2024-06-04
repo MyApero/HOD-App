@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/card/screens/card_screen.dart';
 import 'package:hod_app/features/ragequit/ragequit_screen.dart';
+import 'package:hod_app/tests/events_screen_test.dart';
 import 'package:hod_app/tests/theme_screen.dart';
 import 'package:hod_app/widgets/background/app_background.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
@@ -14,12 +15,7 @@ class HomeScreen extends StatelessWidget {
       title: "Ragequit",
       child: RagequitScreen(),
     ),
-    const AppBackground(
-        title: "Biffler des ia ?",
-        child: ThemeCard(
-          boxColor: Colors.red,
-          textColor: Colors.black,
-        )),
+    const AppBackground(title: "Biffler des ia ?", child: EventsScreenTest()),
     const AppBackground(
         title: "Ma carte très très très très très très très trèes longue",
         child: CardScreen()),
