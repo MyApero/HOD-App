@@ -8,12 +8,15 @@ class Calendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SfCalendar(
       view: CalendarView.week,
-      dataSource: MeetingDataSource(
-        getAppointments()
-      ),
+      allowedViews: [
+        CalendarView.day,
+        CalendarView.week,
+        CalendarView.month,
+      ],
+      showNavigationArrow: true,
+      dataSource: MeetingDataSource(getAppointments()),
     );
   }
-
 
   // TODO: fonction à changer plus tard pour récupérer les vraies events du joueur
   List<Appointment> getAppointments() {

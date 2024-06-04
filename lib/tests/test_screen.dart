@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/widgets/calendar.dart';
 import 'package:hod_app/widgets/player_card.dart';
 import 'package:hod_app/widgets/player_card_item.dart';
 import 'package:hod_app/widgets/simple_text.dart';
@@ -26,9 +27,11 @@ class TestScreen extends StatelessWidget {
             color: Colors.blue,
             child: const SimpleText("bonsoir les amiiiiiis :"),
           ),
-          PlayerCard(),
-          PlayerCardItem(fieldKey: "Duree de jeu", fieldValue: "2h",),
-          PlayerCardItem(fieldKey: "Debut de l'aventure", fieldValue: "20/04/2024",)
+          SizedBox(height: 50),
+          Calendar(),
+          // PlayerCard(),
+          // PlayerCardItem(fieldKey: "Duree de jeu", fieldValue: "2h",),
+          // PlayerCardItem(fieldKey: "Debut de l'aventure", fieldValue: "20/04/2024",)
         ],
       ),
     );
