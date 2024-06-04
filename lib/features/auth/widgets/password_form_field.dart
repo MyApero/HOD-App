@@ -38,8 +38,8 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
         if (value == null || value.isEmpty) {
           return 'Veuillez entrer un mot de passe';
         }
-        if (value.length < 6) {
-          return 'Le mot de passe doit contenir au moins 6 caractères';
+        if (value.length < 8) {
+          return 'Le mot de passe doit contenir au moins 8 caractères';
         }
         if (widget.validator != null) {
           return widget.validator!.call(value);

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class NiceBackgroundDecoration extends StatelessWidget {
-  const NiceBackgroundDecoration({super.key, this.value = 15});
+class NiceClipper extends StatelessWidget {
+  const NiceClipper({super.key, this.value = 15});
 
   final double value;
 
@@ -16,6 +16,7 @@ class NiceBackgroundDecoration extends StatelessWidget {
         color: Theme.of(context).colorScheme.surface,
       ),
       splitFunction: (Size size, double x) {
+        // normalizing x to make it exactly one wave
         final normalizedX = x / size.width * 2 * pi;
         final waveHeight = size.height / value;
         final y = 200 + -x + size.height / 2 + sin(normalizedX) * waveHeight;

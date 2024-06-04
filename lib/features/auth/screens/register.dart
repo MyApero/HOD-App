@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hod_app/features/auth/controller/auth_controller.dart';
-import 'package:hod_app/features/auth/view/login.dart';
+import 'package:hod_app/features/auth/screens/login.dart';
 import 'package:hod_app/features/auth/widgets/cgu_checkbox.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';
 import 'package:hod_app/widgets/background/app_background.dart';
