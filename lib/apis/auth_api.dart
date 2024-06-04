@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:appwrite/appwrite.dart';
 import 'package:appwrite/models.dart';
 import 'package:either_dart/either.dart';
@@ -67,7 +69,7 @@ class AuthAPI implements IAuthAPI {
     try {
       final user = await _account.get();
       return user;
-    } on AppwriteException catch (e) {
+    } on AppwriteException {
       return null;
     } catch (e) {
       return null;
@@ -77,5 +79,16 @@ class AuthAPI implements IAuthAPI {
   @override
   Future<dynamic> logout() async {
     return await _account.deleteSession(sessionId: 'current');
+  }
+
+  MyFutureEither<void> sendVerificationMail() async {
+    try {
+      await _account.createVerification(url: 'https://cloud.appwrite.io/verifyEmail');
+      return const Right(null);
+    } on AppwriteException catch (e, stackTrace) {
+      return Left(Failure(e.message ?? 'Some unexpected AppwriteException occured', stackTrace));
+    } catch (e, stackTrace) {
+      return Left(Failure(e.toString(), stackTrace));
+    }
   }
 }

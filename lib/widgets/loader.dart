@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/theme/palette.dart';
 
 class Loader extends StatelessWidget {
   const Loader({super.key});

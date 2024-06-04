@@ -10,7 +10,10 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final List<Widget> _pages = [
-    const RagequitScreen(),
+    const AppBackground(
+      title: "Ragequit",
+      child: RagequitScreen(),
+    ),
     const AppBackground(
         title: "Biffler des ia ?",
         child: ThemeCard(

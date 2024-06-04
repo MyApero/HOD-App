@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/features/auth/view/login.dart';
+import 'package:hod_app/features/auth/screens/login.dart';
 import 'package:hod_app/features/home/view/home.dart';
 
 final authControllerProvider =
@@ -21,8 +21,8 @@ class AuthController extends StateNotifier<bool> {
   AuthController({required AuthAPI authAPI})
       : _authAPI = authAPI,
         super(false);
-    
-    Future<User?> currentUser() => _authAPI.currentUser();
+
+  Future<User?> currentUser() => _authAPI.currentUser();
 
   void signUp({
     required String email,
@@ -65,5 +65,15 @@ class AuthController extends StateNotifier<bool> {
       Navigator.pushReplacement(context, LoginScreen.route());
       state = false;
     });
+  }
+
+  Future<void> sendVerificationMail({required BuildContext context}) async {
+    state = true;
+    final res = await _authAPI.sendVerificationMail();
+    res.fold(
+      (l) => showSnackBar(context, l.message),
+      (r) => showSnackBar(context, 'Verification mail sent'),
+    );
+    state = false;
   }
 }

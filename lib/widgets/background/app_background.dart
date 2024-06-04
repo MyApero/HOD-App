@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/background/nice/gyro_nice_background.dart';
-
-import 'package:hod_app/widgets/background/nice/nice_background.dart';
 import 'package:hod_app/widgets/background/app_header.dart';
+import 'package:hod_app/widgets/background/nice/nice_background.dart';
 
 class AppBackground extends StatelessWidget {
   const AppBackground({super.key, this.child, this.title});
