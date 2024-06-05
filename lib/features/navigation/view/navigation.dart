@@ -18,10 +18,12 @@ class NavigationScreen extends StatelessWidget {
 
   final List<Widget> _pages = [
     const AppBackground(
+      hasProfileIcon: true,
       title: "Home",
       child: HomeScreen(),
     ),
     const AppBackground(
+      hasProfileIcon: true,
       title: "Calendrier",
       child: CalendarScreen(),
     ),
@@ -30,6 +32,7 @@ class NavigationScreen extends StatelessWidget {
       child: AdminScreen(),
     ),
     const AppBackground(
+      hasProfileIcon: true,
       title: "Ragequit :o",
       child: RagequitScreen(),
     ),

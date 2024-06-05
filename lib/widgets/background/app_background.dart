@@ -7,17 +7,20 @@ class AppBackground extends StatelessWidget {
     super.key,
     this.title,
     this.hasBackArrow = false,
+    this.hasProfileIcon = false,
     this.child,
   });
 
   final String? title;
   final bool hasBackArrow;
+  final bool hasProfileIcon;
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     return NiceBackground(
       hasBackArrow: hasBackArrow,
+      hasProfileIcon: hasProfileIcon,
       child: Column(
         children: [
           SizedBox(height: MediaQuery.of(context).viewPadding.top),
