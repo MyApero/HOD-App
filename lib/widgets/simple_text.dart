@@ -11,6 +11,7 @@ class SimpleText extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
+        
         fontWeight: FontWeight.bold,
         fontSize: textSize,
         color: Theme.of(context).colorScheme.onSurface,

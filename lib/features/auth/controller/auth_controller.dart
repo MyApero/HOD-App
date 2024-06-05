@@ -4,7 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/features/auth/screens/login.dart';
-import 'package:hod_app/features/home/view/home.dart';
+import 'package:hod_app/features/navigation/view/navigation.dart';
 
 final authControllerProvider =
     StateNotifierProvider<AuthController, bool>((ref) {
@@ -36,7 +36,7 @@ class AuthController extends StateNotifier<bool> {
       (r) {
         showSnackBar(context, 'Inscription réussie');
         login(email: email, password: password, context: context).then((value) {
-          Navigator.pushReplacement(context, HomeScreen.route());
+          Navigator.pushReplacement(context, NavigationScreen.route());
         });
       },
     );
@@ -53,7 +53,7 @@ class AuthController extends StateNotifier<bool> {
     res.fold(
       (l) => showSnackBar(context, l.message),
       (r) {
-        Navigator.pushReplacement(context, HomeScreen.route());
+        Navigator.pushReplacement(context, NavigationScreen.route());
       },
     );
     state = false;

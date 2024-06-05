@@ -4,7 +4,8 @@ import 'package:hod_app/common/error_screen.dart';
 import 'package:hod_app/common/loading_screen.dart';
 import 'package:hod_app/features/auth/controller/auth_controller.dart';
 import 'package:hod_app/features/auth/screens/register.dart';
-import 'package:hod_app/features/home/view/home.dart';
+import 'package:hod_app/features/navigation/view/navigation.dart';
+import 'package:hod_app/tests/test_screen.dart';
 import 'package:hod_app/theme/theme.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends ConsumerWidget {
         home: ref.watch(currentUserProvider).when(
               data: (user) {
                 if (user != null) {
-                  return HomeScreen();
+                  return NavigationScreen();
                 }
                 return const RegisterScreen();
               },
