@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/calendar.dart';
 import 'package:hod_app/widgets/datetime_picker.dart';
-import 'package:hod_app/widgets/event_card.dart';
-import 'package:hod_app/widgets/player_card.dart';
-import 'package:hod_app/widgets/player_card_item.dart';
-import 'package:hod_app/widgets/select_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 import 'package:hod_app/widgets/auth_field.dart';
 
@@ -37,7 +32,7 @@ class TestScreen extends StatelessWidget {
             color: Colors.blue,
             child: const SimpleText("bonsoir les amiiiiiis :"),
           ),
-          SizedBox(height: 50),
+          const SizedBox(height: 50),
           DateTimePicker(controller: dateController, label: "start date"),
           // PlayerCard(),
           // PlayerCardItem(fieldKey: "Duree de jeu", fieldValue: "2h",),

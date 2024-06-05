@@ -33,8 +33,8 @@ class Event {
   Map<String, dynamic> toJson() {
     return {
       DbConst.name: name,
-      DbConst.startDate: startDate?.toIso8601String(),
-      DbConst.endDate: endDate?.toIso8601String(),
+      DbConst.startDate: startDate.toIso8601String(),
+      DbConst.endDate: endDate.toIso8601String(),
       DbConst.pole: pole,
       DbConst.description: description,
     };

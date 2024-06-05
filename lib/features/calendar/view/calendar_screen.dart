@@ -11,8 +11,8 @@ class CalendarScreen extends StatelessWidget {
     return events
         .map(
           (e) => Appointment(
-            startTime: e.startDate ?? DateTime.now(),
-            endTime: e.endDate ?? DateTime.now(),
+            startTime: e.startDate,
+            endTime: e.endDate,
             subject: e.name,
             color: Colors.red,
           ),

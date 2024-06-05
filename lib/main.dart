@@ -5,7 +5,6 @@ import 'package:hod_app/common/loading_screen.dart';
 import 'package:hod_app/features/auth/controller/auth_controller.dart';
 import 'package:hod_app/features/auth/screens/register.dart';
 import 'package:hod_app/features/navigation/view/navigation.dart';
-import 'package:hod_app/tests/test_screen.dart';
 import 'package:hod_app/theme/theme.dart';
 
 void main() {
