@@ -30,3 +30,7 @@ doc/api/
 
 flutter/
 *.deb
+
+# Google API keys
+google-services.json
+GoogleService-Info.plist

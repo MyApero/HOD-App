@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/background/app_background.dart';
+import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/player_card.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -9,18 +9,13 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: AppBackground(
+    return const AppScaffold(
         title: "Profil",
         hasBackArrow: true,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            PlayerCard()
-          ],
-        )
-      ),
-    );
+          children: [PlayerCard()],
+        ));
   }
 }

@@ -17,7 +17,6 @@ class AdminScreen extends ConsumerWidget {
           icon: Icons.arrow_circle_right_outlined,
           onPressed: () {
             Navigator.of(context).push(CreateEvent.route());
-            // ref.read(adminIndexProvider.notifier).changeIndex(1);
           },
         ),
         const SizedBox(height: 20),
