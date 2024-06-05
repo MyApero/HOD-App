@@ -30,7 +30,7 @@ class TestScreen extends StatelessWidget {
             child: const SimpleText("bonsoir les amiiiiiis :"),
           ),
           SizedBox(height: 50),
-          Calendar(),
+          Calendar(appointments: [],),
           // PlayerCard(),
           // PlayerCardItem(fieldKey: "Duree de jeu", fieldValue: "2h",),
           // PlayerCardItem(fieldKey: "Debut de l'aventure", fieldValue: "20/04/2024",)
