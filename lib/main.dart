@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hod_app/common/error_screen.dart';
-import 'package:hod_app/common/loading_screen.dart';
-import 'package:hod_app/features/auth/controller/auth_controller.dart';
-import 'package:hod_app/features/auth/screens/register.dart';
-import 'package:hod_app/features/navigation/view/navigation.dart';
+import 'package:hod_app/features/auth/widgets/firebase_auth.dart';
 import 'package:hod_app/theme/theme.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -20,20 +23,6 @@ class MyApp extends ConsumerWidget {
         title: 'HOD App',
         debugShowCheckedModeBanner: false,
         theme: theme,
-        // home: AppScaffold(pages: _pages),
-        // home: TestScreen(),
-        home: ref.watch(currentUserProvider).when(
-              data: (user) {
-                if (user != null) {
-                  return NavigationScreen();
-                }
-                return const RegisterScreen();
-              },
-              error: (error, st) => ErrorScreen(
-                errorMessage: error.toString(),
-              ),
-              loading: () => const LoadingScreen(),
-            )
-        );
+        home: const FirebaseAuthWidget());
   }
 }

@@ -1,4 +1,5 @@
-import 'package:hod_app/constants/appwrite_constants.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:hod_app/constants/db_const.dart';
 
 class Event {
   final String name;
@@ -23,8 +24,8 @@ class Event {
   factory Event.fromJson(Map<String, dynamic> json) {
     return Event(
       name: json[DbConst.name],
-      startDate: DateTime.parse(json[DbConst.startDate]),
-      endDate: DateTime.parse(json[DbConst.endDate]),
+      startDate: (json[DbConst.startDate] as Timestamp).toDate(),
+      endDate: (json[DbConst.endDate] as Timestamp).toDate(),
       pole: json[DbConst.pole],
       description: json[DbConst.description],
     );

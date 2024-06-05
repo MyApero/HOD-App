@@ -1,8 +1,3 @@
-class AppwriteConstants {
-  static const String endpoint = 'https://cloud.appwrite.io/v1';
-  static const String projectId = '665c6e090006f171dffe';
-  static const String databaseId = '665d7c02003956e89262';
-}
 
 class DbConst {
   static const String events = 'events';
@@ -16,5 +11,6 @@ class DbConst {
   static const String poleReflexion = 'REFLEXION';
   static const String poleWargame = 'WARGAME';
   static const String poleRolegame = 'ROLEGAME';
+  static const String users = 'users';
 
 }

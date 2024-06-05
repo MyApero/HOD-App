@@ -2,16 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:hod_app/features/admin/screens/admin_screen.dart';
 import 'package:hod_app/features/calendar/view/calendar_screen.dart';
 import 'package:hod_app/features/home/view/home.dart';
+import 'package:hod_app/features/navigation/view/navigation_screen.dart';
 import 'package:hod_app/features/ragequit/ragequit_screen.dart';
 import 'package:hod_app/widgets/background/app_background.dart';
-import 'package:hod_app/widgets/background/app_scaffold.dart';
 
-class NavigationScreen extends StatelessWidget {
-  static route() => MaterialPageRoute(builder: (context) => NavigationScreen());
-  NavigationScreen({super.key});
-
-  int adminIndex = 0;
-
+class NavigationPages extends StatelessWidget {
+  static route() => MaterialPageRoute(builder: (context) => NavigationPages());
+  NavigationPages({super.key});
 
   final List<Widget> _pages = [
     const AppBackground(
@@ -37,6 +34,6 @@ class NavigationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(pages: _pages);
+    return NavigationScreen(pages: _pages);
   }
 }
