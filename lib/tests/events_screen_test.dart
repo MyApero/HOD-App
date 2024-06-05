@@ -6,6 +6,7 @@ import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/constants/appwrite_constants.dart';
 import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/core/providers.dart';
+import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/data/Event.dart';
 import 'package:hod_app/features/auth/controller/auth_controller.dart';
 import 'package:hod_app/widgets/hod_button.dart';
@@ -27,7 +28,8 @@ class EventsScreenTest extends ConsumerWidget {
         HodButton(
             label: 'Create your event',
             onTapped: () async {
-              final document = await database.createDocument(
+              try {
+                   final document = await database.createDocument(
                   databaseId: AppwriteConstants.databaseId,
                   collectionId: DbConst.events,
                   documentId: ID.unique(),
@@ -38,7 +40,11 @@ class EventsScreenTest extends ConsumerWidget {
                           pole: DbConst.poleWerewolf,
                           description: 'This is a test event')
                       .toJson());
-              print(document.$permissions);
+                print(document.$permissions);
+                showSnackBar(context, "event created suiiii");
+              } on AppwriteException catch (e, stackTrace) {
+                showSnackBar(context, e.message ?? "Unexpected error");
+              }
             }),
         // Expanded(
         //   child: StreamBuilder(
