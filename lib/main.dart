@@ -7,7 +7,14 @@ import 'package:hod_app/features/auth/screens/register.dart';
 import 'package:hod_app/features/home/view/home.dart';
 import 'package:hod_app/theme/theme.dart';
 
-void main() {
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -33,7 +40,6 @@ class MyApp extends ConsumerWidget {
                 errorMessage: error.toString(),
               ),
               loading: () => const LoadingScreen(),
-            )
-        );
+            ));
   }
 }

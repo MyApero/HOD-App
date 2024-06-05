@@ -16,5 +16,6 @@ class DbConst {
   static const String poleReflexion = 'REFLEXION';
   static const String poleWargame = 'WARGAME';
   static const String poleRolegame = 'ROLEGAME';
+  static const String users = 'users';
 
 }

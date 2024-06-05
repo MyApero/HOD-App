@@ -21,7 +21,7 @@ class _NiceClipperAnimatedState extends State<NiceClipperAnimated>
   void initState() {
     super.initState();
     controller =
-        AnimationController(duration: const Duration(seconds: 2), vsync: this);
+        AnimationController(duration: const Duration(seconds: 10), vsync: this);
     // animation = Tween<double>(begin: 5, end: 30).animate(controller)
     //   ..addListener(() {
     //     setState(() {
@@ -32,7 +32,7 @@ class _NiceClipperAnimatedState extends State<NiceClipperAnimated>
       ..addListener(
         () {
           setState(() {
-            value = animation.value * 20 + 10;
+            value = animation.value * 35 + 10;
           });
         },
       );

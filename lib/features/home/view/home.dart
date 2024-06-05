@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
       title: "Ragequit",
       child: RagequitScreen(),
     ),
-    const AppBackground(title: "Biffler des ia ?", child: EventsScreenTest()),
+    const AppBackground(title: "Créer des ia ?", child: EventsScreenTest()),
     const AppBackground(
         title: "Ma carte très très très très très très très trèes longue",
         child: CardScreen()),
