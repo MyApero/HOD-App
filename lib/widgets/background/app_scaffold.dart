@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AppScaffold extends StatefulWidget {
+class AppScaffold extends ConsumerStatefulWidget {
   const AppScaffold({super.key, required this.pages});
 
   final List<Widget> pages;
 
   @override
-  State<AppScaffold> createState() => _AppScaffoldState();
+  ConsumerState<AppScaffold> createState() => _AppScaffoldState();
 }
 
-class _AppScaffoldState extends State<AppScaffold> {
+class _AppScaffoldState extends ConsumerState<AppScaffold> {
   int _selectedIndex = 0;
 
-  void _onItemTapped(int index) {
+  void _onItemTapped(int index, WidgetRef ref) {
     setState(() {
       _selectedIndex = index;
     });
@@ -28,7 +29,7 @@ class _AppScaffoldState extends State<AppScaffold> {
         showSelectedLabels: false,
         iconSize: MediaQuery.of(context).size.height * 4 / 100,
         currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+        onTap: (int i) => _onItemTapped(i, ref),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -37,6 +38,11 @@ class _AppScaffoldState extends State<AppScaffold> {
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month),
             label: 'Calendar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shield_rounded),
+            label: 'Admin',
+
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.north),
