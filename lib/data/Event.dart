@@ -12,8 +12,8 @@ class Event {
     required this.name,
     required this.startDate,
     required this.endDate,
-    required this.pole,
-    required this.description,
+    this.pole,
+    this.description,
   });
 
   @override

@@ -1,6 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/core/utils.dart';
+import 'package:hod_app/data/User.dart';
 import 'package:hod_app/features/auth/screens/verify_mail.dart';
 
 class AuthApi {
@@ -8,8 +11,10 @@ class AuthApi {
     required BuildContext context,
     required String email,
     required String password,
+    required String username,
+    required String firstName,
+    required String lastName,
   }) async {
-
     try {
       final userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
@@ -19,6 +24,21 @@ class AuthApi {
         }
         return false;
       }
+      userCredential.user!.updateDisplayName(username);
+      await FirebaseFirestore.instance
+          .collection(DbConst.users)
+          .doc(userCredential.user!.uid)
+          .set({
+        ...LocalUser(
+          uid: userCredential.user!.uid,
+          username: username,
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          role: Role.user,
+        ).toJson(),
+        DbConst.createdAt: Timestamp.now(),
+      });
       userCredential.user!.sendEmailVerification();
       if (context.mounted) {
         Navigator.pushReplacement(context, VerifyMailScreen.route());
@@ -26,7 +46,8 @@ class AuthApi {
       return true;
     } on FirebaseAuthException catch (e) {
       if (context.mounted) {
-        showSnackBar(context, e.message ?? 'Some unexpected FirebaseAuthException occured');
+        showSnackBar(context,
+            e.message ?? 'Some unexpected FirebaseAuthException occured');
       }
       return false;
     }
@@ -38,11 +59,13 @@ class AuthApi {
     required String password,
   }) async {
     try {
-      FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password);
+      FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: password);
       return true;
     } on FirebaseAuthException catch (e) {
       if (context != null) {
-        showSnackBar(context, e.message ?? 'Some unexpected FirebaseAuthException occured');
+        showSnackBar(context,
+            e.message ?? 'Some unexpected FirebaseAuthException occured');
       }
       return false;
     }

@@ -4,8 +4,8 @@ import 'package:hod_app/features/auth/screens/register.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
+import 'package:hod_app/widgets/hod_form_field.dart';
 import 'package:hod_app/widgets/small_text.dart';
-import 'package:hod_app/widgets/auth_field.dart';
 
 class LoginScreen extends StatefulWidget {
   static route() =>
@@ -42,7 +42,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(color: Colors.transparent, height: 70),
             Column(
               children: [
-                AuthField(
+                HodFormField(
                   label: "Email",
                   controller: emailController,
                 ),
