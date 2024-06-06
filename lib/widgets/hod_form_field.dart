@@ -5,6 +5,7 @@ class HodFormField extends StatelessWidget {
     super.key,
     required this.label,
     this.controller,
+    this.text,
     this.validator,
     this.isTextShown = true,
     this.enableSuggestions = true,
@@ -15,6 +16,7 @@ class HodFormField extends StatelessWidget {
   });
 
   final String label;
+  final String? text;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final bool isTextShown;
@@ -27,6 +29,7 @@ class HodFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: text,
       controller: controller,
       validator: validator,
       style: TextStyle(
