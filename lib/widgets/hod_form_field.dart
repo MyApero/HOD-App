@@ -13,6 +13,7 @@ class HodFormField extends StatelessWidget {
     this.readOnly = false,
     this.suffixIcon,
     this.onTap,
+    this.onChanged
   });
 
   final String label;
@@ -25,10 +26,12 @@ class HodFormField extends StatelessWidget {
   final bool readOnly;
   final Widget? suffixIcon;
   final void Function()? onTap;
+  final void Function(String)? onChanged;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: onChanged,
       initialValue: text,
       controller: controller,
       validator: validator,
