@@ -1,5 +1,4 @@
 import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/widgets/player_card.dart';
 
 class PlayerCardModel {
   PlayerCardModel({

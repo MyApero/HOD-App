@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key, required this.pages});
@@ -29,23 +32,28 @@ class _NavigationScreenState extends State<NavigationScreen> {
         iconSize: MediaQuery.of(context).size.height * 4 / 100,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
-        items: const [
-          BottomNavigationBarItem(
+        items: [
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_month),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.calendar_month_rounded),
             label: 'Calendar',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shield_rounded),
+            icon: FaIcon(Random().nextInt(5).remainder(5) == 0
+                ? FontAwesomeIcons.shieldCat
+                : FontAwesomeIcons.shieldDog),
             label: 'Admin',
-
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.north),
+          const BottomNavigationBarItem(
+            icon: FaIcon(FontAwesomeIcons.layerGroup),
             label: 'North',
+          ),
+          const BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            label: 'settings',
           ),
         ],
       ),

@@ -22,6 +22,7 @@ class NavigationPages extends StatelessWidget {
       child: CalendarScreen(),
     ),
     const AppBackground(
+      hasProfileIcon: true,
       title: "Admin",
       child: AdminScreen(),
     ),
@@ -29,6 +30,10 @@ class NavigationPages extends StatelessWidget {
       hasProfileIcon: true,
       title: "Ragequit :o",
       child: RagequitScreen(),
+    ),
+    const AppBackground(
+      title: "Settings",
+      // child: SettingsScreen(),
     ),
   ];
 
