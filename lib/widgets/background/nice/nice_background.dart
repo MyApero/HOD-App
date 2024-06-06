@@ -41,7 +41,7 @@ class NiceBackground extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(ProfileScreen.route());
               },
-              icon: const Icon(Icons.supervised_user_circle_outlined),
+              icon: const Icon(Icons.account_circle_rounded, size: 35,),
             ),
           ),
         Container(

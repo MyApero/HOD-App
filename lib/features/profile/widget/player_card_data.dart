@@ -1,9 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/player_card_api.dart';
-import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/models/player_card_model.dart';
-import 'package:hod_app/widgets/player_card.dart';
 
 class PlayerCardData extends StatelessWidget {
   const PlayerCardData({super.key, required this.builder});

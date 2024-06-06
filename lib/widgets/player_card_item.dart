@@ -17,7 +17,7 @@ class PlayerCardItem extends StatelessWidget {
         ),
       ),
       height: 25,
-      margin: EdgeInsets.fromLTRB(10, 5, 10, 5),
+      margin: EdgeInsets.symmetric(vertical: 5),
       padding: EdgeInsets.all(5.0),
       child: Row(
         textDirection: TextDirection.ltr,
