@@ -32,4 +32,10 @@ class DbConst {
   static const String playerCard = 'playerCards';
   static const String keys = 'keys';
   static const String values = 'values';
+
+  // Reports
+  static const String reports = 'reports';
+  static const String message = 'message';
+  static const String type = 'type';
+
 }

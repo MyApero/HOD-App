@@ -45,11 +45,25 @@ class AuthApi {
           .collection(DbConst.playerCard)
           .doc(userCredential.user!.uid)
           .set(
-          PlayerCardModel(
-          keys: <String>["Catégorie 1", "Catégorie 2", "Catégorie 3",  "Catégorie 4",  "Catégorie 5",  "Catégorie 6"],
-          values: <String>["Valeur 1", "Valeur 2", "Valeur 3", "Valeur 4", "Valeur 5", "Valeur 6"],
-        ).toJson(),
-      );
+            PlayerCardModel(
+              keys: <String>[
+                "Catégorie 1",
+                "Catégorie 2",
+                "Catégorie 3",
+                "Catégorie 4",
+                "Catégorie 5",
+                "Catégorie 6"
+              ],
+              values: <String>[
+                "Valeur 1",
+                "Valeur 2",
+                "Valeur 3",
+                "Valeur 4",
+                "Valeur 5",
+                "Valeur 6"
+              ],
+            ).toJson(),
+          );
 
       userCredential.user!.sendEmailVerification();
       if (context.mounted) {
@@ -86,6 +100,19 @@ class AuthApi {
 
   static Future<void> signOut() async {
     await FirebaseAuth.instance.signOut();
+  }
+
+  static Future<void> deleteAccount(BuildContext context) async {
+    try {
+      await currentUser?.delete();
+    } on FirebaseException catch (e) {
+      if (context.mounted) {
+        showSnackBar(
+            context,
+            e.message ??
+                'Impossible de supprimer votre compte, vous nous manqueriez trop');
+      }
+    }
   }
 
   static Future<void> sendEmailVerification() async {

@@ -39,14 +39,5 @@ class PlayerCardApi {
         showSnackBar(context, e.message ?? "Unexpected error");
       }
     }
-    await FirebaseFirestore.instance
-        .collection(DbConst.playerCard)
-        .doc(uid)
-        .set({
-      ...PlayerCardModel(
-        keys: playerCard.keys,
-        values: playerCard.values,
-      ).toJson()
-    });
   }
 }
