@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class SmallClickableText extends StatelessWidget {
-  const SmallClickableText(this.title, {super.key, this.onPressed});
+  const SmallClickableText(this.title, {super.key, this.onPressed, this.color});
 
   final String title;
   final void Function()? onPressed;
+  final Color ?color;
 
   @override
   Widget build(BuildContext context) {
@@ -12,12 +13,12 @@ class SmallClickableText extends StatelessWidget {
       onTap: onPressed,
       child: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 16,
           fontFamily: 'MulishSemiBold',
           decoration: TextDecoration.underline,
-          decorationColor: Color(0xFFAEAED7),
-          color: Color(0xFFAEAED7),
+          decorationColor: color ?? const Color(0xFFAEAED7),
+          color: color ?? const Color(0xFFAEAED7),
         ),
       ),
     );
