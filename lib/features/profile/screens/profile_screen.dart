@@ -17,12 +17,15 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [const PlayerCard(),
-          SelectButton(label: "Personnalisation", 
-          onPressed: () {
-            Navigator.of(context).push(PersonnalisationScreen.route());
-          }, icon: Icons.arrow_circle_right_outlined),
-          SelectButton(label: "Réglages", onPressed: () {}, icon: Icons.arrow_circle_right_outlined)],
+          children: [
+            const PlayerCard(),
+            SelectButton(
+                label: "Personnalisation",
+                onPressed: () {
+                  Navigator.of(context).push(PersonnalisationScreen.route());
+                },
+                icon: Icons.arrow_circle_right_outlined),
+          ],
         ));
   }
 }

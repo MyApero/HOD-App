@@ -10,27 +10,27 @@ class PlayerCardItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Color(0xFFE3E3F1),
         borderRadius: BorderRadius.all(
           Radius.circular(20),
         ),
       ),
       height: 25,
-      margin: EdgeInsets.symmetric(vertical: 5),
-      padding: EdgeInsets.all(5.0),
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.all(5.0),
       child: Row(
         textDirection: TextDirection.ltr,
         children: [
-          SizedBox(width: 5),
+          const SizedBox(width: 5),
           Text(
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 12,
                 fontFamily: "CoolveticaCondensed",
                 color: Colors.black,
               ),
               fieldKey.toUpperCase()),
-          Spacer(),
+          const Spacer(),
           Text(fieldValue),
         ],
       ),
