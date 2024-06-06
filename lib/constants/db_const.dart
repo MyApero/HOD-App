@@ -6,6 +6,7 @@ class DbConst {
   static const String description = 'description';
   static const String startDate = 'startDate';
   static const String endDate = 'endDate';
+  static const String createdBy = 'createdBy';
   static const String pole = 'pole';
   static const String poleWerewolf = 'WEREWOLF';
   static const String poleBoardgame = 'BOARDGAME';

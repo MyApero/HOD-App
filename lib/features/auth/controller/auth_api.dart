@@ -66,7 +66,7 @@ class AuthApi {
   }
 
   static Future<bool> login({
-    BuildContext? context,
+    required BuildContext context,
     required String email,
     required String password,
   }) async {
@@ -75,10 +75,9 @@ class AuthApi {
           .signInWithEmailAndPassword(email: email, password: password);
       return true;
     } on FirebaseAuthException catch (e) {
-      if (context != null) {
-        showSnackBar(context,
-            e.message ?? 'Some unexpected FirebaseAuthException occured');
-      }
+      showSnackBar(context,
+          e.message ?? 'Some unexpected FirebaseAuthException occured');
+
       return false;
     }
   }
