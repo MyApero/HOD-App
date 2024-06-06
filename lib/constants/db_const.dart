@@ -1,5 +1,6 @@
 
 class DbConst {
+  // Events
   static const String events = 'events';
   static const String name = 'name';
   static const String description = 'description';
@@ -12,6 +13,7 @@ class DbConst {
   static const String poleWargame = 'WARGAME';
   static const String poleRolegame = 'ROLEGAME';
 
+  // Users
   static const String users = 'users';
   static const String uid = 'uid';
   static const String username = 'username';
@@ -22,7 +24,11 @@ class DbConst {
   static const String roleAdmin = 'admin';
   static const String roleMember = 'member';
   static const String roleUser = 'user';
-
   static const String lastConnection = 'lastConnection';
   static const String createdAt = 'createdAt';
+
+  // Player Card
+  static const String playerCard = 'playerCards';
+  static const String keys = 'keys';
+  static const String values = 'values';
 }

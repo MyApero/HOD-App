@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/data/User.dart';
+import 'package:hod_app/models/player_card_model.dart';
+import 'package:hod_app/models/user_model.dart';
 import 'package:hod_app/features/auth/screens/verify_mail.dart';
 
 class AuthApi {
@@ -29,7 +30,7 @@ class AuthApi {
           .collection(DbConst.users)
           .doc(userCredential.user!.uid)
           .set({
-        ...LocalUser(
+        ...UserModel(
           uid: userCredential.user!.uid,
           username: username,
           email: email,
@@ -39,6 +40,17 @@ class AuthApi {
         ).toJson(),
         DbConst.createdAt: Timestamp.now(),
       });
+
+      await FirebaseFirestore.instance
+          .collection(DbConst.playerCard)
+          .doc(userCredential.user!.uid)
+          .set(
+          PlayerCardModel(
+          keys: <String>["Catégorie 1", "Catégorie 2", "Catégorie 3",  "Catégorie 4",  "Catégorie 5",  "Catégorie 6"],
+          values: <String>["Valeur 1", "Valeur 2", "Valeur 3", "Valeur 4", "Valeur 5", "Valeur 6"],
+        ).toJson(),
+      );
+
       userCredential.user!.sendEmailVerification();
       if (context.mounted) {
         Navigator.pushReplacement(context, VerifyMailScreen.route());

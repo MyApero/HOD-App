@@ -26,17 +26,16 @@ class PlayerCard extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
-                    color: Colors.yellow,
+                    // padding: EdgeInsets.fromLTRB(5, 5, 5, 5),
+                    // color: Colors.yellow,
                     child: Container(
-                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
                       // color: Colors.red,
                       width: double.infinity,
                       height: 170,
                       child: Row(
                         children: [
                           Container(
-                            color: Colors.purple,
+                            // color: Colors.purple,
                             width: 180,
                             child: const Column(
                               children: [
@@ -59,16 +58,17 @@ class PlayerCard extends StatelessWidget {
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                            margin: EdgeInsets.fromLTRB(5, 0, 0, 10),
                             width: 120,
-                            height: 200,
+                            height: 190,
                             decoration: BoxDecoration(
-                              color: Color(0xFFAEAED7),
+                              color: Color(0xFFE3E3F1),
                               borderRadius: BorderRadius.all(
                                 Radius.circular(20),
                               ),
                             ),
-                            child: Text("salut bonsoir"),
+                            child: Image.network('https://archives.bulbagarden.net/media/upload/6/6c/Spr_B2W2_Iris.png',
+                    ),
                           ),
                         ],
                       ),

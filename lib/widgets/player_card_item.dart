@@ -11,7 +11,7 @@ class PlayerCardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Color(0xFFAEAED7),
+        color: Color(0xFFE3E3F1),
         borderRadius: BorderRadius.all(
           Radius.circular(20),
         ),

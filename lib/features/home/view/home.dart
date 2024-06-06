@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/widgets/event_card.dart';
-import 'package:hod_app/widgets/event_data.dart';
+import 'package:hod_app/features/home/view/widget/event_data.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
 class HomeScreen extends StatelessWidget {
