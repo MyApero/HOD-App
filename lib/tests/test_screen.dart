@@ -1,17 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/datetime_picker.dart';
+import 'package:hod_app/widgets/datetime_form_picker.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
-enum Pole {
-  werewolf,
-  toudoulelou
-}
-
 class TestScreen extends StatelessWidget {
-  TestScreen({super.key});
-
-  final TextEditingController dateController = TextEditingController();
+  const TestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +13,7 @@ class TestScreen extends StatelessWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-              color: Colors.red,
-              child: HodFormField(label: "coucou")),
+          Container(color: Colors.red, child: HodFormField(label: "coucou")),
           const SizedBox(
             width: 20,
             height: 20,
@@ -33,7 +24,7 @@ class TestScreen extends StatelessWidget {
             child: const SimpleText("bonsoir les amiiiiiis :"),
           ),
           const SizedBox(height: 50),
-          DateTimePicker(controller: dateController, label: "start date"),
+          DatetimeFormPicker(onChanged: (date) {}, label: "start date"),
           // PlayerCard(),
           // PlayerCardItem(fieldKey: "Duree de jeu", fieldValue: "2h",),
           // PlayerCardItem(fieldKey: "Debut de l'aventure", fieldValue: "20/04/2024",)

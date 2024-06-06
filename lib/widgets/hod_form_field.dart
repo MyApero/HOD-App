@@ -9,7 +9,9 @@ class HodFormField extends StatelessWidget {
     this.isTextShown = true,
     this.enableSuggestions = true,
     this.autocorrect = false,
+    this.readOnly = false,
     this.suffixIcon,
+    this.onTap,
   });
 
   final String label;
@@ -18,7 +20,9 @@ class HodFormField extends StatelessWidget {
   final bool isTextShown;
   final bool enableSuggestions;
   final bool autocorrect;
+  final bool readOnly;
   final Widget? suffixIcon;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +43,8 @@ class HodFormField extends StatelessWidget {
       obscureText: !isTextShown,
       enableSuggestions: enableSuggestions,
       autocorrect: autocorrect,
+      readOnly: readOnly,
+      onTap: onTap,
     );
   }
 }
