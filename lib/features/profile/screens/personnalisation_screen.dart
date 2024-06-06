@@ -71,9 +71,9 @@ class PersonnalisationScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Check
+                // Check
             ],)
-            SelectButton(label: "coucou")
+            // SelectButton(label: "coucou")
           ],
         ),
       ),
