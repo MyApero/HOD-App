@@ -12,6 +12,7 @@ class HodFormField extends StatelessWidget {
     this.autocorrect = false,
     this.readOnly = false,
     this.suffixIcon,
+    this.maxLines,
     this.onTap,
     this.onChanged
   });
@@ -23,6 +24,7 @@ class HodFormField extends StatelessWidget {
   final bool isTextShown;
   final bool enableSuggestions;
   final bool autocorrect;
+  final int? maxLines;
   final bool readOnly;
   final Widget? suffixIcon;
   final void Function()? onTap;
@@ -31,6 +33,7 @@ class HodFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      maxLines: maxLines ?? 1,
       onChanged: onChanged,
       initialValue: text,
       controller: controller,

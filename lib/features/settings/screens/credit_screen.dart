@@ -10,7 +10,7 @@ class CreditScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const AppScaffold(
-      title: "Crédit",
+      title: "Crédits",
       hasBackArrow: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
