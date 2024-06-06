@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/auth/controller/auth_api.dart';
+import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/features/auth/screens/login.dart';
 import 'package:hod_app/features/auth/widgets/cgu_checkbox.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';

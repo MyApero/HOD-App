@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/auth/controller/auth_api.dart';
+import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/features/auth/screens/register.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';

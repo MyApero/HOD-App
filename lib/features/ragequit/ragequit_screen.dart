@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hod_app/features/auth/controller/auth_api.dart';
+import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 
 class RagequitScreen extends StatelessWidget {
