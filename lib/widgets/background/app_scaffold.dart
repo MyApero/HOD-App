@@ -18,7 +18,7 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AppBackground(title: title, child: child),
+      body: AppBackground(title:title, hasBackArrow: hasBackArrow, child: child),
     );
   }
 }

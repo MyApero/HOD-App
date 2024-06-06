@@ -1,18 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:hod_app/apis/player_card_api.dart';
 import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/models/event_model.dart';
+import 'package:hod_app/models/player_card_model.dart';
+import 'package:hod_app/widgets/player_card.dart';
 
-class EventData extends StatelessWidget {
-  const EventData({super.key, required this.builder});
+class PlayerCardData extends StatelessWidget {
+  const PlayerCardData({super.key, required this.builder});
 
-  final Widget Function(List<EventModel> event) builder;
+  final Widget Function(PlayerCardModel playerCard) builder;
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseFirestore.instance.collection(DbConst.events).snapshots(),
+      stream: PlayerCardApi.getPlayerCard().snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
@@ -21,10 +22,8 @@ class EventData extends StatelessWidget {
           return Text('Error: ${snapshot.error}');
         }
         if (snapshot.hasData) {
-          final List<EventModel> events = snapshot.data!.docs
-              .map<EventModel>((e) => EventModel.fromJson(e.data()))
-              .toList();
-          return builder(events);
+          final PlayerCardModel playerCard = PlayerCardModel.fromJson(snapshot.data!.data()!);
+          return builder(playerCard);
         }
         return const Text('No data');
       },
