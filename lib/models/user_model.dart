@@ -4,7 +4,7 @@ import 'package:hod_app/constants/db_const.dart';
 
 enum Role { admin, member, user }
 
-class LocalUser {
+class UserModel {
   final String uid;
   final String username;
   final String email;
@@ -12,7 +12,7 @@ class LocalUser {
   final String lastName;
   final Role role;
 
-  LocalUser({
+  UserModel({
     required this.uid,
     required this.username,
     required this.email,
@@ -26,8 +26,8 @@ class LocalUser {
     return 'User{uid: $uid, username: $username, email: $email, firstName: $firstName, lastName: $lastName, role: $role}';
   }
 
-  factory LocalUser.fromJson(Map<String, dynamic> json) {
-    return LocalUser(
+  factory UserModel.fromJson(Map<String, dynamic> json) {
+    return UserModel(
       uid: json[DbConst.uid],
       username: json[DbConst.username],
       email: json[DbConst.email],

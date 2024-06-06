@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/data/event.dart';
+import 'package:hod_app/models/event_model.dart';
 
 class EventData extends StatelessWidget {
   const EventData({super.key, required this.builder});
 
-  final Widget Function(List<Event> event) builder;
+  final Widget Function(List<EventModel> event) builder;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class EventData extends StatelessWidget {
           return Text('Error: ${snapshot.error}');
         }
         if (snapshot.hasData) {
-          final List<Event> events = snapshot.data!.docs
-              .map<Event>((e) => Event.fromJson(e.data()))
+          final List<EventModel> events = snapshot.data!.docs
+              .map<EventModel>((e) => EventModel.fromJson(e.data()))
               .toList();
           return builder(events);
         }
