@@ -19,8 +19,12 @@ class PlayerCardData extends StatelessWidget {
           return Text('Error: ${snapshot.error}');
         }
         if (snapshot.hasData) {
+          final data = snapshot.data!.data();
+          print(data);
           final PlayerCardModel playerCard = PlayerCardModel.fromJson(snapshot.data!.data()!);
+          // print(playerCard);
           return builder(playerCard);
+          return Placeholder();
         }
         return const Text('No data');
       },

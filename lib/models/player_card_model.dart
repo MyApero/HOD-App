@@ -11,8 +11,8 @@ class PlayerCardModel {
 
   factory PlayerCardModel.fromJson(Map<String, dynamic> json) {
     return PlayerCardModel(
-      keys: json[DbConst.keys],
-      values: json[DbConst.values],
+      keys: List<String>.from(json[DbConst.keys] as List),
+      values: List<String>.from(json[DbConst.values] as List),
     );
   }
 
