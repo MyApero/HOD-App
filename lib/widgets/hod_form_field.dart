@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
-class AuthField extends StatelessWidget {
-  const AuthField({
+class HodFormField extends StatelessWidget {
+  const HodFormField({
     super.key,
     required this.label,
     this.controller,
     this.validator,
     this.isTextShown = true,
-    this.hasSuggestions = true,
+    this.enableSuggestions = true,
+    this.autocorrect = false,
     this.suffixIcon,
   });
 
@@ -15,7 +16,8 @@ class AuthField extends StatelessWidget {
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final bool isTextShown;
-  final bool hasSuggestions;
+  final bool enableSuggestions;
+  final bool autocorrect;
   final Widget? suffixIcon;
 
   @override
@@ -35,8 +37,8 @@ class AuthField extends StatelessWidget {
           suffixIcon: suffixIcon,
           ),
       obscureText: !isTextShown,
-      enableSuggestions: hasSuggestions,
-      autocorrect: hasSuggestions,
+      enableSuggestions: enableSuggestions,
+      autocorrect: autocorrect,
     );
   }
 }

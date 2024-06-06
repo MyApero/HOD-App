@@ -5,10 +5,10 @@ import 'package:hod_app/features/auth/widgets/cgu_checkbox.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/auth_field.dart';
+import 'package:hod_app/widgets/hod_form_field.dart';
 import 'package:hod_app/widgets/small_text.dart';
 
-const double TEXT_FIELD_VERTICAL_MARGIN = 14;
+const double TEXT_FIELD_MARGIN = 10;
 
 class RegisterScreen extends StatefulWidget {
   static route() =>
@@ -27,7 +27,8 @@ class _RegisterPageState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
 
   final firstNameController = TextEditingController();
-  final nameController = TextEditingController();
+  final lastNameController = TextEditingController();
+  final usernameController = TextEditingController();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final passwordConfirmationController = TextEditingController();
@@ -36,7 +37,8 @@ class _RegisterPageState extends State<RegisterScreen> {
   void dispose() {
     super.dispose();
     firstNameController.dispose();
-    nameController.dispose();
+    lastNameController.dispose();
+    usernameController.dispose();
     emailController.dispose();
     passwordController.dispose();
     passwordConfirmationController.dispose();
@@ -55,28 +57,46 @@ class _RegisterPageState extends State<RegisterScreen> {
               SmallClickableText("Me connecter", onPressed: () {
                 Navigator.pushReplacement(context, LoginScreen.route());
               }),
-              const SizedBox(height: TEXT_FIELD_VERTICAL_MARGIN),
-              AuthField(
-                controller: firstNameController,
-                label: "Prénom",
+              const SizedBox(height: TEXT_FIELD_MARGIN),
+              Row(
+                children: [
+                  Expanded(
+                    child: HodFormField(
+                      controller: firstNameController,
+                      label: "Prénom",
+                      validator: (name) {
+                        if (name!.isEmpty) {
+                          return "Veuillez entrer votre prénom";
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                  const SizedBox(width: TEXT_FIELD_MARGIN),
+                  Expanded(
+                    child: HodFormField(
+                      controller: lastNameController,
+                      label: "Nom",
+                      validator: (name) {
+                        if (name!.isEmpty) return "Veuillez entrer votre nom";
+                        return null;
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: TEXT_FIELD_MARGIN),
+              HodFormField(
+                controller: usernameController,
+                label: "Nom d'utilisateur",
                 validator: (name) {
-                  if (name!.isEmpty) {
-                    return "Veuillez entrer votre prénom";
-                  }
+                  if (name!.isEmpty)
+                    return "Veuillez entrer votre nom d'utilisateur";
                   return null;
                 },
               ),
-              const SizedBox(height: TEXT_FIELD_VERTICAL_MARGIN),
-              AuthField(
-                controller: nameController,
-                label: "Nom",
-                validator: (name) {
-                  if (name!.isEmpty) return "Veuillez entrer votre nom";
-                  return null;
-                },
-              ),
-              const SizedBox(height: TEXT_FIELD_VERTICAL_MARGIN),
-              AuthField(
+              const SizedBox(height: TEXT_FIELD_MARGIN),
+              HodFormField(
                 controller: emailController,
                 label: "Adresse email",
                 validator: (name) {
@@ -86,12 +106,12 @@ class _RegisterPageState extends State<RegisterScreen> {
                   return null;
                 },
               ),
-              const SizedBox(height: TEXT_FIELD_VERTICAL_MARGIN),
+              const SizedBox(height: TEXT_FIELD_MARGIN),
               PasswordFormField(
                 label: "Mot de passe",
                 controller: passwordController,
               ),
-              const SizedBox(height: TEXT_FIELD_VERTICAL_MARGIN),
+              const SizedBox(height: TEXT_FIELD_MARGIN),
               PasswordFormField(
                 label: "Confirmation",
                 controller: passwordConfirmationController,
@@ -128,6 +148,9 @@ class _RegisterPageState extends State<RegisterScreen> {
                       });
                       AuthApi.register(
                           context: context,
+                          firstName: firstNameController.text,
+                          lastName: lastNameController.text,
+                          username: usernameController.text,
                           email: emailController.text,
                           password: passwordController.text);
                     }

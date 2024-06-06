@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/widgets/datetime_picker.dart';
+import 'package:hod_app/widgets/hod_form_field.dart';
 import 'package:hod_app/widgets/simple_text.dart';
-import 'package:hod_app/widgets/auth_field.dart';
 
 enum Pole {
-  WEREWOLF,
-  TOUDOULELOU
+  werewolf,
+  toudoulelou
 }
 
 class TestScreen extends StatelessWidget {
@@ -22,7 +22,7 @@ class TestScreen extends StatelessWidget {
         children: [
           Container(
               color: Colors.red,
-              child: AuthField(label: "coucou")),
+              child: HodFormField(label: "coucou")),
           const SizedBox(
             width: 20,
             height: 20,

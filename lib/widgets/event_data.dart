@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/data/Event.dart';
+import 'package:hod_app/data/event.dart';
 
 class EventData extends StatelessWidget {
   const EventData({super.key, required this.builder});

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/auth_field.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/datetime_picker.dart';
 import 'package:hod_app/widgets/dropdown_selection.dart';
 import 'package:hod_app/widgets/hod_button.dart';
+import 'package:hod_app/widgets/hod_form_field.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
 List<String> poles = ["WEREWOLF", "TOUDOULELOU"];
@@ -33,7 +33,7 @@ class _CreateEventState extends State<CreateEvent> {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           SimpleText("Informations de l'event"),
-          AuthField(label: "Nom"),
+          HodFormField(label: "Nom"),
           DateTimePicker(controller: _startDateController, label: "START DATE"),
           DateTimePicker(controller: _endDateController, label: "END DATE"),
           DropdownSelection(
@@ -44,8 +44,8 @@ class _CreateEventState extends State<CreateEvent> {
               },
               items: poles,
               label: "Pole"),
-          AuthField(label: "Lieu"),
-          AuthField(label: "Description"),
+          HodFormField(label: "Lieu"),
+          HodFormField(label: "Description"),
           HodButton(label: "Créer", onTapped: () {}),
         ],
       ),
