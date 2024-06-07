@@ -37,6 +37,7 @@ class AuthApi {
           firstName: firstName,
           lastName: lastName,
           role: Role.user,
+          roleCards: []
         ).toJson(),
         DbConst.createdAt: Timestamp.now(),
       });
@@ -47,20 +48,20 @@ class AuthApi {
           .set(
             PlayerCardModel(
               keys: <String>[
-                "Catégorie 1",
-                "Catégorie 2",
-                "Catégorie 3",
-                "Catégorie 4",
-                "Catégorie 5",
-                "Catégorie 6"
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
               ],
               values: <String>[
-                "Valeur 1",
-                "Valeur 2",
-                "Valeur 3",
-                "Valeur 4",
-                "Valeur 5",
-                "Valeur 6"
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
               ],
             ).toJson(),
           );

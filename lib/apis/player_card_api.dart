@@ -18,6 +18,7 @@ class PlayerCardApi {
   static void updatePlayerCard(
       {required BuildContext context,
       required PlayerCardModel playerCard}) async {
+
     String uid = AuthApi.currentUser!.uid;
 
     try {

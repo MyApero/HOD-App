@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/player_card_api.dart';
 import 'package:hod_app/features/profile/widget/player_card_data.dart';
-import 'package:hod_app/models/player_card_model.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/player_card.dart';
 import 'package:hod_app/widgets/select_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 

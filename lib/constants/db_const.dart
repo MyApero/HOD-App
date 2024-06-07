@@ -38,4 +38,13 @@ class DbConst {
   static const String message = 'message';
   static const String type = 'type';
 
+  // Inventory
+  static const String inventories = 'inventories';
+  static const String items = 'items';
+
+  // Role Card
+  static const String roleCards = 'roleCards';
+  static const String inventory = 'inventory';
+  static const String characteristics = 'characteristics';
+
 }
