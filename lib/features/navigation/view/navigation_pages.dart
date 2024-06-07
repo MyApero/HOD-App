@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/admin/screens/admin_screen.dart';
 import 'package:hod_app/features/calendar/view/calendar_screen.dart';
+import 'package:hod_app/features/games/screens/games_screen.dart';
 import 'package:hod_app/features/home/view/home.dart';
 import 'package:hod_app/features/navigation/view/navigation_screen.dart';
 import 'package:hod_app/features/ragequit/ragequit_screen.dart';
@@ -29,8 +30,8 @@ class NavigationPages extends StatelessWidget {
     ),
     const AppBackground(
       hasProfileIcon: true,
-      title: "Ragequit :o",
-      child: RagequitScreen(),
+      title: "Pôles",
+      child: GamesScreen(),
     ),
     const AppBackground(
       title: "Settings",
