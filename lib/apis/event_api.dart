@@ -42,4 +42,17 @@ class EventApi {
       return false;
     }
   }
+
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getEvents({
+    String? poleFilter
+  }) {
+    if (poleFilter != null) {
+      return FirebaseFirestore.instance
+              .collection(DbConst.events)
+              .where(DbConst.pole, isEqualTo: poleFilter)
+              .snapshots();
+    } else {
+      return FirebaseFirestore.instance.collection(DbConst.events).snapshots();
+    }
+  }
 }

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/constants/db_const.dart';
+import 'package:hod_app/models/role_card_model.dart';
 
 enum Role { admin, member, user }
 
@@ -11,6 +12,7 @@ class UserModel {
   final String firstName;
   final String lastName;
   final Role role;
+  final List<RoleCardModel> roleCards;
 
   UserModel({
     required this.uid,
@@ -19,6 +21,7 @@ class UserModel {
     required this.firstName,
     required this.lastName,
     required this.role,
+    required this.roleCards
   });
 
   @override
@@ -34,6 +37,7 @@ class UserModel {
       firstName: json[DbConst.firstName],
       lastName: json[DbConst.lastName],
       role: Role.values.firstWhere((e) => e.toString() == json[DbConst.role]),
+      roleCards: List<RoleCardModel>.from(json[DbConst.roleCards] as List)
     );
   }
 
@@ -46,6 +50,7 @@ class UserModel {
       DbConst.lastName: lastName,
       DbConst.role: role.name,
       DbConst.lastConnection: Timestamp.now(),
+      DbConst.roleCards: roleCards
     };
   }
 }
