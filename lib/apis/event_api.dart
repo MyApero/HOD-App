@@ -5,7 +5,7 @@ import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/models/event_model.dart';
 
-enum Pole { werewolf, toudoulelou }
+enum Pole { rolegame, boardgame, chess, tradingcardgame, wargame, werewolf, toudoulelou }
 
 class EventApi {
   static Future<bool> createEvent({
