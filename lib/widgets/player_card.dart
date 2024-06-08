@@ -3,7 +3,10 @@ import 'package:hod_app/theme/palette.dart';
 import 'package:hod_app/widgets/player_card_item.dart';
 
 class PlayerCard extends StatelessWidget {
-  const PlayerCard({super.key});
+  const PlayerCard({super.key, required this.keys, required this.values});
+
+  final List<String> keys;
+  final List<String> values;
 
   @override
   Widget build(BuildContext context) {
@@ -28,23 +31,23 @@ class PlayerCard extends StatelessWidget {
                   const SizedBox(height: 5),
                   Row(
                     children: [
-                      const Expanded(
+                      Expanded(
                         // color: Colors.purple,
                         child: Column(
                           children: [
                             PlayerCardItem(
-                              fieldKey: "N°ID",
-                              fieldValue: "4721",
+                              fieldKey: keys[0],
+                              fieldValue: values[0],
                             ),
                             PlayerCardItem(
-                                fieldKey: "Pseudo", fieldValue: "sambrus"),
-                            SizedBox(height: 14),
+                                fieldKey: keys[1], fieldValue: values[1]),
+                            const SizedBox(height: 14),
                             PlayerCardItem(
-                              fieldKey: "Status",
-                              fieldValue: "Membre",
+                              fieldKey: keys[2],
+                              fieldValue: values[2],
                             ),
                             PlayerCardItem(
-                                fieldKey: "Score", fieldValue: "100000000000"),
+                                fieldKey: keys[3], fieldValue: values[3]),
                           ],
                         ),
                       ),
@@ -59,6 +62,7 @@ class PlayerCard extends StatelessWidget {
                             ),
                           ),
                           child: Image.network(
+                            errorBuilder: (context, exception, stackTrace) => Icon(Icons.network_wifi_1_bar),
                             fit: BoxFit.cover,
                             'https://archives.bulbagarden.net/media/upload/6/6c/Spr_B2W2_Iris.png',
                             frameBuilder: (context, child, frame,
@@ -89,11 +93,11 @@ class PlayerCard extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 5),
-                  const PlayerCardItem(
-                      fieldKey: "Duree de jeu", fieldValue: "1000h"),
-                  const PlayerCardItem(
-                      fieldKey: "Debut de l'aventure",
-                      fieldValue: "20/04/2024"),
+                  PlayerCardItem(
+                      fieldKey: keys[4], fieldValue: values[4]),
+                  PlayerCardItem(
+                      fieldKey: keys[5],
+                      fieldValue: values[5]),
                 ],
               ),
             )),

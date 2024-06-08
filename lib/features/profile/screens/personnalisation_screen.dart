@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/apis/player_card_api.dart';
 import 'package:hod_app/features/profile/widget/player_card_data.dart';
-import 'package:hod_app/models/player_card_model.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/player_card.dart';
 import 'package:hod_app/widgets/select_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
@@ -42,7 +41,10 @@ class PersonnalisationScreen extends StatelessWidget {
                             for (var i = 0; i < 6; i++)
                               HodFormField(
                                   label: "Catégorie ${i + 1}",
-                                  text: playerCard.values[i]),
+                                  text: playerCard.keys[i],
+                                  onChanged: (value) {
+                                    playerCard.keys[i] = value;
+                                  }),
                             // ...playerCard.keys.map(
                             //   (e) => HodFormField(label: e),
                             // ),
@@ -59,7 +61,10 @@ class PersonnalisationScreen extends StatelessWidget {
                           for (var i = 0; i < 6; i++)
                             HodFormField(
                                 label: "Valeur ${i + 1}",
-                                text: playerCard.values[i]),
+                                text: playerCard.values[i],
+                                onChanged: (value) {
+                                    playerCard.values[i] = value;
+                                  })
                         ],
                       ),
                     ),
@@ -67,13 +72,9 @@ class PersonnalisationScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                // Check
-            ],)
-            // SelectButton(label: "coucou")
+            SelectButton(label: "Confirmer", onPressed: () {
+              PlayerCardApi.updatePlayerCard(context: context, playerCard: playerCard);
+            },)
           ],
         ),
       ),

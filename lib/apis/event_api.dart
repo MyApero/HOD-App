@@ -5,7 +5,7 @@ import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/models/event_model.dart';
 
-enum Pole { werewolf, toudoulelou }
+enum Pole { rolegame, boardgame, chess, tradingcardgame, wargame, werewolf, toudoulelou }
 
 class EventApi {
   static Future<bool> createEvent({
@@ -40,6 +40,19 @@ class EventApi {
         showSnackBar(context, e.message ?? 'Some unexpected error occured');
       }
       return false;
+    }
+  }
+
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getEvents({
+    String? poleFilter
+  }) {
+    if (poleFilter != null) {
+      return FirebaseFirestore.instance
+              .collection(DbConst.events)
+              .where(DbConst.pole, isEqualTo: poleFilter)
+              .snapshots();
+    } else {
+      return FirebaseFirestore.instance.collection(DbConst.events).snapshots();
     }
   }
 }

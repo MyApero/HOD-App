@@ -30,8 +30,14 @@ class PlayerCardItem extends StatelessWidget {
                 color: Colors.black,
               ),
               fieldKey.toUpperCase()),
-          const Spacer(),
-          Text(fieldValue),
+          Spacer(),
+           Text(
+              style: TextStyle(
+                fontSize: 14,
+                fontFamily: "CoolveticaCondensed",
+                color: Color(0xFF909090),
+              ),
+              fieldValue),
         ],
       ),
     );
