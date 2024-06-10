@@ -5,7 +5,15 @@ import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/models/event_model.dart';
 
-enum Pole { rolegame, boardgame, chess, tradingcardgame, wargame, werewolf, toudoulelou }
+enum Pole {
+  rolegame,
+  boardgame,
+  chess,
+  tradingcardgame,
+  wargame,
+  werewolf,
+  toudoulelou
+}
 
 class EventApi {
   static Future<bool> createEvent({
@@ -43,16 +51,21 @@ class EventApi {
     }
   }
 
-  static Stream<QuerySnapshot<Map<String, dynamic>>> getEvents({
-    String? poleFilter
-  }) {
+  static List<EventModel> getEvents(
+      {required AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot,
+      String? poleFilter}) {
+    List<EventModel> events = [];
+
     if (poleFilter != null) {
-      return FirebaseFirestore.instance
-              .collection(DbConst.events)
-              .where(DbConst.pole, isEqualTo: poleFilter)
-              .snapshots();
+       events = snapshot.data!.docs
+       .where((document) => document[DbConst.pole] == poleFilter)
+        .map<EventModel>((e) => EventModel.fromJson(e.data()))
+        .toList();
     } else {
-      return FirebaseFirestore.instance.collection(DbConst.events).snapshots();
+      events = snapshot.data!.docs
+      .map<EventModel>((e) => EventModel.fromJson(e.data()))
+      .toList();
     }
+    return events;
   }
 }

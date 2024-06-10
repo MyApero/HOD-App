@@ -13,7 +13,7 @@ class EventData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: EventApi.getEvents(poleFilter: poleFilter),
+      stream: FirebaseFirestore.instance.collection(DbConst.events).snapshots(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
@@ -22,9 +22,7 @@ class EventData extends StatelessWidget {
           return Text('Error: ${snapshot.error}');
         }
         if (snapshot.hasData) {
-          final List<EventModel> events = snapshot.data!.docs
-              .map<EventModel>((e) => EventModel.fromJson(e.data()))
-              .toList();
+          final List<EventModel> events = EventApi.getEvents(snapshot: snapshot, poleFilter: poleFilter);
           return builder(events);
         }
         return const Text('No data');

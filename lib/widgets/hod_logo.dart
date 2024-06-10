@@ -12,7 +12,7 @@ class HodLogo extends StatelessWidget {
     return Image(
       width: width,
       height: width * proportion,
-      image: const AssetImage("assets/images/logo_1_heaven_of_dice.png"),
+      image: const AssetImage("assets/images/logo_hod.png"),
       fit: BoxFit.fill,
     );
   }

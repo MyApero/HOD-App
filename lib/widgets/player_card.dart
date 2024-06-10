@@ -65,6 +65,28 @@ class PlayerCard extends StatelessWidget {
                             errorBuilder: (context, exception, stackTrace) => Icon(Icons.network_wifi_1_bar),
                             fit: BoxFit.cover,
                             'https://archives.bulbagarden.net/media/upload/6/6c/Spr_B2W2_Iris.png',
+                            frameBuilder: (context, child, frame,
+                                wasSynchronouslyLoaded) {
+                              if (wasSynchronouslyLoaded) {
+                                return child;
+                              }
+                              return AnimatedScale(
+                                scale: frame == null ? 0 : 1,
+                                duration: const Duration(seconds: 2),
+                                curve: Curves.easeOut,
+                                child: child,
+                              );
+                            },
+                            loadingBuilder: (context, child, loadingProgress) {
+                              if (loadingProgress != null &&
+                                  loadingProgress.expectedTotalBytes != null) {
+                                CircularProgressIndicator(
+                                    value: loadingProgress
+                                            .cumulativeBytesLoaded /
+                                        loadingProgress.expectedTotalBytes!);
+                              }
+                              return child;
+                            },
                           ),
                         ),
                       ),
