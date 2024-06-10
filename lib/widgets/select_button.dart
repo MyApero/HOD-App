@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/theme/palette.dart';
 
 class SelectButton extends StatelessWidget {
   const SelectButton(
@@ -29,7 +30,12 @@ class SelectButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(label),
+          Text(label,
+              style: const TextStyle(
+                fontFamily: "CoolveticaCondensed",
+                fontSize: 20,
+                color: Palette.white,
+              )),
           const Spacer(),
           if (icon != null) Icon(size: 40, icon!),
         ],

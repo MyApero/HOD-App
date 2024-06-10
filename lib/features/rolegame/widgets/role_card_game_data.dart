@@ -1,14 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/role_card_api.dart';
-import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/models/role_card_model.dart';
 
 class RoleCardData extends StatelessWidget {
   const RoleCardData({super.key, required this.builder});
 
   final Widget Function(List<RoleCardModel> event) builder;
-
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,6 @@ class RoleCardData extends StatelessWidget {
           final List<RoleCardModel> roleCards = snapshot.data!.docs
               .map<RoleCardModel>((e) => RoleCardModel.fromJson(e.data()))
               .toList();
-          // List<RoleCardModel> roleCards = RoleCardApi.getRoleCards();
           return builder(roleCards);
         }
         return const Text('No data');
