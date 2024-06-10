@@ -36,6 +36,9 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
             });
           }),
       validator: (value) {
+        if (widget.validator == null) {
+          return null;
+        }
         if (value == null || value.isEmpty) {
           return 'Veuillez entrer un mot de passe';
         }

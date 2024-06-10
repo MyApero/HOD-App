@@ -47,4 +47,11 @@ class DbConst {
   static const String inventory = 'inventory';
   static const String characteristics = 'characteristics';
 
+  // Polls
+  static const String polls = 'polls';
+  static const String question = 'question';
+  static const String options = 'options';
+  static const String voters = 'voters';
+  static const String endedAt = 'endedAt';
+  static const String password = 'password';
 }

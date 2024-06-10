@@ -24,24 +24,24 @@ class NiceBackground extends StatelessWidget {
         const NiceClipperAnimated(),
         if (hasBackArrow)
           Positioned(
-            left: 10,
-            top: MediaQuery.of(context).viewPadding.top,
+            left: 20,
+            top: 10 + MediaQuery.of(context).viewPadding.top,
             child: IconButton(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back, size: 40),
             ),
           ),
         if (hasProfileIcon)
           Positioned(
-            right: 10,
-            top: MediaQuery.of(context).viewPadding.top,
+            right: 20,
+            top: 10 + MediaQuery.of(context).viewPadding.top,
             child: IconButton(
               onPressed: () {
                 Navigator.of(context).push(ProfileScreen.route());
               },
-              icon: const Icon(Icons.account_circle_rounded, size: 35,),
+              icon: const Icon(Icons.account_circle_rounded, size: 40,),
             ),
           ),
         Container(

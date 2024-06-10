@@ -41,7 +41,7 @@ class PersonnalisationScreen extends StatelessWidget {
                             for (var i = 0; i < 6; i++)
                               HodFormField(
                                   label: "Catégorie ${i + 1}",
-                                  text: playerCard.keys[i],
+                                  initialValue: playerCard.keys[i],
                                   onChanged: (value) {
                                     playerCard.keys[i] = value;
                                   }),
@@ -61,10 +61,10 @@ class PersonnalisationScreen extends StatelessWidget {
                           for (var i = 0; i < 6; i++)
                             HodFormField(
                                 label: "Valeur ${i + 1}",
-                                text: playerCard.values[i],
+                                initialValue: playerCard.values[i],
                                 onChanged: (value) {
-                                    playerCard.values[i] = value;
-                                  })
+                                  playerCard.values[i] = value;
+                                })
                         ],
                       ),
                     ),
@@ -72,9 +72,13 @@ class PersonnalisationScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SelectButton(label: "Confirmer", onPressed: () {
-              PlayerCardApi.updatePlayerCard(context: context, playerCard: playerCard);
-            },)
+            SelectButton(
+              label: "Confirmer",
+              onPressed: () {
+                PlayerCardApi.updatePlayerCard(
+                    context: context, playerCard: playerCard);
+              },
+            )
           ],
         ),
       ),
