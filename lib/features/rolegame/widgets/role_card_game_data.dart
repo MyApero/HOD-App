@@ -5,15 +5,17 @@ import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/models/role_card_model.dart';
 
 class RoleCardData extends StatelessWidget {
-  const RoleCardData({super.key, required this.builder});
+  const RoleCardData({super.key, required this.builder, this.idFilter});
 
   final Widget Function(List<RoleCardModel> event) builder;
-
+  final String? idFilter;
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: RoleCardApi.getRoleCards(),
+      future: idFilter == null
+          ? RoleCardApi.getRoleCards()
+          : RoleCardApi.getRoleCards(id: idFilter),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
@@ -22,9 +24,8 @@ class RoleCardData extends StatelessWidget {
           return Text('Error: ${snapshot.error}');
         }
         if (snapshot.hasData) {
-
-          final List<RoleCardModel> roleCards = snapshot.data!.docs
-              .map<RoleCardModel>((e) => RoleCardModel.fromJson(e.data()))
+          List<RoleCardModel> roleCards = snapshot.data!.docs
+              .map<RoleCardModel>((e) => RoleCardModel.fromJson(e.data(), e.id))
               .toList();
           // List<RoleCardModel> roleCards = RoleCardApi.getRoleCards();
           return builder(roleCards);
