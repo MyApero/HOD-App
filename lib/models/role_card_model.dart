@@ -8,7 +8,8 @@ class RoleCardModel {
     required this.keys,
     required this.values,
     required this.inventory,
-    required this.characteristics
+    required this.characteristics,
+    this.id
   });
 
   final String name;
@@ -16,14 +17,18 @@ class RoleCardModel {
   final List<String> values;
   final RoleInventoryModel? inventory;
   final RoleCharacteristicsModel? characteristics;
+  final String ?id;
 
-  factory RoleCardModel.fromJson(Map<String, dynamic> json) {
+  String? getId() { return id; }
+
+  factory RoleCardModel.fromJson(Map<String, dynamic> json, String id) {
     return RoleCardModel(
       name: json[DbConst.name],
       keys: List<String>.from(json[DbConst.keys] as List),
       values: List<String>.from(json[DbConst.values] as List),
       inventory: RoleInventoryModel.fromJson(json[DbConst.inventory]),
-      characteristics: RoleCharacteristicsModel.fromJson(json[DbConst.characteristics])
+      characteristics: RoleCharacteristicsModel.fromJson(json[DbConst.characteristics]),
+      id: id
     );
   }
 

@@ -8,15 +8,25 @@ import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/models/role_card_model.dart';
 
 class RoleCardApi {
-
-  static Future<QuerySnapshot<Map<String, dynamic>>> getRoleCards() async {
+  static Future<QuerySnapshot<Map<String, dynamic>>> getRoleCards(
+      {String? id}) async {
     String userUid = AuthApi.currentUser!.uid;
-    List<String> roleCardsIds = [];
     // get all the roleCardsId from the user rolecards
-    var doc = await FirebaseFirestore.instance.collection(DbConst.users).doc(userUid).get();
-    roleCardsIds = List<String>.from(doc["roleCards"] as List);
-    print(roleCardsIds);
-    return FirebaseFirestore.instance.collection(DbConst.roleCards).where(FieldPath.documentId, whereIn: roleCardsIds).get();
+    if (id == null) {
+      var doc = await FirebaseFirestore.instance
+          .collection(DbConst.users)
+          .doc(userUid)
+          .get();
+      List<String> roleCardsIds = List<String>.from(doc["roleCards"] as List);
+      return FirebaseFirestore.instance
+          .collection(DbConst.roleCards)
+          .where(FieldPath.documentId, whereIn: roleCardsIds)
+          .get();
+    }
+    return FirebaseFirestore.instance
+        .collection(DbConst.roleCards)
+        .where(FieldPath.documentId, isEqualTo: id)
+        .get();
   }
 
   static void addRoleCard(
@@ -34,8 +44,39 @@ class RoleCardApi {
       await userDocument.update({
         DbConst.roleCards: FieldValue.arrayUnion([cardId])
       });
-      showSnackBar(context, "Votre nouveau personnage a été ajouté avec succès !");
-      } on FirebaseException catch (e) {
+      if (context.mounted) {
+        showSnackBar(
+            context, "Votre nouveau personnage a été ajouté avec succès !");
+      }
+    } on FirebaseException catch (e) {
+      if (context.mounted) {
+        showSnackBar(context, e.message ?? "Unexpected error");
+      }
+    }
+  }
+
+  static void updateRoleCard(
+      {required BuildContext context,
+      required RoleCardModel roleCard}) async {
+
+    try {
+      await FirebaseFirestore.instance
+          .collection(DbConst.roleCards)
+          .doc(roleCard.id)
+          .set({
+        ...RoleCardModel(
+          name: roleCard.name,
+          keys: roleCard.keys,
+          values: roleCard.values,
+          inventory: roleCard.inventory,
+          characteristics: roleCard.characteristics
+        ).toJson()
+      });
+      if (context.mounted) {
+        showSnackBar(context, "Carte actualisée avec succès !");
+        Navigator.of(context).pop();
+      }
+    } on FirebaseException catch (e) {
       if (context.mounted) {
         showSnackBar(context, e.message ?? "Unexpected error");
       }
