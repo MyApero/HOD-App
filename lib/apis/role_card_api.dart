@@ -17,6 +17,11 @@ class RoleCardApi {
           .collection(DbConst.users)
           .doc(userUid)
           .get();
+      if (doc["roleCards"] == null ) {
+        FirebaseFirestore.instance.collection(DbConst.users).doc(userUid).set({
+          DbConst.roleCards: []
+        }, SetOptions(merge: true));
+      }
       List<String> roleCardsIds = List<String>.from(doc["roleCards"] as List);
       roleCardsIds.add("nullid");
       return FirebaseFirestore.instance
