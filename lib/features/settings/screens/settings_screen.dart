@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/features/settings/screens/credit_screen.dart';
 import 'package:hod_app/features/settings/screens/report_screen.dart';
-import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/select_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 import 'package:hod_app/widgets/small_text.dart';
