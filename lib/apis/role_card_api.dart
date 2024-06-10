@@ -9,14 +9,14 @@ import 'package:hod_app/models/role_card_model.dart';
 
 class RoleCardApi {
 
-  static Stream<QuerySnapshot<Map<String, dynamic>>> getRoleCards() async* {
+  static Future<QuerySnapshot<Map<String, dynamic>>> getRoleCards() async {
     String userUid = AuthApi.currentUser!.uid;
     List<String> roleCardsIds = [];
     // get all the roleCardsId from the user rolecards
     var doc = await FirebaseFirestore.instance.collection(DbConst.users).doc(userUid).get();
-    // roleCardsIds = List<String>.from(doc["roleCards"] as List);
+    roleCardsIds = List<String>.from(doc["roleCards"] as List);
     print(roleCardsIds);
-    yield *FirebaseFirestore.instance.collection(DbConst.roleCards).where(FieldPath.documentId, whereIn: roleCardsIds).snapshots();
+    return FirebaseFirestore.instance.collection(DbConst.roleCards).where(FieldPath.documentId, whereIn: roleCardsIds).get();
   }
 
   static void addRoleCard(

@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/role_card_api.dart';
+import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/models/role_card_model.dart';
 
 class RoleCardData extends StatelessWidget {
@@ -10,8 +12,8 @@ class RoleCardData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: RoleCardApi.getRoleCards(),
+    return FutureBuilder(
+      future: RoleCardApi.getRoleCards(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
@@ -20,9 +22,11 @@ class RoleCardData extends StatelessWidget {
           return Text('Error: ${snapshot.error}');
         }
         if (snapshot.hasData) {
+
           final List<RoleCardModel> roleCards = snapshot.data!.docs
               .map<RoleCardModel>((e) => RoleCardModel.fromJson(e.data()))
               .toList();
+          // List<RoleCardModel> roleCards = RoleCardApi.getRoleCards();
           return builder(roleCards);
         }
         return const Text('No data');
