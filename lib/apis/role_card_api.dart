@@ -18,6 +18,7 @@ class RoleCardApi {
           .doc(userUid)
           .get();
       List<String> roleCardsIds = List<String>.from(doc["roleCards"] as List);
+      roleCardsIds.add("nullid");
       return FirebaseFirestore.instance
           .collection(DbConst.roleCards)
           .where(FieldPath.documentId, whereIn: roleCardsIds)
