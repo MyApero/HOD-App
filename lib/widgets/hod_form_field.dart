@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 
 class HodFormField extends StatelessWidget {
-  const HodFormField({
-    super.key,
-    required this.label,
-    this.controller,
-    this.text,
-    this.validator,
-    this.isTextShown = true,
-    this.enableSuggestions = true,
-    this.autocorrect = false,
-    this.readOnly = false,
-    this.suffixIcon,
-    this.maxLines,
-    this.onTap,
-    this.onChanged
-  });
+  const HodFormField(
+      {super.key,
+      required this.label,
+      this.controller,
+      this.initialValue,
+      this.validator,
+      this.isTextShown = true,
+      this.enableSuggestions = true,
+      this.autocorrect = false,
+      this.readOnly = false,
+      this.suffixIcon,
+      this.maxLines,
+      this.onTap,
+      this.onChanged});
 
   final String label;
-  final String? text;
+  final String? initialValue;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   final bool isTextShown;
@@ -35,7 +34,7 @@ class HodFormField extends StatelessWidget {
     return TextFormField(
       maxLines: maxLines ?? 1,
       onChanged: onChanged,
-      initialValue: text,
+      initialValue: initialValue,
       controller: controller,
       validator: validator,
       style: TextStyle(
@@ -44,11 +43,11 @@ class HodFormField extends StatelessWidget {
         color: Theme.of(context).colorScheme.onSurface,
       ),
       decoration: InputDecoration(
-          // fillColor: Theme.of(context).colorScheme.,
-          labelText: label, // Placeholder text
-          border: const OutlineInputBorder(), // Border style
-          suffixIcon: suffixIcon,
-          ),
+        // fillColor: Theme.of(context).colorScheme.,
+        labelText: label, // Placeholder text
+        border: const OutlineInputBorder(), // Border style
+        suffixIcon: suffixIcon,
+      ),
       obscureText: !isTextShown,
       enableSuggestions: enableSuggestions,
       autocorrect: autocorrect,

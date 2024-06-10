@@ -24,7 +24,6 @@ class PlayerCardData extends StatelessWidget {
           final PlayerCardModel playerCard = PlayerCardModel.fromJson(snapshot.data!.data()!);
           // print(playerCard);
           return builder(playerCard);
-          return Placeholder();
         }
         return const Text('No data');
       },
