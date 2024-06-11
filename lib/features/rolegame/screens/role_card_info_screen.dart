@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/profile/screens/personnalisation_screen.dart';
+import 'package:hod_app/features/rolegame/screens/characteristics_personnalisation_screen.dart';
 import 'package:hod_app/features/rolegame/screens/inventory_personnalisation_role_card.dart';
 import 'package:hod_app/features/rolegame/screens/personnalisation_role_card_screen.dart';
 import 'package:hod_app/features/rolegame/widgets/role_card_game_data.dart';
@@ -35,7 +36,12 @@ class RoleCardInfoScreen extends StatelessWidget {
                       PersonnalisationRoleCardScreen.route(
                           id: cardId, name: cardName)),
                 ),
-                SelectButton(label: "Mes caractéristiques"),
+                SelectButton(
+                  label: "Mes caractéristiques",
+                  onPressed: () => Navigator.of(context).push(
+                      CharacteristicsPersonnalisationScreen.route(
+                          name: cardName, id: cardId)),
+                ),
                 SelectButton(
                   label: "Mon inventaire",
                   onPressed: () => Navigator.of(context).push(
