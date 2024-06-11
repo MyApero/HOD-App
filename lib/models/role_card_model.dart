@@ -15,8 +15,8 @@ class RoleCardModel {
   final String name;
   final List<String> keys;
   final List<String> values;
-  final RoleInventoryModel? inventory;
-  final RoleCharacteristicsModel? characteristics;
+  final RoleInventoryModel inventory;
+  final RoleCharacteristicsModel characteristics;
   final String ?id;
 
   String? getId() { return id; }
@@ -37,8 +37,8 @@ class RoleCardModel {
       DbConst.name: name,
       DbConst.keys: keys,
       DbConst.values: values,
-      DbConst.inventory: inventory!.toJson(),
-      DbConst.characteristics: characteristics!.toJson()
+      DbConst.inventory: inventory.toJson(),
+      DbConst.characteristics: characteristics.toJson()
     };
   }
 }
