@@ -10,6 +10,8 @@ class Calendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SfCalendar(
       view: CalendarView.week,
+      timeSlotViewSettings: TimeSlotViewSettings(
+     timeFormat: 'H:mm'),
       allowedViews: [
         CalendarView.day,
         CalendarView.week,
