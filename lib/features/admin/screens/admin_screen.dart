@@ -24,7 +24,7 @@ class AdminScreen extends ConsumerWidget {
             icon: Icons.arrow_circle_right_outlined),
         const SizedBox(height: 20),
         SelectButton(
-          label: "Vote",
+          label: "Sondages",
           icon: Icons.arrow_circle_right_outlined,
           onPressed: () {
             Navigator.of(context).push(PollHomeScreen.route());

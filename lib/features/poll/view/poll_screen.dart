@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/poll_api.dart';
 import 'package:hod_app/core/utils.dart';
+import 'package:hod_app/features/poll/widgets/selectable_field.dart';
 import 'package:hod_app/models/poll_model.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
+import 'package:hod_app/widgets/simple_text.dart';
 
 class PollScreen extends StatefulWidget {
   static route(String username, PollModel poll) => MaterialPageRoute(
       builder: (ctx) => PollScreen(username: username, poll: poll));
-  const PollScreen({super.key, required this.username, required this.poll});
+
+  const PollScreen({
+    super.key,
+    required this.username,
+    required this.poll,
+  });
 
   final String username;
   final PollModel poll;
@@ -18,58 +25,89 @@ class PollScreen extends StatefulWidget {
 }
 
 class _PollScreenState extends State<PollScreen> {
-  int voteIndex = -1;
+  List<int> voteIndexes = [];
+  bool hasVoted = false;
+
+  @override
+  void initState() {
+    super.initState();
+    for (int i = 0; i < widget.poll.options.length; i++) {
+      if (widget.poll.options[i].voters.contains(widget.username)) {
+        voteIndexes.add(i);
+        hasVoted = true;
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
+    int optionsLength = widget.poll.options.length;
     return AppScaffold(
       hasBackArrow: true,
       title: widget.poll.name,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          // Text("Vote(s) restant : ${poll..length}"),
+          SimpleText("Nombre de votes : ${widget.poll.votesCount}"),
           Expanded(
-            child: Center(
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for (var i = 0; i < widget.poll.options.length; i++)
-                      TextButton(
-                        style: ButtonStyle(
-                          backgroundColor: WidgetStateProperty.all(
-                              voteIndex == i ? Colors.blue : Colors.white),
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            voteIndex = i;
-                          });
-                        },
-                        child: Text(widget.poll.options[i].name),
-                      ),
-                  ],
-                ),
-              ),
-            ),
+            child: ListView.builder(
+                reverse: true,
+                shrinkWrap: true,
+                itemCount: optionsLength,
+                itemBuilder: (context, index) {
+                  int i = optionsLength -
+                      index -
+                      1; // so that reverse keeps the right order
+                  return SelectablePollField(
+                    text: widget.poll.options[i].name,
+                    isSelected: voteIndexes.contains(i),
+                    hasVoted: hasVoted,
+                    voteCount: widget.poll.options[i].voters.length,
+                    votePercentage: widget.poll.votesCount == 0
+                        ? 0
+                        : widget.poll.options[i].voters.length /
+                            widget.poll.votesCount,
+                    onPressed: () {
+                      setState(() {
+                        if (!widget.poll.multipleChoice) {
+                          voteIndexes.clear();
+                          voteIndexes.add(i);
+                          return;
+                        } else {
+                          if (voteIndexes.contains(i)) {
+                            voteIndexes.remove(i);
+                          } else {
+                            voteIndexes.add(i);
+                          }
+                        }
+                      });
+                    },
+                  );
+                }),
           ),
-          HodButton(
-            label: "Valider",
-            onTapped: () async {
-              final bool voted = await PollApi.vote(
-                  pollName: widget.poll.name,
-                  optionName: widget.poll.options[voteIndex].name,
-                  username: widget.username);
-              if (!voted) {
-                if (context.mounted) {
-                  showSnackBar(context, "Le vote n'a pas pu être enregistré");
+          if (!hasVoted)
+            HodButton(
+              label: "Valider",
+              onTapped: () async {
+                final bool voted = await PollApi.vote(
+                    poll: widget.poll,
+                    voteIndexes: voteIndexes,
+                    username: widget.username);
+                if (!voted) {
+                  if (context.mounted) {
+                    showSnackBar(context, "Le vote n'a pas pu être enregistré");
+                  }
+                  return;
                 }
-                return;
-              }
-              if (context.mounted) Navigator.of(context).pop();
-            },
-          ),
-          const SizedBox(height: 50),
+                setState(() {
+                  for (int voteIndex in voteIndexes) {
+                    widget.poll.options[voteIndex].voters.add(widget.username);
+                  }
+
+                  hasVoted = true;
+                });
+              },
+            ),
         ],
       ),
     );

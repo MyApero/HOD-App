@@ -27,8 +27,12 @@ class PollModel {
   final String createdBy;
   final String question;
   final List<PollItemModel> options;
+  final bool multipleChoice;
+
   List<String> get voters =>
       options.expand((element) => element.voters).toList();
+  int get votesCount => voters.length;
+  bool get hasEnded => endedAt != null && DateTime.now().isAfter(endedAt!);
 
   PollModel({
     required this.username,
@@ -39,11 +43,12 @@ class PollModel {
     required this.createdBy,
     required this.question,
     required this.options,
+    this.multipleChoice = false,
   });
 
   @override
   String toString() {
-    return 'Poll{name: $name, createdAt: $createdAt, endedAt: $endedAt, createdByUid: $createdBy, createdByUsername: $username, question: $question, options: $options}';
+    return 'Poll{name: $name, createdAt: $createdAt, endedAt: $endedAt, createdByUid: $createdBy, createdByUsername: $username, question: $question, multipleChoice: $multipleChoice, options: $options}';
   }
 
   factory PollModel.fromJson(Map<String, dynamic> json) {
@@ -61,6 +66,7 @@ class PollModel {
                 voters: (e[DbConst.voters] ?? []).cast<String>(),
               ))
           .toList(),
+      multipleChoice: json[DbConst.multipleChoice] ?? false,
     );
   }
 
@@ -74,6 +80,7 @@ class PollModel {
       DbConst.createdBy: createdBy,
       DbConst.question: question,
       DbConst.options: options.map((e) => e.toJson()).toList(),
+      DbConst.multipleChoice: multipleChoice,
     };
   }
 }

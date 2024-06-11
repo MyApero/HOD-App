@@ -16,6 +16,7 @@ class PollApi {
     required String createdBy,
     required String question,
     required List<String> options,
+    bool multipleChoice = false,
   }) async {
     try {
       List<String> pollNames = await FirebaseFirestore.instance
@@ -41,6 +42,7 @@ class PollApi {
           question: question,
           options:
               options.map((e) => PollItemModel(name: e, voters: [])).toList(),
+          multipleChoice: multipleChoice,
         ).toJson(),
         DbConst.createdAt: Timestamp.now(),
       });
@@ -67,30 +69,40 @@ class PollApi {
   }
 
   static Future<bool> vote(
-      {required String pollName,
-      required String optionName,
+      {required PollModel poll,
+      required List<int> voteIndexes,
       required String username}) async {
     final docQuery = FirebaseFirestore.instance
         .collection(DbConst.polls)
-        .where(DbConst.name, isEqualTo: pollName);
+        .where(DbConst.name, isEqualTo: poll.name);
     final doc = await docQuery.get();
     if (doc.docs.isEmpty) {
       return false;
     }
-    final poll = PollModel.fromJson(doc.docs.first.data());
-    final optionIndex = poll.options.indexWhere((e) => e.name == optionName);
-    if (optionIndex == -1) {
-      return false;
+    final dbPoll = PollModel.fromJson(doc.docs.first.data());
+    final optionIndexes = dbPoll.options
+        .map((e) => e.name)
+        .map((e) => poll.options.indexWhere((element) => element.name == e))
+        .toList();
+
+    for (int i = 0; i < voteIndexes.length; i++) {
+      final optionIndex = optionIndexes[voteIndexes[i]];
+      if (optionIndex == -1) {
+        print("là");
+        return false;
+      }
+      final option = dbPoll.options[optionIndex];
+      print(option.voters);
+      if (option.voters.contains(username)) {
+        print("ici");
+        return false;
+      }
+      option.voters.add(username);
+      dbPoll.options[optionIndex] = option;
     }
-    final option = poll.options[optionIndex];
-    if (option.voters.contains(username)) {
-      return false;
-    }
-    option.voters.add(username);
-    poll.options[optionIndex] = option;
 
     await doc.docs.first.reference.update(
-        {DbConst.options: poll.options.map((e) => e.toJson()).toList()});
+        {DbConst.options: dbPoll.options.map((e) => e.toJson()).toList()});
     return true;
   }
 }

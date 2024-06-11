@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/apis/poll_api.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
+import 'package:hod_app/widgets/select_button_outlined.dart';
 
 class CreatePollScreen extends StatefulWidget {
   static route() =>
@@ -25,6 +27,7 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
   final List<TextEditingController> _optionControllers = [];
 
   bool _isLoading = false;
+  bool _multipleChoice = false;
 
   int _numberOfOptions = 2;
 
@@ -34,6 +37,7 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
     for (int i = 0; i < _numberOfOptions; i++) {
       _optionControllers.add(TextEditingController());
     }
+    _pseudoController.text = AuthApi.currentUser!.displayName ?? "";
   }
 
   @override
@@ -49,7 +53,6 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
             HodFormField(
               label: "Pseudo",
               controller: _pseudoController,
-              initialValue: AuthApi.currentUser!.displayName,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Veuillez entrer un pseudo";
@@ -81,55 +84,57 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                 return null;
               },
             ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.2,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    for (int i = 0; i < _numberOfOptions; i++)
-                      HodFormField(
-                        label: "Réponse ${i + 1}",
-                        controller: _optionControllers[i],
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Veuillez entrer une option";
-                          }
-                          return null;
-                        },
-                      ),
-                  ],
-                ),
+            Expanded(
+              child: ListView(
+                children: [
+                  for (int i = 0; i < _numberOfOptions; i++)
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Expanded(
+                          child: HodFormField(
+                            label: "Réponse ${i + 1}",
+                            controller: _optionControllers[i],
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return "Veuillez entrer une option";
+                              }
+                              return null;
+                            },
+                          ),
+                        ),
+                        if (_numberOfOptions > 1)
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _optionControllers.removeAt(i);
+                                  _numberOfOptions--;
+                                });
+                              },
+                              icon: const FaIcon(FontAwesomeIcons.trash)),
+                      ],
+                    ),
+                  SelectButtonOutlined(
+                      label: "Ajouter une réponse",
+                      icon: Icons.add,
+                      onPressed: () {
+                        setState(() {
+                          _numberOfOptions++;
+                          _optionControllers.add(TextEditingController());
+                        });
+                      }),
+                ],
               ),
             ),
-            Row(
-              children: [
-                Expanded(
-                  child: HodButton(
-                    label: "Ajouter une réponse",
-                    textFontSize: _numberOfOptions > 2 ? 15 : 20,
-                    onTapped: () {
-                      setState(() {
-                        _numberOfOptions++;
-                        _optionControllers.add(TextEditingController());
-                      });
-                    },
-                  ),
-                ),
-                if (_numberOfOptions > 2) const SizedBox(width: 10),
-                if (_numberOfOptions > 2)
-                  Expanded(
-                    child: HodButton(
-                      label: "Retirer la dernière réponse",
-                      textFontSize: 13,
-                      onTapped: () {
-                        setState(() {
-                          _numberOfOptions--;
-                          _optionControllers.removeLast();
-                        });
-                      },
-                    ),
-                  )
-              ],
+            SwitchListTile.adaptive(
+              title: const Text("Choix multiples"),
+              value: _multipleChoice,
+              onChanged: (newValue) {
+                setState(() {
+                  _multipleChoice = newValue;
+                });
+              },
             ),
             HodButton(
               label: "Créer",
@@ -150,6 +155,7 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                     createdBy: AuthApi.currentUser!.uid,
                     question: _questionController.text,
                     options: _optionControllers.map((e) => e.text).toList(),
+                    multipleChoice: _multipleChoice,
                   );
                   setState(() {
                     _isLoading = false;
