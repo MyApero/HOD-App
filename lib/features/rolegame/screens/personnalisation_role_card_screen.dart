@@ -27,49 +27,56 @@ class PersonnalisationRoleCardScreen extends StatelessWidget {
             const SimpleText("Mes informations"),
             Expanded(
               child: Container(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        // color: Colors.blue,
+                child: SingleChildScrollView(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          // color: Colors.blue,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              for (var i = 0; i < 6; i++)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10.0),
+                                  child: HodFormField(
+                                      label: "Catégorie ${i + 1}",
+                                      text: roleCard[0].keys[i],
+                                      onChanged: (value) {
+                                        roleCard[0].keys[i] = value;
+                                      }),
+                                ),
+                              // ...playerCard.keys.map(
+                              //   (e) => HodFormField(label: e),
+                              // ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const Spacer(),
+                      Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
                             for (var i = 0; i < 6; i++)
-                              HodFormField(
-                                  label: "Catégorie ${i + 1}",
-                                  text: roleCard[0].keys[i],
-                                  onChanged: (value) {
-                                    roleCard[0].keys[i] = value;
-                                  }),
-                            // ...playerCard.keys.map(
-                            //   (e) => HodFormField(label: e),
-                            // ),
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 10.0),
+                                child: HodFormField(
+                                    label: "Valeur ${i + 1}",
+                                    text: roleCard[0].values[i],
+                                    onChanged: (value) {
+                                        roleCard[0].values[i] = value;
+                                      }),
+                              )
                           ],
                         ),
                       ),
-                    ),
-                    const Spacer(),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          for (var i = 0; i < 6; i++)
-                            HodFormField(
-                                label: "Valeur ${i + 1}",
-                                text: roleCard[0].values[i],
-                                onChanged: (value) {
-                                    roleCard[0].values[i] = value;
-                                  })
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

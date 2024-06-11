@@ -43,16 +43,39 @@ class _InventoryPersonnalisationRoleCardState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SimpleText("Mes items"),
+            SizedBox(height: 5),
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        // color: Colors.blue,
+                child: SingleChildScrollView(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          // color: Colors.blue,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              for (var i = 0;
+                                  i < roleCard[0].inventory.items.length &&
+                                      i < roleCard[0].inventory.values.length;
+                                  i++)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10.0),
+                                  child: HodFormField(
+                                      label: "Item ${i + 1}",
+                                      text: roleCard[0].inventory.items[i],
+                                      onChanged: (value) {
+                                        roleCard[0].inventory.items[i] = value;
+                                      }),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -63,39 +86,18 @@ class _InventoryPersonnalisationRoleCardState
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10.0),
                                 child: HodFormField(
-                                    label: "Item ${i + 1}",
-                                    text: roleCard[0].inventory.items[i],
+                                    keyboardType: TextInputType.number,
+                                    label: "Valeur ${i + 1}",
+                                    text: roleCard[0].inventory.values[i],
                                     onChanged: (value) {
-                                      roleCard[0].inventory.items[i] = value;
+                                      roleCard[0].inventory.values[i] = value;
                                     }),
-                              ),
+                              )
                           ],
                         ),
                       ),
-                    ),
-                    Spacer(),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          for (var i = 0;
-                              i < roleCard[0].inventory.items.length &&
-                                  i < roleCard[0].inventory.values.length;
-                              i++)
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 10.0),
-                              child: HodFormField(
-                                  keyboardType: TextInputType.number,
-                                  label: "Valeur ${i + 1}",
-                                  text: roleCard[0].inventory.values[i],
-                                  onChanged: (value) {
-                                    roleCard[0].inventory.values[i] = value;
-                                  }),
-                            )
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
