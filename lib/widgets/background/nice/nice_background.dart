@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/profile/screens/profile_screen.dart';
 
@@ -30,7 +32,9 @@ class NiceBackground extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: const Icon(Icons.arrow_back, size: 40),
+              icon: Icon(
+                  Platform.isIOS ? Icons.arrow_back_ios : Icons.arrow_back,
+                  size: 35),
             ),
           ),
         if (hasProfileIcon)
@@ -41,7 +45,10 @@ class NiceBackground extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(ProfileScreen.route());
               },
-              icon: const Icon(Icons.account_circle_rounded, size: 40,),
+              icon: const Icon(
+                Icons.account_circle_rounded,
+                size: 35,
+              ),
             ),
           ),
         Container(

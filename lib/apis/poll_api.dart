@@ -16,9 +16,20 @@ class PollApi {
     required String createdBy,
     required String question,
     required List<String> options,
-
   }) async {
     try {
+      List<String> pollNames = await FirebaseFirestore.instance
+          .collection(DbConst.polls)
+          .where(DbConst.name, isEqualTo: name)
+          .get()
+          .then((value) =>
+              value.docs.map((e) => e.data()[DbConst.name] as String).toList());
+      if (pollNames.contains(name)) {
+        if (context.mounted) {
+          showSnackBar(context, 'Ce nom de sondage est déjà utilisé');
+        }
+        return false;
+      }
       await FirebaseFirestore.instance.collection(DbConst.polls).add({
         ...PollModel(
           username: username,
@@ -28,9 +39,8 @@ class PollApi {
           endedAt: endedAt,
           createdBy: createdBy,
           question: question,
-          options: options
-              .map((e) => PollItemModel(name: e, voters: []))
-              .toList(),
+          options:
+              options.map((e) => PollItemModel(name: e, voters: [])).toList(),
         ).toJson(),
         DbConst.createdAt: Timestamp.now(),
       });
@@ -43,11 +53,44 @@ class PollApi {
     }
   }
 
-  // static List<PollModel> getPolls(
-  //     {required AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot}) {
-  //   final polls = snapshot.data!.docs
-  //       .map<PollModel>((e) => PollModel.fromJson(e.data()))
-  //       .toList();
-  //   return polls;
-  // }
+  static Future<PollModel?> getPoll(
+      {required String pollName, required String? password}) async {
+    final doc = await FirebaseFirestore.instance
+        .collection(DbConst.polls)
+        .where(DbConst.name, isEqualTo: pollName)
+        .where(DbConst.password, isEqualTo: password)
+        .get();
+    if (doc.docs.isEmpty) {
+      return null;
+    }
+    return PollModel.fromJson(doc.docs.first.data());
+  }
+
+  static Future<bool> vote(
+      {required String pollName,
+      required String optionName,
+      required String username}) async {
+    final docQuery = FirebaseFirestore.instance
+        .collection(DbConst.polls)
+        .where(DbConst.name, isEqualTo: pollName);
+    final doc = await docQuery.get();
+    if (doc.docs.isEmpty) {
+      return false;
+    }
+    final poll = PollModel.fromJson(doc.docs.first.data());
+    final optionIndex = poll.options.indexWhere((e) => e.name == optionName);
+    if (optionIndex == -1) {
+      return false;
+    }
+    final option = poll.options[optionIndex];
+    if (option.voters.contains(username)) {
+      return false;
+    }
+    option.voters.add(username);
+    poll.options[optionIndex] = option;
+
+    await doc.docs.first.reference.update(
+        {DbConst.options: poll.options.map((e) => e.toJson()).toList()});
+    return true;
+  }
 }
