@@ -26,6 +26,7 @@ class EventDetailsScreen extends StatelessWidget {
                         large: true,
                         date: e.startDate,
                         name: e.name,
+                        location: e.location,
                         pole: e.pole ?? "",
                         description: e.description ?? "No description",
                       ))
