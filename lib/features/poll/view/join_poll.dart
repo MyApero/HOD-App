@@ -25,6 +25,12 @@ class _JoinPollScreenState extends State<JoinPollScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    _pseudoController.text = AuthApi.currentUser!.displayName ?? "";
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AppScaffold(
       hasBackArrow: true,
@@ -37,7 +43,6 @@ class _JoinPollScreenState extends State<JoinPollScreen> {
             HodFormField(
               label: "Pseudo",
               controller: _pseudoController,
-              initialValue: AuthApi.currentUser!.displayName,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return "Veuillez entrer un pseudo";
@@ -74,15 +79,9 @@ class _JoinPollScreenState extends State<JoinPollScreen> {
                     showSnackBar(context, 'Sondage introuvable');
                     return;
                   }
-                  if (poll!.options.map((e) => e.voters).any((e) => e.contains(_pseudoController.text))) {
-                    if (context.mounted) {
-                      showSnackBar(context, 'Vous avez déjà voté');
-                    }
-                    return;
-                  }
                   if (context.mounted) {
                     Navigator.of(context).push(
-                      PollScreen.route(_pseudoController.text, poll),
+                      PollScreen.route(_pseudoController.text, poll!),
                     );
                   }
                 }

@@ -32,7 +32,7 @@ class HodFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 5),
+      margin: const EdgeInsets.only(bottom: 10),
       child: TextFormField(
         maxLines: maxLines ?? 1,
         onChanged: onChanged,
