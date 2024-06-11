@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/role_card_api.dart';
-import 'package:hod_app/features/rolegame/screens/personnalisation_role_card_screen.dart';
-import 'package:hod_app/features/rolegame/screens/role_card_info_screen.dart';
 import 'package:hod_app/features/rolegame/widgets/role_card_game_data.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
@@ -9,12 +6,13 @@ import 'package:hod_app/widgets/select_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
 class InventoryPersonnalisationRoleCard extends StatefulWidget {
-  const InventoryPersonnalisationRoleCard(
-      {super.key, required this.cardName, required this.cardId});
-
   static route({required String id, required String name}) => MaterialPageRoute(
       builder: (ctx) =>
           InventoryPersonnalisationRoleCard(cardId: id, cardName: name));
+
+  const InventoryPersonnalisationRoleCard(
+      {super.key, required this.cardName, required this.cardId});
+
 
   final String cardName;
   final String cardId;

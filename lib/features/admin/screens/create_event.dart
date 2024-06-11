@@ -36,7 +36,7 @@ class _CreateEventState extends State<CreateEvent> {
         key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             HodFormField(
               label: "Nom",

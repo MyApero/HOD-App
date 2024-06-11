@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/profile/screens/personnalisation_screen.dart';
 import 'package:hod_app/features/rolegame/screens/inventory_personnalisation_role_card.dart';
 import 'package:hod_app/features/rolegame/screens/personnalisation_role_card_screen.dart';
 import 'package:hod_app/features/rolegame/widgets/role_card_game_data.dart';
@@ -8,14 +7,15 @@ import 'package:hod_app/widgets/player_card.dart';
 import 'package:hod_app/widgets/select_button.dart';
 
 class RoleCardInfoScreen extends StatelessWidget {
+  static route({required String id, required String name}) => MaterialPageRoute(
+      builder: (ctx) => RoleCardInfoScreen(cardName: name, cardId: id));
+
   const RoleCardInfoScreen(
       {super.key, required this.cardName, required this.cardId});
 
   final String cardName;
   final String cardId;
 
-  static route({required String id, required String name}) => MaterialPageRoute(
-      builder: (ctx) => RoleCardInfoScreen(cardName: name, cardId: id));
 
   @override
   Widget build(BuildContext context) {

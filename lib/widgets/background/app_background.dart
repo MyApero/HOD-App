@@ -27,6 +27,8 @@ class AppBackground extends StatelessWidget {
           AppHeader(title: title),
           Expanded(
             child: Container(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewPadding.bottom),
               child: child,
             ),
           ),

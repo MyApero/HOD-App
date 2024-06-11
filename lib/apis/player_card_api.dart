@@ -12,18 +12,19 @@ class PlayerCardApi {
   static DocumentReference<Map<String, dynamic>> getPlayerCard() {
     String uid = AuthApi.currentUser!.uid;
 
-    return (FirebaseFirestore.instance.collection(DbConst.playerCard).doc(uid));
+    return (FirebaseFirestore.instance
+        .collection(DbConst.playerCards)
+        .doc(uid));
   }
 
   static void updatePlayerCard(
       {required BuildContext context,
       required PlayerCardModel playerCard}) async {
-
     String uid = AuthApi.currentUser!.uid;
 
     try {
       await FirebaseFirestore.instance
-          .collection(DbConst.playerCard)
+          .collection(DbConst.playerCards)
           .doc(uid)
           .set({
         ...PlayerCardModel(

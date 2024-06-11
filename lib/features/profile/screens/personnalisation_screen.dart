@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hod_app/apis/player_card_api.dart';
 import 'package:hod_app/features/profile/widget/player_card_data.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
+import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/select_button.dart';
-import 'package:hod_app/widgets/simple_text.dart';
 
 class PersonnalisationScreen extends StatelessWidget {
   const PersonnalisationScreen({super.key});
@@ -19,14 +18,14 @@ class PersonnalisationScreen extends StatelessWidget {
       hasBackArrow: true,
       child: PlayerCardData(
         builder: (playerCard) => Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SimpleText("Mes informations"),
             Expanded(
               child: Container(
                 // color: Colors.red,
                 // height: double.infinity,
-                padding: EdgeInsets.all(20),
+                // padding: EdgeInsets.all(20),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -52,7 +51,7 @@ class PersonnalisationScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,13 +71,14 @@ class PersonnalisationScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SelectButton(
+            HodButton(
               label: "Confirmer",
-              onPressed: () {
+              onTapped: () {
                 PlayerCardApi.updatePlayerCard(
                     context: context, playerCard: playerCard);
               },
-            )
+            ),
+            const SizedBox(height: 20),
           ],
         ),
       ),

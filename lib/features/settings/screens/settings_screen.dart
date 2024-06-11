@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/auth_api.dart';
+import 'package:hod_app/features/auth/screens/login.dart';
 import 'package:hod_app/features/settings/screens/credit_screen.dart';
 import 'package:hod_app/features/settings/screens/report_screen.dart';
 import 'package:hod_app/widgets/select_button.dart';
@@ -40,19 +41,24 @@ class SettingsScreen extends StatelessWidget {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: const SimpleText("Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible."),
+                title: const SimpleText(
+                    "Voulez-vous vraiment supprimer votre compte ? Cette action est irréversible."),
                 actions: [
                   TextButton(
                     child: const Text("Annuler"),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   TextButton(
-                    child: const Text("Confirmer"),
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      AuthApi.deleteAccount(context);
-                    }
-                  ),
+                      child: const Text(
+                        "Confirmer",
+                        textAlign: TextAlign.center,
+                      ),
+                      onPressed: () async {
+                        await Navigator.of(context)
+                            .push(LoginScreen.route(reauth: true));
+                        AuthApi.deleteAccount(context);
+                        Navigator.of(context).pop();
+                      }),
                 ],
               );
             },

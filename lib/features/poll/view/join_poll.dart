@@ -82,14 +82,9 @@ class _JoinPollScreenState extends State<JoinPollScreen> {
                   }
                   if (context.mounted) {
                     Navigator.of(context).push(
-                      PollScreen.route(_pseudoController.text, poll!),
+                      PollScreen.route(_pseudoController.text, poll),
                     );
                   }
-
-                  // transform the json poll to PollModel
-
-                  // Navigate to the page with the founded poll and the username
-                  // Navigator.of(context).push(JoinPollScreen);
                 }
               },
             ),

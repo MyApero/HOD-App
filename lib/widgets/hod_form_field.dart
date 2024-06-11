@@ -31,28 +31,31 @@ class HodFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      maxLines: maxLines ?? 1,
-      onChanged: onChanged,
-      initialValue: initialValue,
-      controller: controller,
-      validator: validator,
-      style: TextStyle(
-        fontSize: 18,
-        fontFamily: 'MulishSemiBold',
-        color: Theme.of(context).colorScheme.onSurface,
+    return Container(
+      margin: const EdgeInsets.only(bottom: 5),
+      child: TextFormField(
+        maxLines: maxLines ?? 1,
+        onChanged: onChanged,
+        initialValue: controller != null ? null : initialValue,
+        controller: controller,
+        validator: validator,
+        style: TextStyle(
+          fontSize: 18,
+          fontFamily: 'MulishSemiBold',
+          color: Theme.of(context).colorScheme.onSurface,
+        ),
+        decoration: InputDecoration(
+          // fillColor: Theme.of(context).colorScheme.,
+          labelText: label, // Placeholder text
+          border: const OutlineInputBorder(), // Border style
+          suffixIcon: suffixIcon,
+        ),
+        obscureText: !isTextShown,
+        enableSuggestions: enableSuggestions,
+        autocorrect: autocorrect,
+        readOnly: readOnly,
+        onTap: onTap,
       ),
-      decoration: InputDecoration(
-        // fillColor: Theme.of(context).colorScheme.,
-        labelText: label, // Placeholder text
-        border: const OutlineInputBorder(), // Border style
-        suffixIcon: suffixIcon,
-      ),
-      obscureText: !isTextShown,
-      enableSuggestions: enableSuggestions,
-      autocorrect: autocorrect,
-      readOnly: readOnly,
-      onTap: onTap,
     );
   }
 }

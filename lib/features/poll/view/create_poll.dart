@@ -44,7 +44,7 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
       child: Form(
         key: _formKey,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             HodFormField(
               label: "Pseudo",
@@ -106,7 +106,7 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                 Expanded(
                   child: HodButton(
                     label: "Ajouter une réponse",
-                    textFontSize: 15,
+                    textFontSize: _numberOfOptions > 2 ? 15 : 20,
                     onTapped: () {
                       setState(() {
                         _numberOfOptions++;
@@ -115,7 +115,8 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                     },
                   ),
                 ),
-                if (_numberOfOptions > 0)
+                if (_numberOfOptions > 2) const SizedBox(width: 10),
+                if (_numberOfOptions > 2)
                   Expanded(
                     child: HodButton(
                       label: "Retirer la dernière réponse",
@@ -153,7 +154,8 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                   setState(() {
                     _isLoading = false;
                   });
-                  if (eventCreated && context.mounted) Navigator.of(context).pop();
+                  if (eventCreated && context.mounted)
+                    Navigator.of(context).pop();
                 }
               },
             )

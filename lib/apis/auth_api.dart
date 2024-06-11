@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/core/utils.dart';
@@ -31,38 +32,23 @@ class AuthApi {
           .doc(userCredential.user!.uid)
           .set({
         ...UserModel(
-          uid: userCredential.user!.uid,
-          username: username,
-          email: email,
-          firstName: firstName,
-          lastName: lastName,
-          role: Role.user,
-          roleCards: []
-        ).toJson(),
+            uid: userCredential.user!.uid,
+            username: username,
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            role: Role.user,
+            roleCards: []).toJson(),
         DbConst.createdAt: Timestamp.now(),
       });
 
       await FirebaseFirestore.instance
-          .collection(DbConst.playerCard)
+          .collection(DbConst.playerCards)
           .doc(userCredential.user!.uid)
           .set(
             PlayerCardModel(
-              keys: <String>[
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-              ],
-              values: <String>[
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-              ],
+              keys: <String>["", "", "", "", "", ""],
+              values: <String>["", "", "", "", "", ""],
             ).toJson(),
           );
 
@@ -92,9 +78,30 @@ class AuthApi {
     } on FirebaseAuthException catch (e) {
       showSnackBar(context,
           e.message ?? 'Some unexpected FirebaseAuthException occured');
-
-      return false;
     }
+    return false;
+  }
+
+  static Future<bool> reauth({
+    required BuildContext context,
+    required String email,
+    required String password,
+  }) async {
+    try {
+      if (currentUser == null) {
+        throw Exception('No user is currently logged in');
+      }
+      await currentUser!.reauthenticateWithCredential(
+        EmailAuthProvider.credential(email: email, password: password),
+      );
+      return true;
+    } on FirebaseAuthException catch (e) {
+      showSnackBar(context,
+          e.message ?? 'Some unexpected FirebaseAuthException occured');
+    } catch (e) {
+      showSnackBar(context, 'Some unexpected error occured');
+    }
+    return false;
   }
 
   static User? get currentUser => FirebaseAuth.instance.currentUser;
@@ -113,7 +120,10 @@ class AuthApi {
           .collection(DbConst.users)
           .doc(uid)
           .delete();
-      
+      await FirebaseFirestore.instance
+          .collection(DbConst.playerCards)
+          .doc(uid)
+          .delete();
       await currentUser!.delete();
       return true;
     } on FirebaseException catch (e) {
