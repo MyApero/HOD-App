@@ -2,6 +2,7 @@ class DbConst {
   // Events
   static const String events = 'events';
   static const String name = 'name';
+  static const String location = 'location';
   static const String description = 'description';
   static const String startDate = 'startDate';
   static const String endDate = 'endDate';

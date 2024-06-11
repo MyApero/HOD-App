@@ -29,6 +29,7 @@ class HomeScreen extends StatelessWidget {
                             date: e.startDate,
                             name: e.name,
                             pole: e.pole ?? "",
+                            location: e.location,
                             description: e.description ?? "No description",
                           ))
                       .toList(),

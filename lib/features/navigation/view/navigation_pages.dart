@@ -14,7 +14,7 @@ class NavigationPages extends StatelessWidget {
   final List<Widget> _pages = [
     const AppBackground(
       hasProfileIcon: true,
-      title: "Home",
+      title: "Accueil",
       child: HomeScreen(),
     ),
     const AppBackground(
@@ -33,7 +33,7 @@ class NavigationPages extends StatelessWidget {
       child: GamesScreen(),
     ),
     const AppBackground(
-      title: "Settings",
+      title: "Paramètres",
       child: SettingsScreen(),
     ),
   ];

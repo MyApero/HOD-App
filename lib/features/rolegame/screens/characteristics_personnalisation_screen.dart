@@ -6,29 +6,28 @@ import 'package:hod_app/widgets/hod_form_field.dart';
 import 'package:hod_app/widgets/select_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
-class InventoryPersonnalisationRoleCard extends StatefulWidget {
-  static route({required String id, required String name}) => MaterialPageRoute(
-      builder: (ctx) =>
-          InventoryPersonnalisationRoleCard(cardId: id, cardName: name));
-
-  const InventoryPersonnalisationRoleCard(
+class CharacteristicsPersonnalisationScreen extends StatefulWidget {
+  const CharacteristicsPersonnalisationScreen(
       {super.key, required this.cardName, required this.cardId});
 
+  static route({required String id, required String name}) => MaterialPageRoute(
+      builder: (ctx) =>
+          CharacteristicsPersonnalisationScreen(cardId: id, cardName: name));
 
   final String cardName;
   final String cardId;
 
   @override
-  State<InventoryPersonnalisationRoleCard> createState() =>
-      _InventoryPersonnalisationRoleCardState();
+  State<CharacteristicsPersonnalisationScreen> createState() =>
+      _CharacteristicsPersonnalisationScreenState();
 }
 
-class _InventoryPersonnalisationRoleCardState
-    extends State<InventoryPersonnalisationRoleCard> {
+class _CharacteristicsPersonnalisationScreenState
+    extends State<CharacteristicsPersonnalisationScreen> {
   List<String> newKeys = [];
   List<String> newValues = [];
-  TextEditingController nameController = TextEditingController();
-  TextEditingController quantityController = TextEditingController();
+  TextEditingController keyController = TextEditingController();
+  TextEditingController valueController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +39,7 @@ class _InventoryPersonnalisationRoleCardState
         builder: (roleCard) => Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SimpleText("Mes items"),
+            SimpleText("Mes caractéristiques"),
             SizedBox(height: 5),
             Expanded(
               child: Container(
@@ -56,16 +55,16 @@ class _InventoryPersonnalisationRoleCardState
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               for (var i = 0;
-                                  i < roleCard[0].inventory.items.length &&
-                                      i < roleCard[0].inventory.values.length;
+                                  i < roleCard[0].characteristics.characteristics.length &&
+                                      i < roleCard[0].characteristics.values.length;
                                   i++)
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 10.0),
                                   child: HodFormField(
-                                      label: "Item ${i + 1}",
-                                      initialValue: roleCard[0].inventory.items[i],
+                                      label: "Caractéristique ${i + 1}",
+                                      initialValue: roleCard[0].characteristics.characteristics[i],
                                       onChanged: (value) {
-                                        roleCard[0].inventory.items[i] = value;
+                                        roleCard[0].characteristics.characteristics[i] = value;
                                       }),
                                 ),
                             ],
@@ -78,17 +77,16 @@ class _InventoryPersonnalisationRoleCardState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             for (var i = 0;
-                                i < roleCard[0].inventory.items.length &&
-                                    i < roleCard[0].inventory.values.length;
+                                i < roleCard[0].characteristics.characteristics.length &&
+                                    i < roleCard[0].characteristics.values.length;
                                 i++)
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10.0),
                                 child: HodFormField(
-                                    keyboardType: TextInputType.number,
                                     label: "Valeur ${i + 1}",
-                                    initialValue: roleCard[0].inventory.values[i],
+                                    initialValue: roleCard[0].characteristics.values[i],
                                     onChanged: (value) {
-                                      roleCard[0].inventory.values[i] = value;
+                                      roleCard[0].characteristics.values[i] = value;
                                     }),
                               )
                           ],
@@ -100,7 +98,8 @@ class _InventoryPersonnalisationRoleCardState
               ),
             ),
             SelectButton(
-              label: "Créer un nouvel item",
+              label: "Créer une nouvelle caractéristique",
+              icon: Icons.add,
               onPressed: () {
                 showDialog(
                   context: context,
@@ -108,25 +107,24 @@ class _InventoryPersonnalisationRoleCardState
                     return AlertDialog(
                       actionsPadding: EdgeInsets.all(15),
                       title: const SimpleText(
-                          "Veuillez renseignez les infos sur votre item"),
+                          "Veuillez renseignez les infos sur votre caractéristique"),
                       actions: [
-                        HodFormField(label: "Nom", controller: nameController),
+                        HodFormField(label: "Nom", controller: keyController),
                         HodFormField(
-                            keyboardType: TextInputType.number,
-                            label: "Quantité",
-                            controller: quantityController),
+                            label: "Valeur",
+                            controller: valueController),
                         TextButton(
                           child: const Text("Confirmer"),
                           onPressed: () {
                             setState(() {
                               roleCard[0]
-                                  .inventory
-                                  .items
-                                  .add(nameController.text);
+                                  .characteristics
+                                  .characteristics
+                                  .add(keyController.text);
                               roleCard[0]
-                                  .inventory
+                                  .characteristics
                                   .values
-                                  .add(quantityController.text);
+                                  .add(valueController.text);
 
                               RoleCardApi.updateRoleCard(
                                   context: context, roleCard: roleCard[0]);

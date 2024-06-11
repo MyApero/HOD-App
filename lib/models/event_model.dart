@@ -3,6 +3,7 @@ import 'package:hod_app/constants/db_const.dart';
 
 class EventModel {
   final String name;
+  final String location;
   final DateTime startDate;
   final DateTime endDate;
   final String createdBy;
@@ -12,6 +13,7 @@ class EventModel {
 
   EventModel({
     required this.name,
+    required this.location,
     required this.startDate,
     required this.endDate,
     required this.createdBy,
@@ -28,6 +30,7 @@ class EventModel {
   factory EventModel.fromJson(Map<String, dynamic> json) {
     return EventModel(
       name: json[DbConst.name] ?? '!No event name!',
+      location: json[DbConst.location] ?? "No location",
       startDate: (json[DbConst.startDate] ?? Timestamp.now()).toDate(),
       endDate: (json[DbConst.endDate] ?? Timestamp.now()).toDate(),
       createdBy: json[DbConst.createdBy] ?? 'Unknown user',
@@ -40,6 +43,7 @@ class EventModel {
   Map<String, dynamic> toJson() {
     return {
       DbConst.name: name,
+      DbConst.location: location,
       DbConst.startDate: Timestamp.fromDate(startDate),
       DbConst.endDate: Timestamp.fromDate(endDate),
       DbConst.createdBy: createdBy,

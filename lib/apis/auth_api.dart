@@ -116,6 +116,7 @@ class AuthApi {
         throw Exception('No user is currently logged in');
       }
       String uid = currentUser!.uid;
+      await currentUser!.delete();
       await FirebaseFirestore.instance
           .collection(DbConst.users)
           .doc(uid)
@@ -124,7 +125,6 @@ class AuthApi {
           .collection(DbConst.playerCards)
           .doc(uid)
           .delete();
-      await currentUser!.delete();
       return true;
     } on FirebaseException catch (e) {
       if (context.mounted) {

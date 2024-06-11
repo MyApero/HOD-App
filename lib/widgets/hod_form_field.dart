@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class HodFormField extends StatelessWidget {
   const HodFormField(
@@ -7,6 +8,7 @@ class HodFormField extends StatelessWidget {
       this.controller,
       this.initialValue,
       this.validator,
+      this.keyboardType,
       this.isTextShown = true,
       this.enableSuggestions = true,
       this.autocorrect = false,
@@ -20,6 +22,7 @@ class HodFormField extends StatelessWidget {
   final String? initialValue;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final TextInputType ?keyboardType;
   final bool isTextShown;
   final bool enableSuggestions;
   final bool autocorrect;

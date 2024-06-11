@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/features/rolegame/screens/characteristics_personnalisation_screen.dart';
 import 'package:hod_app/features/rolegame/screens/inventory_personnalisation_role_card.dart';
 import 'package:hod_app/features/rolegame/screens/personnalisation_role_card_screen.dart';
 import 'package:hod_app/features/rolegame/widgets/role_card_game_data.dart';
@@ -16,26 +17,34 @@ class RoleCardInfoScreen extends StatelessWidget {
   final String cardName;
   final String cardId;
 
-
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-        hasBackArrow: true,
-        title: cardName,
-        child: RoleCardData(
-          idFilter: cardId,
-          builder: (roleCard) => Column(
+      hasBackArrow: true,
+      title: cardName,
+      child: RoleCardData(
+        idFilter: cardId,
+        builder: (roleCard) => SingleChildScrollView(
+          child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 PlayerCard(keys: roleCard[0].keys, values: roleCard[0].values),
+                SizedBox(height: 10),
                 SelectButton(
                   label: "Personnaliser ma carte",
                   onPressed: () => Navigator.of(context).push(
                       PersonnalisationRoleCardScreen.route(
                           id: cardId, name: cardName)),
                 ),
-                SelectButton(label: "Mes caractéristiques"),
+                SizedBox(height: 10),
+                SelectButton(
+                  label: "Mes caractéristiques",
+                  onPressed: () => Navigator.of(context).push(
+                      CharacteristicsPersonnalisationScreen.route(
+                          name: cardName, id: cardId)),
+                ),
+                SizedBox(height: 10),
                 SelectButton(
                   label: "Mon inventaire",
                   onPressed: () => Navigator.of(context).push(
@@ -45,8 +54,10 @@ class RoleCardInfoScreen extends StatelessWidget {
                 // SelectButton(label: "Personnalisation",
                 // onPressed: () {
                 // Navigator.of(context).push(PersonnalisationScreen.route());
-                // }, icon: Icons.arrow_circle_right_outlined),
+                // }, icon: Icons.arrow_right_alt_rounded),
               ]),
-        ));
+        ),
+      ),
+    );
   }
 }
