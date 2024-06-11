@@ -17,19 +17,19 @@ class SettingsScreen extends StatelessWidget {
       children: [
         SelectButton(
           label: "Faire un retour",
-          icon: Icons.arrow_circle_right_outlined,
+          icon: Icons.arrow_right_alt_rounded,
           onPressed: () => Navigator.of(context).push(ReportScreen.route()),
         ),
         const SelectButton(
-            label: "Contact", icon: Icons.arrow_circle_right_outlined),
+            label: "Contact", icon: Icons.arrow_right_alt_rounded),
         SelectButton(
           label: "Crédits",
-          icon: Icons.arrow_circle_right_outlined,
+          icon: Icons.arrow_right_alt_rounded,
           onPressed: () => Navigator.of(context).push(CreditScreen.route()),
         ),
         SelectButton(
           label: "Déconnexion",
-          icon: Icons.arrow_circle_right_outlined,
+          icon: Icons.arrow_right_alt_rounded,
           color: const Color(0xFFE43333),
           onPressed: () {
             AuthApi.signOut();
@@ -54,8 +54,11 @@ class SettingsScreen extends StatelessWidget {
                         textAlign: TextAlign.center,
                       ),
                       onPressed: () async {
-                        await Navigator.of(context)
-                            .push(LoginScreen.route(reauth: true));
+                        final bool? hasReconnect = await Navigator.of(context)
+                            .push(LoginScreen.route(reauth: true)) as bool?;
+                        if (hasReconnect == null || !hasReconnect) {
+                          return;
+                        }
                         AuthApi.deleteAccount(context);
                         Navigator.of(context).pop();
                       }),

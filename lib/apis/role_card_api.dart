@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/apis/event_api.dart';
 import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/models/role_card_model.dart';
@@ -80,7 +79,6 @@ class RoleCardApi {
       });
       if (context.mounted) {
         showSnackBar(context, "Carte actualisée avec succès !");
-        Navigator.of(context).pop();
       }
     } on FirebaseException catch (e) {
       if (context.mounted) {

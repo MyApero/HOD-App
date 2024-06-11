@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hod_app/theme/palette.dart';
 
 class SelectButton extends StatelessWidget {
@@ -37,7 +38,8 @@ class SelectButton extends StatelessWidget {
                 color: Palette.white,
               )),
           const Spacer(),
-          if (icon != null) Icon(size: 40, icon!),
+          if (icon != null) FaIcon(size: 40, icon!),
+          
         ],
       ),
     );

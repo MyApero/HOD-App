@@ -32,88 +32,96 @@ class _CreateEventState extends State<CreateEvent> {
     return AppScaffold(
       title: "Créer un event",
       hasBackArrow: true,
-      child: Form(
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            HodFormField(
-              label: "Nom",
-              controller: nameController,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "Ce champ est obligatoire";
-                }
-                return null;
-              },
-            ),
-            DatetimeFormPicker(
-              onChanged: (date) {
-                setState(() {
-                  selectedFirstDate = date;
-                });
-              },
-              label: "Début",
-              validator: (value) {
-                if (selectedFirstDate == null || selectedEndDate == null) {
-                  return "Ce champ est obligatoire";
-                }
-                if (selectedFirstDate!.isAfter(selectedEndDate!)) {
-                  return "La début doit être avant la fin";
-                }
-                return null;
-              },
-            ),
-            DatetimeFormPicker(
-              onChanged: (date) {
-                setState(() {
-                  selectedEndDate = date;
-                });
-              },
-              label: "Fin",
-              validator: (value) {
-                if (selectedFirstDate == null || selectedEndDate == null) {
-                  return "Ce champ est obligatoire";
-                }
-                if (selectedEndDate!.isBefore(selectedFirstDate!)) {
-                  return "La fin doit être après le début";
-                }
-                return null;
-              },
-            ),
-            DropdownSelection(
-                onValueChange: (value) {
+      child: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              HodFormField(
+                label: "Nom",
+                controller: nameController,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return "Ce champ est obligatoire";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 10),
+              DatetimeFormPicker(
+                onChanged: (date) {
                   setState(() {
-                    selectedPole = value;
+                    selectedFirstDate = date;
                   });
                 },
-                items: Pole.values.map((e) => e.name).toList(),
-                label: "Pole"),
-            HodFormField(label: "Lieu", controller: locationController),
-            HodFormField(
-                label: "Description", controller: descriptionController),
-            HodButton(
-                label: "Créer",
-                onTapped: () {
-                  if (_formKey.currentState!.validate()) {
-                    EventApi.createEvent(
-                      context: context,
-                      name: nameController.text,
-                      startDate: selectedFirstDate!,
-                      endDate: selectedEndDate!,
-                      createdBy: AuthApi.currentUser!.uid,
-                      pole: selectedPole!,
-                      location: locationController.text.isEmpty
-                          ? "Epitech"
-                          : locationController.text,
-                      description: descriptionController.text,
-                    );
-                    showSnackBar(context, "Event créé avec amour <3");
-                    Navigator.of(context).pop();
+                label: "Début",
+                validator: (value) {
+                  if (selectedFirstDate == null || selectedEndDate == null) {
+                    return "Ce champ est obligatoire";
                   }
-                }),
-          ],
+                  if (selectedFirstDate!.isAfter(selectedEndDate!)) {
+                    return "La début doit être avant la fin";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 10),
+              DatetimeFormPicker(
+                onChanged: (date) {
+                  setState(() {
+                    selectedEndDate = date;
+                  });
+                },
+                label: "Fin",
+                validator: (value) {
+                  if (selectedFirstDate == null || selectedEndDate == null) {
+                    return "Ce champ est obligatoire";
+                  }
+                  if (selectedEndDate!.isBefore(selectedFirstDate!)) {
+                    return "La fin doit être après le début";
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(height: 10),
+              DropdownSelection(
+                  onValueChange: (value) {
+                    setState(() {
+                      selectedPole = value;
+                    });
+                  },
+                  items: Pole.values.map((e) => e.name).toList(),
+                  label: "Pole"),
+              SizedBox(height: 10),
+              HodFormField(label: "Lieu", controller: locationController),
+              SizedBox(height: 10),
+              HodFormField(
+                  label: "Description", controller: descriptionController),
+              SizedBox(height: 10),
+              HodButton(
+                  label: "Créer",
+                  onTapped: () {
+                    if (_formKey.currentState!.validate()) {
+                      EventApi.createEvent(
+                        context: context,
+                        name: nameController.text,
+                        startDate: selectedFirstDate!,
+                        endDate: selectedEndDate!,
+                        createdBy: AuthApi.currentUser!.uid,
+                        pole: selectedPole!,
+                        location: locationController.text.isEmpty
+                            ? "Epitech"
+                            : locationController.text,
+                        description: descriptionController.text,
+                      );
+                      showSnackBar(context, "Event créé avec amour <3");
+                      Navigator.of(context).pop();
+                    }
+                  }),
+            ],
+          ),
         ),
       ),
     );

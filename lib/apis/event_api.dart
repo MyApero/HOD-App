@@ -23,7 +23,7 @@ class EventApi {
     required DateTime endDate,
     required String createdBy,
     String? pole,
-    String? location,
+    required String location,
     String? description,
   }) async {
     try {
@@ -35,6 +35,7 @@ class EventApi {
       await FirebaseFirestore.instance.collection(DbConst.events).add({
         ...EventModel(
           name: name,
+          location: location,
           startDate: startDate,
           endDate: endDate,
           createdBy: createdBy,
@@ -57,14 +58,14 @@ class EventApi {
     List<EventModel> events = [];
 
     if (poleFilter != null) {
-       events = snapshot.data!.docs
-       .where((document) => document[DbConst.pole] == poleFilter)
-        .map<EventModel>((e) => EventModel.fromJson(e.data()))
-        .toList();
+      events = snapshot.data!.docs
+          .where((document) => document[DbConst.pole] == poleFilter)
+          .map<EventModel>((e) => EventModel.fromJson(e.data()))
+          .toList();
     } else {
       events = snapshot.data!.docs
-      .map<EventModel>((e) => EventModel.fromJson(e.data()))
-      .toList();
+          .map<EventModel>((e) => EventModel.fromJson(e.data()))
+          .toList();
     }
     return events;
   }

@@ -6,11 +6,11 @@ import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/select_button.dart';
 
-class RoleGameSessionsScreen extends StatelessWidget {
+class RoleCharacters extends StatelessWidget {
   static route() =>
-      MaterialPageRoute(builder: (context) => RoleGameSessionsScreen());
+      MaterialPageRoute(builder: (context) => const RoleCharacters());
 
-  RoleGameSessionsScreen({super.key});
+  const RoleCharacters({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class RoleGameSessionsScreen extends StatelessWidget {
       hasBackArrow: true,
       child: RoleCardData(
         builder: (roleCards) => Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SingleChildScrollView(
               child: Padding(
@@ -32,7 +32,7 @@ class RoleGameSessionsScreen extends StatelessWidget {
                         padding: const EdgeInsets.only(bottom: 10),
                         child: SelectButton(
                           label: e.name,
-                          icon: Icons.arrow_circle_right_outlined,
+                          icon: Icons.arrow_right_alt_rounded,
                           onPressed: () => Navigator.of(context).push(
                               RoleCardInfoScreen.route(
                                   name: e.name, id: e.id!)),

@@ -154,6 +154,9 @@ class _RegisterPageState extends State<RegisterScreen> {
                           email: emailController.text,
                           password: passwordController.text);
                     }
+                    setState(() {
+                      isLoading = false;
+                    });
                   },
                   isLoading: isLoading,
                 ),

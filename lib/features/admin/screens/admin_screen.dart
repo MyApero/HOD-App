@@ -13,27 +13,25 @@ class AdminScreen extends ConsumerWidget {
       children: [
         SelectButton(
           label: "Créer un event",
-          icon: Icons.arrow_circle_right_outlined,
+          icon: Icons.arrow_right_alt_rounded,
           onPressed: () {
             Navigator.of(context).push(CreateEvent.route());
           },
         ),
         const SizedBox(height: 20),
         const SelectButton(
-            label: "Modifier un event",
-            icon: Icons.arrow_circle_right_outlined),
+            label: "Modifier un event", icon: Icons.arrow_right_alt_rounded),
         const SizedBox(height: 20),
         SelectButton(
           label: "Sondages",
-          icon: Icons.arrow_circle_right_outlined,
+          icon: Icons.arrow_right_alt_rounded,
           onPressed: () {
             Navigator.of(context).push(PollHomeScreen.route());
           },
         ),
         const SizedBox(height: 20),
         const SelectButton(
-            label: "Gérer les membres",
-            icon: Icons.arrow_circle_right_outlined),
+            label: "Gérer les membres", icon: Icons.arrow_right_alt_rounded),
       ],
     );
   }

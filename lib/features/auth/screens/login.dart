@@ -12,7 +12,10 @@ class LoginScreen extends StatefulWidget {
       builder: (context) => LoginScreen(
             reauth: reauth ?? false,
           ));
-  const LoginScreen({super.key, this.reauth = false});
+  const LoginScreen({
+    super.key,
+    this.reauth = false,
+  });
 
   final bool reauth;
 
@@ -38,7 +41,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return AppScaffold(
       hasBackArrow: widget.reauth,
-      title: "Me connecter",
+      title: widget.reauth ? "Reconnectez-vous pour supprimer votre compte" : "Me connecter",
       child: Form(
         key: _formKey,
         child: Column(

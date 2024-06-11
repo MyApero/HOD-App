@@ -17,14 +17,18 @@ class ProfileScreen extends StatelessWidget {
         hasBackArrow: true,
         child: PlayerCardData(
           builder: (playerCard) => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [PlayerCard(keys: playerCard.keys, values: playerCard.values),
-            SelectButton(label: "Personnalisation", 
-            onPressed: () {
-              Navigator.of(context).push(PersonnalisationScreen.route());
-            }, icon: Icons.arrow_circle_right_outlined),
-          ]),
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                PlayerCard(keys: playerCard.keys, values: playerCard.values),
+                SelectButton(
+                    label: "Personnalisation",
+                    onPressed: () {
+                      Navigator.of(context)
+                          .push(PersonnalisationScreen.route());
+                    },
+                    icon: Icons.arrow_right_alt_rounded),
+              ]),
         ));
   }
 }

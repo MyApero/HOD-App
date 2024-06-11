@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/constants/pole_const.dart';
+import 'package:intl/intl.dart';
 
 class EventCard extends StatelessWidget {
-  EventCard({
-    super.key,
-    required this.large,
-    required this.date,
-    required this.name,
-    this.pole = "",
-    required this.description
-  }) : dateParse = DateTime.parse(date.toString());
+  EventCard(
+      {super.key,
+      required this.large,
+      required this.date,
+      required this.name,
+      required this.location,
+      this.pole = "",
+      required this.description})
+      : dateParse = DateTime.parse(date.toString());
 
   final DateTime dateParse;
   final DateTime date;
   final bool large;
   final String name;
+  final String location;
   final String pole;
   final String description;
 
   @override
   Widget build(BuildContext context) {
-    String formattedDate =
-        "${dateParse.day}/${dateParse.month}/${dateParse.year}";
+    String formattedDate = DateFormat('EEEE d MMM yyyy', 'fr_FR').format(date);
     return Container(
       margin: EdgeInsets.only(right: 50),
       child: FilledButton(
@@ -41,16 +44,21 @@ class EventCard extends StatelessWidget {
         ),
         onPressed: () {},
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(
               formattedDate,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 40),
             Text("[$name]"),
-            if (pole.isNotEmpty) Text("Pole $pole"),
-            SizedBox(height: 25),
-            Text(description),
+            Text(
+              textAlign: TextAlign.center,
+              poleNamesMap.keys.contains(pole)
+                ? "Pole ${poleNamesMap[pole]}"
+                : "Pole Inconnu"),
+            Text(
+              textAlign: TextAlign.center,
+              location),
           ],
         ),
       ),
