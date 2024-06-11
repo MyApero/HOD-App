@@ -75,6 +75,7 @@ class PersonnalisationRoleCardScreen extends StatelessWidget {
             ),
             SelectButton(label: "Confirmer", onPressed: () {
               RoleCardApi.updateRoleCard(context: context, roleCard: roleCard[0]);
+              Navigator.of(context).pop();
             },)
           ],
         ),

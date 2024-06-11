@@ -80,7 +80,6 @@ class RoleCardApi {
       });
       if (context.mounted) {
         showSnackBar(context, "Carte actualisée avec succès !");
-        Navigator.of(context).pop();
       }
     } on FirebaseException catch (e) {
       if (context.mounted) {
