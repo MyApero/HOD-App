@@ -1,4 +1,3 @@
-
 class DbConst {
   // Events
   static const String events = 'events';
@@ -29,7 +28,7 @@ class DbConst {
   static const String createdAt = 'createdAt';
 
   // Player Card
-  static const String playerCard = 'playerCards';
+  static const String playerCards = 'playerCards';
   static const String keys = 'keys';
   static const String values = 'values';
 
