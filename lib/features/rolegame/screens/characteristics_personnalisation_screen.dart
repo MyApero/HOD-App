@@ -40,16 +40,39 @@ class _CharacteristicsPersonnalisationScreenState
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SimpleText("Mes caractéristiques"),
+            SizedBox(height: 5),
             Expanded(
               child: Container(
-                padding: EdgeInsets.all(20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        // color: Colors.blue,
+                child: SingleChildScrollView(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          // color: Colors.blue,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              for (var i = 0;
+                                  i < roleCard[0].characteristics.characteristics.length &&
+                                      i < roleCard[0].characteristics.values.length;
+                                  i++)
+                                Padding(
+                                  padding: const EdgeInsets.only(bottom: 10.0),
+                                  child: HodFormField(
+                                      label: "Caractéristique ${i + 1}",
+                                      text: roleCard[0].characteristics.characteristics[i],
+                                      onChanged: (value) {
+                                        roleCard[0].characteristics.characteristics[i] = value;
+                                      }),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Spacer(),
+                      Expanded(
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -60,38 +83,17 @@ class _CharacteristicsPersonnalisationScreenState
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10.0),
                                 child: HodFormField(
-                                    label: "Caractéristique ${i + 1}",
-                                    text: roleCard[0].characteristics.characteristics[i],
+                                    label: "Valeur ${i + 1}",
+                                    text: roleCard[0].characteristics.values[i],
                                     onChanged: (value) {
-                                      roleCard[0].characteristics.characteristics[i] = value;
+                                      roleCard[0].characteristics.values[i] = value;
                                     }),
-                              ),
+                              )
                           ],
                         ),
                       ),
-                    ),
-                    Spacer(),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          for (var i = 0;
-                              i < roleCard[0].characteristics.characteristics.length &&
-                                  i < roleCard[0].characteristics.values.length;
-                              i++)
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 10.0),
-                              child: HodFormField(
-                                  label: "Valeur ${i + 1}",
-                                  text: roleCard[0].characteristics.values[i],
-                                  onChanged: (value) {
-                                    roleCard[0].characteristics.values[i] = value;
-                                  }),
-                            )
-                        ],
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

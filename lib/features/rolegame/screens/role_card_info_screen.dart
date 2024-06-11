@@ -25,34 +25,39 @@ class RoleCardInfoScreen extends StatelessWidget {
         title: cardName,
         child: RoleCardData(
           idFilter: cardId,
-          builder: (roleCard) => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                PlayerCard(keys: roleCard[0].keys, values: roleCard[0].values),
-                SelectButton(
-                  label: "Personnaliser ma carte",
-                  onPressed: () => Navigator.of(context).push(
-                      PersonnalisationRoleCardScreen.route(
-                          id: cardId, name: cardName)),
-                ),
-                SelectButton(
-                  label: "Mes caractéristiques",
-                  onPressed: () => Navigator.of(context).push(
-                      CharacteristicsPersonnalisationScreen.route(
-                          name: cardName, id: cardId)),
-                ),
-                SelectButton(
-                  label: "Mon inventaire",
-                  onPressed: () => Navigator.of(context).push(
-                      InventoryPersonnalisationRoleCard.route(
-                          name: cardName, id: cardId)),
-                ),
-                // SelectButton(label: "Personnalisation",
-                // onPressed: () {
-                // Navigator.of(context).push(PersonnalisationScreen.route());
-                // }, icon: Icons.arrow_circle_right_outlined),
-              ]),
+          builder: (roleCard) => SingleChildScrollView(
+            child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  PlayerCard(keys: roleCard[0].keys, values: roleCard[0].values),
+                  SizedBox(height: 10),
+                  SelectButton(
+                    label: "Personnaliser ma carte",
+                    onPressed: () => Navigator.of(context).push(
+                        PersonnalisationRoleCardScreen.route(
+                            id: cardId, name: cardName)),
+                  ),
+                  SizedBox(height: 10),
+                  SelectButton(
+                    label: "Mes caractéristiques",
+                    onPressed: () => Navigator.of(context).push(
+                        CharacteristicsPersonnalisationScreen.route(
+                            name: cardName, id: cardId)),
+                  ),
+                  SizedBox(height: 10),
+                  SelectButton(
+                    label: "Mon inventaire",
+                    onPressed: () => Navigator.of(context).push(
+                        InventoryPersonnalisationRoleCard.route(
+                            name: cardName, id: cardId)),
+                  ),
+                  // SelectButton(label: "Personnalisation",
+                  // onPressed: () {
+                  // Navigator.of(context).push(PersonnalisationScreen.route());
+                  // }, icon: Icons.arrow_circle_right_outlined),
+                ]),
+          ),
         ));
   }
 }
