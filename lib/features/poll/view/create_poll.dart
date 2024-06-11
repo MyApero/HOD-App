@@ -138,7 +138,7 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                   setState(() {
                     _isLoading = true;
                   });
-                  await PollApi.createPoll(
+                  final bool eventCreated = await PollApi.createPoll(
                     context: context,
                     username: _pseudoController.text,
                     name: _pollNameController.text,
@@ -153,7 +153,7 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                   setState(() {
                     _isLoading = false;
                   });
-                  if (context.mounted) Navigator.of(context).pop();
+                  if (eventCreated && context.mounted) Navigator.of(context).pop();
                 }
               },
             )

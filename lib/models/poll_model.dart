@@ -9,6 +9,13 @@ class PollItemModel {
     required this.name,
     required this.voters,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      DbConst.name: name,
+      DbConst.voters: voters,
+    };
+  }
 }
 
 class PollModel {
@@ -20,6 +27,8 @@ class PollModel {
   final String createdBy;
   final String question;
   final List<PollItemModel> options;
+  List<String> get voters =>
+      options.expand((element) => element.voters).toList();
 
   PollModel({
     required this.username,
@@ -64,12 +73,7 @@ class PollModel {
       DbConst.endedAt: Timestamp.fromDate(endedAt ?? DateTime.now()),
       DbConst.createdBy: createdBy,
       DbConst.question: question,
-      DbConst.options: options
-          .map((e) => {
-                DbConst.name: e.name,
-                DbConst.voters: e.voters,
-              })
-          .toList(),
+      DbConst.options: options.map((e) => e.toJson()).toList(),
     };
   }
 }

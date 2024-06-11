@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hod_app/features/admin/screens/create_event.dart';
-import 'package:hod_app/features/poll/view/poll_screen.dart';
+import 'package:hod_app/features/poll/view/poll_home.dart';
 import 'package:hod_app/widgets/select_button.dart';
 
 class AdminScreen extends ConsumerWidget {
@@ -27,7 +27,7 @@ class AdminScreen extends ConsumerWidget {
           label: "Vote",
           icon: Icons.arrow_circle_right_outlined,
           onPressed: () {
-            Navigator.of(context).push(PollScreen.route());
+            Navigator.of(context).push(PollHomeScreen.route());
           },
         ),
         const SizedBox(height: 20),

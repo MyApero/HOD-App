@@ -103,9 +103,19 @@ class AuthApi {
     await FirebaseAuth.instance.signOut();
   }
 
-  static Future<void> deleteAccount(BuildContext context) async {
+  static Future<bool> deleteAccount(BuildContext context) async {
     try {
-      await currentUser?.delete();
+      if (currentUser == null) {
+        throw Exception('No user is currently logged in');
+      }
+      String uid = currentUser!.uid;
+      await FirebaseFirestore.instance
+          .collection(DbConst.users)
+          .doc(uid)
+          .delete();
+      
+      await currentUser!.delete();
+      return true;
     } on FirebaseException catch (e) {
       if (context.mounted) {
         showSnackBar(
@@ -114,6 +124,7 @@ class AuthApi {
                 'Impossible de supprimer votre compte, vous nous manqueriez trop');
       }
     }
+    return false;
   }
 
   static Future<void> sendEmailVerification() async {
