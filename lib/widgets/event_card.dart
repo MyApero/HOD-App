@@ -8,6 +8,7 @@ class EventCard extends StatelessWidget {
       required this.large,
       required this.date,
       required this.name,
+      required this.location,
       this.pole = "",
       required this.description})
       : dateParse = DateTime.parse(date.toString());
@@ -16,6 +17,7 @@ class EventCard extends StatelessWidget {
   final DateTime date;
   final bool large;
   final String name;
+  final String location;
   final String pole;
   final String description;
 
@@ -56,7 +58,7 @@ class EventCard extends StatelessWidget {
                 : "Pole Inconnu"),
             Text(
               textAlign: TextAlign.center,
-              description),
+              location),
           ],
         ),
       ),
