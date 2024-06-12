@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/event_api.dart';
-import 'package:hod_app/features/poles/home/screens/widget/event_details_screen.dart';
+import 'package:hod_app/features/poles/widget/event_details_screen.dart';
 import 'package:hod_app/features/poles/rolegame/screens/role_characters.dart';
 import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/widgets/select_button.dart';
