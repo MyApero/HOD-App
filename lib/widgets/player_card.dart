@@ -5,7 +5,7 @@ import 'package:hod_app/theme/palette.dart';
 import 'package:hod_app/widgets/player_card_item.dart';
 
 class PlayerCard extends StatefulWidget {
-  PlayerCard(
+  const PlayerCard(
       {super.key,
       required this.keys,
       required this.values,
@@ -14,7 +14,7 @@ class PlayerCard extends StatefulWidget {
 
   final List<String> keys;
   final List<String> values;
-  bool male;
+  final bool male;
   final bool roleCard;
 
   @override
@@ -22,6 +22,8 @@ class PlayerCard extends StatefulWidget {
 }
 
 class _PlayerCardState extends State<PlayerCard> {
+
+  late bool isMale = widget.male;
 
   @override
   Widget build(BuildContext context) {
@@ -87,10 +89,10 @@ class _PlayerCardState extends State<PlayerCard> {
                                           playerCard: PlayerCardModel(
                                               keys: widget.keys,
                                               values: widget.values,
-                                              male: !widget.male));
+                                              male: !isMale));
                                       setState(
                                         () {
-                                          widget.male = !widget.male;
+                                          isMale = !isMale;
                                         },
                                       );
                                     },
