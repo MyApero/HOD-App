@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/profile/screens/personnalisation_screen.dart';
 import 'package:hod_app/features/profile/widget/player_card_data.dart';
-import 'package:hod_app/widgets/background/app_scaffold.dart';
+import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/widgets/player_card.dart';
 import 'package:hod_app/widgets/select_button.dart';
 

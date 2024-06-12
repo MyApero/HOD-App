@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/features/navigation/view/navigation_pages.dart';
-import 'package:hod_app/widgets/background/app_scaffold.dart';
+import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/apis/event_api.dart';
 import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/widgets/background/app_scaffold.dart';
+import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/widgets/datetime_form_picker.dart';
 import 'package:hod_app/widgets/dropdown_selection.dart';
 import 'package:hod_app/widgets/hod_button.dart';

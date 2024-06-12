@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/background/app_scaffold.dart';
+import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
 class CreditScreen extends StatelessWidget {

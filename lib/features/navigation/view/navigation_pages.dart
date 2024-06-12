@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/admin/screens/admin_screen.dart';
 import 'package:hod_app/features/calendar/view/calendar_screen.dart';
-import 'package:hod_app/features/games/screens/games_screen.dart';
+import 'package:hod_app/features/poles/home/screens/home_pole_screen.dart';
 import 'package:hod_app/features/home/view/home.dart';
 import 'package:hod_app/features/navigation/view/navigation_screen.dart';
 import 'package:hod_app/features/settings/screens/settings_screen.dart';
-import 'package:hod_app/widgets/background/app_background.dart';
+import 'package:hod_app/features/background/app_background.dart';
 
 class NavigationPages extends StatelessWidget {
   static route() => MaterialPageRoute(builder: (context) => NavigationPages());
@@ -30,7 +30,7 @@ class NavigationPages extends StatelessWidget {
     const AppBackground(
       hasProfileIcon: true,
       title: "Pôles",
-      child: GamesScreen(),
+      child: PoleHomeScreen(),
     ),
     const AppBackground(
       title: "Paramètres",
