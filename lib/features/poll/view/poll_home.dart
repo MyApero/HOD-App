@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/poll/view/create_poll.dart';
 import 'package:hod_app/features/poll/view/poll_list.dart';
-import 'package:hod_app/widgets/background/app_scaffold.dart';
+import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/widgets/select_button.dart';
 
 class PollHomeScreen extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/background/nice/nice_background.dart';
+import 'package:hod_app/features/background/nice/nice_background.dart';
 import 'package:hod_app/widgets/hod_logo.dart';
 import 'package:hod_app/widgets/small_text.dart';
 import 'package:url_launcher/url_launcher_string.dart';

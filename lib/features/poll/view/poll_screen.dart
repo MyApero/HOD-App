@@ -3,7 +3,7 @@ import 'package:hod_app/apis/poll_api.dart';
 import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/features/poll/widgets/selectable_field.dart';
 import 'package:hod_app/models/poll_model.dart';
-import 'package:hod_app/widgets/background/app_scaffold.dart';
+import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 

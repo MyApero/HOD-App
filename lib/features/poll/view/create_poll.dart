@@ -4,7 +4,7 @@ import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/apis/poll_api.dart';
 import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';
-import 'package:hod_app/widgets/background/app_scaffold.dart';
+import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
 import 'package:hod_app/widgets/select_button_outlined.dart';

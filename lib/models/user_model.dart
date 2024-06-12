@@ -3,7 +3,7 @@ import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/models/role_card_model.dart';
 
-enum Role { admin, member, user }
+enum Role { user, member, staff, admin }
 
 class UserModel {
   final String uid;
