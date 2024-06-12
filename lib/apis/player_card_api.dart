@@ -14,7 +14,7 @@ class PlayerCardApi {
         .doc(uid));
   }
 
-  static void updatePlayerCard(
+  static Future<bool> updatePlayerCard(
       {required BuildContext context,
       required PlayerCardModel playerCard}) async {
     String uid = AuthApi.currentUser!.uid;
@@ -27,16 +27,18 @@ class PlayerCardApi {
         ...PlayerCardModel(
           keys: playerCard.keys,
           values: playerCard.values,
+          male: playerCard.male,
         ).toJson()
       });
       if (context.mounted) {
         showSnackBar(context, "Carte actualisée avec succès !");
-        Navigator.of(context).pop();
       }
+      return (true);
     } on FirebaseException catch (e) {
       if (context.mounted) {
         showSnackBar(context, e.message ?? "Unexpected error");
       }
     }
+    return (false);
   }
 }

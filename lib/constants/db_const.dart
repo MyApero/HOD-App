@@ -32,6 +32,7 @@ class DbConst {
   static const String playerCards = 'playerCards';
   static const String keys = 'keys';
   static const String values = 'values';
+  static const String male = 'male';
 
   // Reports
   static const String reports = 'reports';

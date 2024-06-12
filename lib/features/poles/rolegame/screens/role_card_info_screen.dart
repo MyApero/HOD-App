@@ -36,7 +36,7 @@ class _RoleCardInfoScreenState extends State<RoleCardInfoScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              PlayerCard(keys: roleCard[0].keys, values: roleCard[0].values),
+              PlayerCard(keys: roleCard[0].keys, values: roleCard[0].values, male: true),
               SizedBox(height: 10),
               SelectButton(
                   label: "Personnaliser ma carte",
