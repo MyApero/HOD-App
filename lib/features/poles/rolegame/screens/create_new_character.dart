@@ -31,8 +31,8 @@ Future<bool> showCreateNewCharacter(BuildContext context) async {
               const Spacer(),
               TextButton(
                 child: const Text("Confirmer"),
-                onPressed: () {
-                  RoleCardApi.addRoleCard(
+                onPressed: () async {
+                  await RoleCardApi.addRoleCard(
                     context: context,
                     roleCard: RoleCardModel(
                       name: characterNameController.text,
