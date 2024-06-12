@@ -1,17 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/apis/player_card_api.dart';
+import 'package:hod_app/models/player_card_model.dart';
 import 'package:hod_app/theme/palette.dart';
 import 'package:hod_app/widgets/player_card_item.dart';
 
-class PlayerCard extends StatelessWidget {
-  const PlayerCard(
+class PlayerCard extends StatefulWidget {
+  PlayerCard(
       {super.key,
       required this.keys,
       required this.values,
+      required this.male,
       this.roleCard = false});
 
   final List<String> keys;
   final List<String> values;
+  bool male;
   final bool roleCard;
+
+  @override
+  State<PlayerCard> createState() => _PlayerCardState();
+}
+
+class _PlayerCardState extends State<PlayerCard> {
 
   @override
   Widget build(BuildContext context) {
@@ -41,72 +51,94 @@ class PlayerCard extends StatelessWidget {
                         child: Column(
                           children: [
                             PlayerCardItem(
-                              fieldKey: keys[0],
-                              fieldValue: values[0],
+                              fieldKey: widget.keys[0],
+                              fieldValue: widget.values[0],
                             ),
                             PlayerCardItem(
-                                fieldKey: keys[1], fieldValue: values[1]),
+                                fieldKey: widget.keys[1],
+                                fieldValue: widget.values[1]),
                             const SizedBox(height: 14),
                             PlayerCardItem(
-                              fieldKey: keys[2],
-                              fieldValue: values[2],
+                              fieldKey: widget.keys[2],
+                              fieldValue: widget.values[2],
                             ),
                             PlayerCardItem(
-                                fieldKey: keys[3], fieldValue: values[3]),
+                                fieldKey: widget.keys[3],
+                                fieldValue: widget.values[3]),
                           ],
                         ),
                       ),
                       Expanded(
                         child: Container(
-                          margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                          padding: const EdgeInsets.all(20),
+                          margin: EdgeInsets.only(left: 10.0),
+                          padding: const EdgeInsets.all(15),
                           decoration: const BoxDecoration(
                             color: Color(0xFFE3E3F1),
                             borderRadius: BorderRadius.all(
                               Radius.circular(20),
                             ),
                           ),
-                          child: roleCard
-                              ? null
-                              : Image.network(
-                                  errorBuilder:
-                                      (context, exception, stackTrace) =>
+                          child: widget.roleCard
+                                ? null
+                                : InkWell(
+                                    onTap: () {
+                                      PlayerCardApi.updatePlayerCard(
+                                          context: context,
+                                          playerCard: PlayerCardModel(
+                                              keys: widget.keys,
+                                              values: widget.values,
+                                              male: !widget.male));
+                                      setState(
+                                        () {
+                                          widget.male = !widget.male;
+                                        },
+                                      );
+                                    },
+                                    child: Image.network(
+                                      errorBuilder: (context, exception,
+                                              stackTrace) =>
                                           const Icon(Icons.network_wifi_1_bar),
-                                  fit: BoxFit.cover,
-                                  'https://archives.bulbagarden.net/media/upload/6/6c/Spr_B2W2_Iris.png',
-                                  frameBuilder: (context, child, frame,
-                                      wasSynchronouslyLoaded) {
-                                    if (wasSynchronouslyLoaded) {
-                                      return child;
-                                    }
-                                    return AnimatedScale(
-                                      scale: frame == null ? 0 : 1,
-                                      duration: const Duration(seconds: 2),
-                                      curve: Curves.easeOut,
-                                      child: child,
-                                    );
-                                  },
-                                  loadingBuilder:
-                                      (context, child, loadingProgress) {
-                                    if (loadingProgress != null &&
-                                        loadingProgress.expectedTotalBytes !=
-                                            null) {
-                                      CircularProgressIndicator(
-                                          value: loadingProgress
-                                                  .cumulativeBytesLoaded /
-                                              loadingProgress
-                                                  .expectedTotalBytes!);
-                                    }
-                                    return child;
-                                  },
-                                ),
+                                      fit: BoxFit.cover,
+                                      widget.male
+                                          ? 'https://archives.bulbagarden.net/media/upload/4/4e/Spr_B2W2_Hilbert_2.png'
+                                          : "https://archives.bulbagarden.net/media/upload/b/b7/Spr_B2W2_Hilda_2.png",
+                                      frameBuilder: (context, child, frame,
+                                          wasSynchronouslyLoaded) {
+                                        if (wasSynchronouslyLoaded) {
+                                          return child;
+                                        }
+                                        return AnimatedScale(
+                                          scale: frame == null ? 0 : 1,
+                                          duration: const Duration(seconds: 2),
+                                          curve: Curves.easeOut,
+                                          child: child,
+                                        );
+                                      },
+                                      loadingBuilder:
+                                          (context, child, loadingProgress) {
+                                        if (loadingProgress != null &&
+                                            loadingProgress
+                                                    .expectedTotalBytes !=
+                                                null) {
+                                          CircularProgressIndicator(
+                                              value: loadingProgress
+                                                      .cumulativeBytesLoaded /
+                                                  loadingProgress
+                                                      .expectedTotalBytes!);
+                                        }
+                                        return child;
+                                      },
+                                    ),
+                                  ),
+                          ),
                         ),
-                      ),
                     ],
                   ),
                   const SizedBox(height: 5),
-                  PlayerCardItem(fieldKey: keys[4], fieldValue: values[4]),
-                  PlayerCardItem(fieldKey: keys[5], fieldValue: values[5]),
+                  PlayerCardItem(
+                      fieldKey: widget.keys[4], fieldValue: widget.values[4]),
+                  PlayerCardItem(
+                      fieldKey: widget.keys[5], fieldValue: widget.values[5]),
                 ],
               ),
             )),

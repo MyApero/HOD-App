@@ -49,6 +49,7 @@ class AuthApi {
             PlayerCardModel(
               keys: <String>["", "", "", "", "", ""],
               values: <String>["", "", "", "", "", ""],
+              male: true
             ).toJson(),
           );
 

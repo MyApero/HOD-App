@@ -83,6 +83,7 @@ class PersonnalisationScreen extends StatelessWidget {
               onTapped: () {
                 PlayerCardApi.updatePlayerCard(
                     context: context, playerCard: playerCard);
+                Navigator.of(context).pop();
               },
             ),
             const SizedBox(height: 20),
