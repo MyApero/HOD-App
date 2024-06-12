@@ -57,15 +57,19 @@ class PollApi {
 
   static Future<PollModel?> getPoll(
       {required String pollName, required String? password}) async {
-    final doc = await FirebaseFirestore.instance
-        .collection(DbConst.polls)
-        .where(DbConst.name, isEqualTo: pollName)
-        .where(DbConst.password, isEqualTo: password)
-        .get();
-    if (doc.docs.isEmpty) {
+    try {
+      final doc = await FirebaseFirestore.instance
+          .collection(DbConst.polls)
+          .where(DbConst.name, isEqualTo: pollName)
+          .where(DbConst.password, isEqualTo: password)
+          .get();
+      if (doc.docs.isEmpty) {
+        return null;
+      }
+      return PollModel.fromJson(doc.docs.first.data());
+    } catch (e) {
       return null;
     }
-    return PollModel.fromJson(doc.docs.first.data());
   }
 
   static Future<bool> vote(

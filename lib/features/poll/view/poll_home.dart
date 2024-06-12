@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/poll/view/create_poll.dart';
-import 'package:hod_app/features/poll/view/join_poll.dart';
+import 'package:hod_app/features/poll/view/poll_list.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/select_button.dart';
 
@@ -16,20 +16,15 @@ class PollHomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SelectButton(
-                label: "Créer un sondage",
-                onPressed: () {
-                  Navigator.of(context).push(CreatePollScreen.route());
-                },
-                icon: Icons.arrow_right_alt_rounded),
+            const Expanded(child: PollList()),
             const SizedBox(height: 15),
             SelectButton(
-                label: "Rejoindre un sondage",
-                onPressed: () {
-                  Navigator.of(context).push(JoinPollScreen.route());
-                },
-                icon: Icons.arrow_right_alt_rounded),
-            const SizedBox(height: 100),
+              label: "Créer un sondage",
+              onPressed: () {
+                Navigator.of(context).push(CreatePollScreen.route());
+              },
+              icon: Icons.add,
+            ),
           ],
         ));
   }

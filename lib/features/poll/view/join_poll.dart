@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/apis/poll_api.dart';
+import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';
 import 'package:hod_app/features/poll/view/poll_screen.dart';
 import 'package:hod_app/models/poll_model.dart';
-import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
 
 class JoinPollScreen extends StatefulWidget {
-  static route() => MaterialPageRoute(builder: (ctx) => const JoinPollScreen());
-  const JoinPollScreen({super.key});
+  static route(String pollName) =>
+      MaterialPageRoute(builder: (ctx) => JoinPollScreen(pollName: pollName));
+  const JoinPollScreen({super.key, required this.pollName});
+
+  final String pollName;
 
   @override
   State<JoinPollScreen> createState() => _JoinPollScreenState();
@@ -21,27 +24,71 @@ class _JoinPollScreenState extends State<JoinPollScreen> {
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController _pseudoController = TextEditingController();
-  final TextEditingController _pollNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  void checkPollPassword(BuildContext context) async {
+    PollModel? poll = await PollApi.getPoll(
+      pollName: widget.pollName,
+      password: CryptConst.hashPassword(_passwordController.text),
+    );
+    if (poll != null && context.mounted) {
+      Navigator.of(context).pop();
+      Navigator.of(context).push(
+        PollScreen.route(_pseudoController.text, poll),
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _pseudoController.dispose();
+    _passwordController.dispose();
+  }
 
   @override
   void initState() {
     super.initState();
     _pseudoController.text = AuthApi.currentUser!.displayName ?? "";
+
+    checkPollPassword(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    return AppScaffold(
-      hasBackArrow: true,
-      title: "Rejoindre un sondage",
-      child: Form(
+    return AlertDialog(
+      title: Text("Rejoindre ${widget.pollName}"),
+      actions: [
+        HodButton(
+          label: "Rejoindre",
+          onTapped: () async {
+            if (_formKey.currentState!.validate()) {
+              PollModel? poll = await PollApi.getPoll(
+                pollName: widget.pollName,
+                password: CryptConst.hashPassword(_passwordController.text),
+              );
+              if (poll == null && context.mounted) {
+                showSnackBar(context, 'Mauvais mot de passe');
+                return;
+              }
+              if (context.mounted) {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  PollScreen.route(_pseudoController.text, poll!),
+                );
+              }
+            }
+          },
+        ),
+      ],
+      content: Form(
         key: _formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.min,
           children: [
             HodFormField(
-              label: "Pseudo",
+              label: "Pseudo (pour le sondage)",
               controller: _pseudoController,
               validator: (value) {
                 if (value == null || value.isEmpty) {
@@ -50,43 +97,11 @@ class _JoinPollScreenState extends State<JoinPollScreen> {
                 return null;
               },
             ),
-            HodFormField(
-              label: "Nom du sondage",
-              controller: _pollNameController,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return "Veuillez entrer un nom de sondage";
-                }
-                return null;
-              },
-            ),
             PasswordFormField(
-              label: "Mot de passe",
+              label: "Mot de passe (du sondage)",
               controller: _passwordController,
             ),
             const SizedBox(height: 20),
-            HodButton(
-              label: "Rejoindre",
-              onTapped: () async {
-                if (_formKey.currentState!.validate()) {
-                  PollModel? poll = await PollApi.getPoll(
-                    pollName: _pollNameController.text,
-                    password: _passwordController.text.isEmpty
-                        ? null
-                        : _passwordController.text,
-                  );
-                  if (poll == null && context.mounted) {
-                    showSnackBar(context, 'Sondage introuvable');
-                    return;
-                  }
-                  if (context.mounted) {
-                    Navigator.of(context).push(
-                      PollScreen.route(_pseudoController.text, poll!),
-                    );
-                  }
-                }
-              },
-            ),
           ],
         ),
       ),

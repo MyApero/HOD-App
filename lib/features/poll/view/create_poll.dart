@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/apis/poll_api.dart';
+import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/features/auth/widgets/password_form_field.dart';
 import 'package:hod_app/widgets/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
@@ -148,9 +149,9 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                     context: context,
                     username: _pseudoController.text,
                     name: _pollNameController.text,
-                    password: _passwordController.text.isEmpty
-                        ? null
-                        : _passwordController.text,
+                    password: _passwordController.text == ""
+                        ? ""
+                        : CryptConst.hashPassword(_passwordController.text),
                     createdAt: DateTime.now(),
                     createdBy: AuthApi.currentUser!.uid,
                     question: _questionController.text,
@@ -160,8 +161,9 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                   setState(() {
                     _isLoading = false;
                   });
-                  if (eventCreated && context.mounted)
+                  if (eventCreated && context.mounted) {
                     Navigator.of(context).pop();
+                  }
                 }
               },
             )
