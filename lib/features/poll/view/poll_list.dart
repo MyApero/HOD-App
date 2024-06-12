@@ -41,9 +41,6 @@ class PollList extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   color: Palette.lightPurple.withAlpha(200),
                   child: ListTile(
-                    onFocusChange: (isFocused) {
-                      print(isFocused);
-                    },
                     splashColor: Palette.softPurple,
                     title: SimpleText(
                       poll.name,

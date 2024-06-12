@@ -10,15 +10,18 @@ class Calendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SfCalendar(
       view: CalendarView.week,
-      timeSlotViewSettings: TimeSlotViewSettings(
+      timeSlotViewSettings: const TimeSlotViewSettings(
      timeFormat: 'H:mm'),
-      allowedViews: [
+      allowedViews: const [
         CalendarView.day,
         CalendarView.week,
         CalendarView.month,
       ],
       showNavigationArrow: true,
       dataSource: MeetingDataSource(appointments),
+      onTap: (CalendarTapDetails details) {
+        print(details.appointments);
+      },
     );
   }
 

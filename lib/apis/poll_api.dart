@@ -92,13 +92,10 @@ class PollApi {
     for (int i = 0; i < voteIndexes.length; i++) {
       final optionIndex = optionIndexes[voteIndexes[i]];
       if (optionIndex == -1) {
-        print("là");
         return false;
       }
       final option = dbPoll.options[optionIndex];
-      print(option.voters);
       if (option.voters.contains(username)) {
-        print("ici");
         return false;
       }
       option.voters.add(username);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/home/view/widget/event_data.dart';
+import 'package:hod_app/features/home/view/widgets/event_data.dart';
 import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/event_card.dart';
+import 'package:hod_app/features/home/view/widgets/event_card.dart';
 
 class EventDetailsScreen extends StatelessWidget {
   const EventDetailsScreen({super.key, required this.title, this.pole});
@@ -22,13 +22,9 @@ class EventDetailsScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: events
-                  .map((e) => EventCard(
+                  .map((event) => EventCard(
                         large: true,
-                        date: e.startDate,
-                        name: e.name,
-                        location: e.location,
-                        pole: e.pole ?? "",
-                        description: e.description ?? "No description",
+                        event: event,
                       ))
                   .toList(),
             ),

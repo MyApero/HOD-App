@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/models/event_model.dart';
-import 'package:hod_app/widgets/calendar.dart';
-import 'package:hod_app/features/home/view/widget/event_data.dart';
+import 'package:hod_app/features/calendar/widgets/calendar.dart';
+import 'package:hod_app/features/home/view/widgets/event_data.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class CalendarScreen extends StatelessWidget {

@@ -8,6 +8,26 @@ import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/models/role_card_model.dart';
 
 class RoleCardApi {
+  static Future<String> getRoleCardImage(String roleCardId) async {
+    try {
+      final docs = await FirebaseFirestore.instance
+          .collection(DbConst.roleCards)
+          .doc(roleCardId)
+          .get();
+      return docs[DbConst.imageUrl] ?? "";
+    } catch (e) {
+      return "";
+    }
+  }
+
+  static Future<void> updateRoleCardImage(
+      String roleCardId, String imageUrl) async {
+    await FirebaseFirestore.instance
+        .collection(DbConst.roleCards)
+        .doc(roleCardId)
+        .set({DbConst.imageUrl: imageUrl}, SetOptions(merge: true));
+  }
+
   static Future<QuerySnapshot<Map<String, dynamic>>> getRoleCards(
       {String? id}) async {
     String userUid = AuthApi.currentUser!.uid;
@@ -69,12 +89,18 @@ class RoleCardApi {
     String userId = AuthApi.currentUser!.uid;
 
     try {
-      await FirebaseFirestore.instance.collection(DbConst.users).doc(userId).update(
+      await FirebaseFirestore.instance
+          .collection(DbConst.users)
+          .doc(userId)
+          .update(
         {
           DbConst.roleCards: FieldValue.arrayRemove([id])
         },
       );
-      await FirebaseFirestore.instance.collection(DbConst.roleCards).doc(id).delete();
+      await FirebaseFirestore.instance
+          .collection(DbConst.roleCards)
+          .doc(id)
+          .delete();
       if (context.mounted) {
         showSnackBar(context, "Personnage supprimé avec succès !");
       }
