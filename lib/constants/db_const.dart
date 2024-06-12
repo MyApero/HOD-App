@@ -55,4 +55,5 @@ class DbConst {
   static const String endedAt = 'endedAt';
   static const String password = 'password';
   static const String multipleChoice = 'multipleChoice';
+  static const String id = 'id';
 }

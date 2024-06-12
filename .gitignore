@@ -35,3 +35,4 @@ flutter/
 google-services.json
 GoogleService-Info.plist
 todo
+*-lock.json

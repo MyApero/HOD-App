@@ -19,6 +19,7 @@ class PollItemModel {
 }
 
 class PollModel {
+  final String? id;
   final String username;
   final String name;
   final String? password;
@@ -35,6 +36,7 @@ class PollModel {
   bool get hasEnded => endedAt != null && DateTime.now().isAfter(endedAt!);
 
   PollModel({
+    this.id,
     required this.username,
     required this.name,
     this.password,
@@ -48,11 +50,12 @@ class PollModel {
 
   @override
   String toString() {
-    return 'Poll{name: $name, createdAt: $createdAt, endedAt: $endedAt, createdByUid: $createdBy, createdByUsername: $username, question: $question, multipleChoice: $multipleChoice, options: $options}';
+    return 'Poll{name: $name, id: $id, createdAt: $createdAt, endedAt: $endedAt, createdByUid: $createdBy, createdByUsername: $username, question: $question, multipleChoice: $multipleChoice, options: $options}';
   }
 
-  factory PollModel.fromJson(Map<String, dynamic> json) {
+  factory PollModel.fromJson(Map<String, dynamic> json, {String? id}) {
     return PollModel(
+      id: id,
       username: json[DbConst.username] ?? '! -- Unknown user --',
       name: json[DbConst.name] ?? '! -- No poll name --',
       password: json[DbConst.password],

@@ -63,6 +63,10 @@ class _PollScreenState extends State<PollScreen> {
                     isSelected: voteIndexes.contains(i),
                     hasVoted: hasVoted,
                     voteCount: widget.poll.options[i].voters.length,
+                    votePercentage: widget.poll.votesCount == 0
+                        ? 0
+                        : (widget.poll.options[i].voters.length /
+                            widget.poll.votesCount),
                     onPressed: hasVoted
                         ? null
                         : () {
