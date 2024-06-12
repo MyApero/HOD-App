@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/constants/contacts.dart';
+import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/theme/palette.dart';
 import 'package:hod_app/widgets/hod_button.dart';
@@ -42,6 +43,9 @@ class ContactScreen extends StatelessWidget {
                   child: SimpleText("Copier", color: Palette.white),
                   onPressed: () async {
                     await Clipboard.setData(ClipboardData(text: ContactsConst.hodMail));
+                    if (context.mounted) {
+                      showSnackBar(context, "Adresse e-mail copiée");
+                    }
                     // copied successfully
                   },
                 )
