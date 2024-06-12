@@ -2,11 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hod_app/models/user_model.dart';
 
 class NavigationScreen extends StatefulWidget {
-  const NavigationScreen({super.key, required this.pages});
+  const NavigationScreen(
+      {super.key, required this.pages, required this.userRole});
 
   final List<Widget> pages;
+  final Role userRole;
 
   @override
   State<NavigationScreen> createState() => _NavigationScreenState();
@@ -41,19 +44,25 @@ class _NavigationScreenState extends State<NavigationScreen> {
             icon: Icon(Icons.calendar_month_rounded),
             label: 'Calendar',
           ),
-          BottomNavigationBarItem(
-            icon: FaIcon(Random().nextInt(5).remainder(5) == 0
-                ? FontAwesomeIcons.shieldCat
-                : FontAwesomeIcons.shieldDog),
-            label: 'Admin',
-          ),
+          if (widget.userRole == Role.admin || widget.userRole == Role.staff)
+            BottomNavigationBarItem(
+              icon: FaIcon(Random().nextInt(5).remainder(5) == 0
+                  ? FontAwesomeIcons.shieldCat
+                  : FontAwesomeIcons.shieldDog),
+              label: 'Administration',
+            ),
+          if (widget.userRole == Role.member)
+            const BottomNavigationBarItem(
+              icon: Icon(Icons.poll),
+              label: 'Sondages',
+            ),
           const BottomNavigationBarItem(
             icon: FaIcon(FontAwesomeIcons.layerGroup),
-            label: 'North',
+            label: 'Pôles',
           ),
           const BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            label: 'settings',
+            label: 'Paramètres',
           ),
         ],
       ),

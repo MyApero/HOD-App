@@ -16,23 +16,24 @@ class HomeScreen extends StatelessWidget {
         children: [
           const SizedBox(height: 20),
           const SimpleText("Les prochains événements"),
-          const SizedBox(height: 10),
           EventData(
             builder: (events) {
-              return SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: events
-                      .map((e) => EventCard(
-                            large: false,
-                            date: e.startDate,
-                            name: e.name,
-                            pole: e.pole ?? "",
-                            location: e.location,
-                            description: e.description ?? "No description",
-                          ))
-                      .toList(),
+              return Expanded(
+                child: GridView.builder(
+                  itemCount: events.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    return EventCard(
+                      large: false,
+                      date: events[index].startDate,
+                      name: events[index].name,
+                      pole: events[index].pole ?? "",
+                      location: events[index].location,
+                      description: events[index].description ?? "No description",
+                    );
+                  },
                 ),
               );
             },

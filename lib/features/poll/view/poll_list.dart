@@ -7,7 +7,9 @@ import 'package:hod_app/theme/palette.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
 class PollList extends StatelessWidget {
-  const PollList({super.key});
+  const PollList({super.key, this.isStaff = true});
+
+  final bool isStaff;
 
   @override
   Widget build(BuildContext context) {
@@ -49,39 +51,41 @@ class PollList extends StatelessWidget {
                     ),
                     subtitle: SimpleText("Par ${poll.username}",
                         textSize: 12, color: Colors.black54),
-                    trailing: IconButton(
-                      icon: const Icon(Icons.delete),
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              title: const Text("Supprimer le sondage"),
-                              content: const Text(
-                                  "Êtes-vous sûr de vouloir supprimer ce sondage ?"),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text("Annuler"),
-                                ),
-                                TextButton(
-                                  onPressed: () {
-                                    FirebaseFirestore.instance
-                                        .collection(DbConst.polls)
-                                        .doc(poll.id)
-                                        .delete();
-                                    Navigator.of(context).pop();
-                                  },
-                                  child: const Text("Supprimer"),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                    ),
+                    trailing: !isStaff
+                        ? const Icon(Icons.arrow_right_alt)
+                        : IconButton(
+                            icon: const Icon(Icons.delete),
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text("Supprimer le sondage"),
+                                    content: const Text(
+                                        "Êtes-vous sûr de vouloir supprimer ce sondage ?"),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text("Annuler"),
+                                      ),
+                                      TextButton(
+                                        onPressed: () {
+                                          FirebaseFirestore.instance
+                                              .collection(DbConst.polls)
+                                              .doc(poll.id)
+                                              .delete();
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text("Supprimer"),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                          ),
                     onTap: () async {
                       showDialog(
                         context: context,
