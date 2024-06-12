@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hod_app/apis/auth_api.dart';
@@ -16,10 +17,11 @@ class RoleCardApi {
           .collection(DbConst.users)
           .doc(userUid)
           .get();
-      if (doc["roleCards"] == null ) {
-        FirebaseFirestore.instance.collection(DbConst.users).doc(userUid).set({
-          DbConst.roleCards: []
-        }, SetOptions(merge: true));
+      if (doc["roleCards"] == null) {
+        FirebaseFirestore.instance
+            .collection(DbConst.users)
+            .doc(userUid)
+            .set({DbConst.roleCards: []}, SetOptions(merge: true));
       }
       List<String> roleCardsIds = List<String>.from(doc["roleCards"] as List);
       roleCardsIds.add("nullid");
@@ -34,7 +36,7 @@ class RoleCardApi {
         .get();
   }
 
-  static void addRoleCard(
+  static Future<bool> addRoleCard(
       {required BuildContext context, required RoleCardModel roleCard}) async {
     String userId = AuthApi.currentUser!.uid;
     var collection = FirebaseFirestore.instance.collection(DbConst.roleCards);
@@ -53,29 +55,52 @@ class RoleCardApi {
         showSnackBar(
             context, "Votre nouveau personnage a été ajouté avec succès !");
       }
+      return (true);
     } on FirebaseException catch (e) {
       if (context.mounted) {
         showSnackBar(context, e.message ?? "Unexpected error");
       }
     }
+    return (false);
+  }
+
+  static Future<bool> deleteRoleCard(
+      {required BuildContext context, required String id}) async {
+    String userId = AuthApi.currentUser!.uid;
+
+    try {
+      await FirebaseFirestore.instance.collection(DbConst.users).doc(userId).update(
+        {
+          DbConst.roleCards: FieldValue.arrayRemove([id])
+        },
+      );
+      await FirebaseFirestore.instance.collection(DbConst.roleCards).doc(id).delete();
+      if (context.mounted) {
+        showSnackBar(context, "Personnage supprimé avec succès !");
+      }
+      return (true);
+    } on FirebaseException catch (e) {
+      if (context.mounted) {
+        showSnackBar(context, e.message ?? "Unexpected error");
+      }
+    }
+    return (false);
   }
 
   static void updateRoleCard(
-      {required BuildContext context,
-      required RoleCardModel roleCard}) async {
-
+      {required BuildContext context, required RoleCardModel roleCard}) async {
     try {
       await FirebaseFirestore.instance
           .collection(DbConst.roleCards)
           .doc(roleCard.id)
           .set({
         ...RoleCardModel(
-          name: roleCard.name,
-          keys: roleCard.keys,
-          values: roleCard.values,
-          inventory: roleCard.inventory,
-          characteristics: roleCard.characteristics
-        ).toJson()
+                name: roleCard.name,
+                keys: roleCard.keys,
+                values: roleCard.values,
+                inventory: roleCard.inventory,
+                characteristics: roleCard.characteristics)
+            .toJson()
       });
       if (context.mounted) {
         showSnackBar(context, "Carte actualisée avec succès !");
