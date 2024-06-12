@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/poles/home/screens/widget/event_details_screen.dart';
+import 'package:hod_app/features/poles/widget/event_details_screen.dart';
 
 class MainBoardGameScreen extends StatelessWidget {
   const MainBoardGameScreen({super.key});
