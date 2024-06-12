@@ -144,4 +144,13 @@ class AuthApi {
       throw Exception('No user is currently logged in');
     }
   }
+
+  static Future<UserModel?> getUser() async {
+    if (currentUser == null) return null;
+    final userDoc = await FirebaseFirestore.instance
+        .collection(DbConst.users)
+        .doc(currentUser!.uid)
+        .get();
+    return UserModel.fromJson(userDoc.data()!);
+  }
 }

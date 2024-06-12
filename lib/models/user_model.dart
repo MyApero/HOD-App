@@ -14,15 +14,14 @@ class UserModel {
   final Role role;
   final List<RoleCardModel> roleCards;
 
-  UserModel({
-    required this.uid,
-    required this.username,
-    required this.email,
-    required this.firstName,
-    required this.lastName,
-    required this.role,
-    required this.roleCards
-  });
+  UserModel(
+      {required this.uid,
+      required this.username,
+      required this.email,
+      required this.firstName,
+      required this.lastName,
+      required this.role,
+      required this.roleCards});
 
   @override
   String toString() {
@@ -36,8 +35,9 @@ class UserModel {
       email: json[DbConst.email],
       firstName: json[DbConst.firstName],
       lastName: json[DbConst.lastName],
-      role: Role.values.firstWhere((e) => e.toString() == json[DbConst.role]),
-      roleCards: List<RoleCardModel>.from(json[DbConst.roleCards] as List)
+      role: Role.values.firstWhere((e) => e.name == json[DbConst.role],
+          orElse: () => Role.user),
+      roleCards: [],
     );
   }
 

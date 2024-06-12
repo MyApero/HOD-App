@@ -49,7 +49,7 @@ class _CreateEventState extends State<CreateEvent> {
                   return null;
                 },
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               DatetimeFormPicker(
                 onChanged: (date) {
                   setState(() {
@@ -67,7 +67,7 @@ class _CreateEventState extends State<CreateEvent> {
                   return null;
                 },
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               DatetimeFormPicker(
                 onChanged: (date) {
                   setState(() {
@@ -85,7 +85,7 @@ class _CreateEventState extends State<CreateEvent> {
                   return null;
                 },
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               DropdownSelection(
                   onValueChange: (value) {
                     setState(() {
@@ -94,12 +94,12 @@ class _CreateEventState extends State<CreateEvent> {
                   },
                   items: Pole.values.map((e) => e.name).toList(),
                   label: "Pole"),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               HodFormField(label: "Lieu", controller: locationController),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               HodFormField(
                   label: "Description", controller: descriptionController),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               HodButton(
                   label: "Créer",
                   onTapped: () {
@@ -110,7 +110,7 @@ class _CreateEventState extends State<CreateEvent> {
                         startDate: selectedFirstDate!,
                         endDate: selectedEndDate!,
                         createdBy: AuthApi.currentUser!.uid,
-                        pole: selectedPole!,
+                        pole: selectedPole,
                         location: locationController.text.isEmpty
                             ? "Epitech"
                             : locationController.text,

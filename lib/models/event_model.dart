@@ -30,7 +30,7 @@ class EventModel {
   factory EventModel.fromJson(Map<String, dynamic> json) {
     return EventModel(
       name: json[DbConst.name] ?? '!No event name!',
-      location: json[DbConst.location] ?? "No location",
+      location: json[DbConst.location] ?? "Epitech",
       startDate: (json[DbConst.startDate] ?? Timestamp.now()).toDate(),
       endDate: (json[DbConst.endDate] ?? Timestamp.now()).toDate(),
       createdBy: json[DbConst.createdBy] ?? 'Unknown user',

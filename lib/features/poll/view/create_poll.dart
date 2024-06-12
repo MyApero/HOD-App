@@ -149,9 +149,7 @@ class _CreatePollScreenState extends State<CreatePollScreen> {
                     context: context,
                     username: _pseudoController.text,
                     name: _pollNameController.text,
-                    password: _passwordController.text == ""
-                        ? ""
-                        : CryptConst.hashPassword(_passwordController.text),
+                    password: CryptConst.hashPassword(_passwordController.text),
                     createdAt: DateTime.now(),
                     createdBy: AuthApi.currentUser!.uid,
                     question: _questionController.text,

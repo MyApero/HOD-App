@@ -25,7 +25,7 @@ class EventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     String formattedDate = DateFormat('EEEE d MMM yyyy', 'fr_FR').format(date);
     return Container(
-      margin: EdgeInsets.only(right: 50),
+      margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: FilledButton(
         style: ButtonStyle(
           backgroundColor:
