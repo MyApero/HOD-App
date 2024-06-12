@@ -36,7 +36,12 @@ class _RoleCardInfoScreenState extends State<RoleCardInfoScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              PlayerCard(keys: roleCard[0].keys, values: roleCard[0].values, male: true),
+              PlayerCard(
+                keys: roleCard[0].keys,
+                values: roleCard[0].values,
+                male: true,
+                roleCardId: widget.cardId,
+              ),
               SizedBox(height: 10),
               SelectButton(
                   label: "Personnaliser ma carte",
@@ -61,35 +66,36 @@ class _RoleCardInfoScreenState extends State<RoleCardInfoScreen> {
                         name: widget.cardName, id: widget.cardId)),
               ),
               SmallClickableText("Supprimer le personnage", color: Colors.red,
-            onPressed: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: const SimpleText(
-                    "Voulez-vous vraiment supprimer votre personnage ? Cette action est irréversible."),
-                actions: [
-                  TextButton(
-                    child: const Text("Annuler"),
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                  TextButton(
-                      child: const Text(
-                        "Confirmer",
-                        textAlign: TextAlign.center,
-                      ),
-                      onPressed: () async {
-                        await RoleCardApi.deleteRoleCard(context: context, id: widget.cardId);
-                        if (context.mounted) {
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pop();
-                        }
-                      }),
-                ],
-              );
-            },
-          );
-        })
+                  onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const SimpleText(
+                          "Voulez-vous vraiment supprimer votre personnage ? Cette action est irréversible."),
+                      actions: [
+                        TextButton(
+                          child: const Text("Annuler"),
+                          onPressed: () => Navigator.of(context).pop(),
+                        ),
+                        TextButton(
+                            child: const Text(
+                              "Confirmer",
+                              textAlign: TextAlign.center,
+                            ),
+                            onPressed: () async {
+                              await RoleCardApi.deleteRoleCard(
+                                  context: context, id: widget.cardId);
+                              if (context.mounted) {
+                                Navigator.of(context).pop();
+                                Navigator.of(context).pop();
+                              }
+                            }),
+                      ],
+                    );
+                  },
+                );
+              })
             ],
           ),
         ),

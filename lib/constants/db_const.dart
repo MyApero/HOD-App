@@ -47,6 +47,7 @@ class DbConst {
   static const String roleCards = 'roleCards';
   static const String inventory = 'inventory';
   static const String characteristics = 'characteristics';
+  static const String imageUrl = 'imageUrl';
 
   // Polls
   static const String polls = 'polls';
