@@ -20,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                PlayerCard(keys: playerCard.keys, values: playerCard.values),
+                PlayerCard(keys: playerCard.keys, values: playerCard.values, male: playerCard.male),
                 SelectButton(
                     label: "Personnalisation",
                     onPressed: () {

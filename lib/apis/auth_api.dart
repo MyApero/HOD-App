@@ -9,6 +9,14 @@ import 'package:hod_app/models/user_model.dart';
 import 'package:hod_app/features/auth/screens/verify_mail.dart';
 
 class AuthApi {
+
+  static Future<bool> usernameAvailable(String username) async
+  {
+    var docs = await FirebaseFirestore.instance.collection(DbConst.users).where(DbConst.username, isEqualTo: username).get();
+
+    return (docs.docs.isEmpty);
+  }
+
   static Future<bool> register({
     required BuildContext context,
     required String email,
@@ -49,6 +57,7 @@ class AuthApi {
             PlayerCardModel(
               keys: <String>["", "", "", "", "", ""],
               values: <String>["", "", "", "", "", ""],
+              male: true
             ).toJson(),
           );
 

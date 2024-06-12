@@ -25,7 +25,7 @@ class _RegisterPageState extends State<RegisterScreen> {
   bool isLoading = false;
 
   final _formKey = GlobalKey<FormState>();
-
+  bool isUsernameAvailable = true;
   final firstNameController = TextEditingController();
   final lastNameController = TextEditingController();
   final usernameController = TextEditingController();
@@ -87,11 +87,18 @@ class _RegisterPageState extends State<RegisterScreen> {
               ),
               const SizedBox(height: TEXT_FIELD_MARGIN),
               HodFormField(
+                onChanged: (value) async {
+                    isUsernameAvailable =
+                        await AuthApi.usernameAvailable(value);
+                    setState(() {});
+  },
                 controller: usernameController,
                 label: "Nom d'utilisateur",
                 validator: (name) {
                   if (name!.isEmpty)
                     return "Veuillez entrer votre nom d'utilisateur";
+                  if (!isUsernameAvailable)
+                    return "Le nom d'utilisateur saisi n'est plus disponible";
                   return null;
                 },
               ),

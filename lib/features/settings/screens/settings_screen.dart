@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/features/auth/screens/login.dart';
+import 'package:hod_app/features/settings/screens/contact_screen.dart';
 import 'package:hod_app/features/settings/screens/credit_screen.dart';
 import 'package:hod_app/features/settings/screens/report_screen.dart';
 import 'package:hod_app/widgets/select_button.dart';
@@ -20,8 +21,11 @@ class SettingsScreen extends StatelessWidget {
           icon: Icons.arrow_right_alt_rounded,
           onPressed: () => Navigator.of(context).push(ReportScreen.route()),
         ),
-        const SelectButton(
-            label: "Contact", icon: Icons.arrow_right_alt_rounded),
+        SelectButton(
+          label: "Contact",
+          icon: Icons.arrow_right_alt_rounded,
+          onPressed: () => Navigator.of(context).push(ContactScreen.route()),
+        ),
         SelectButton(
           label: "Crédits",
           icon: Icons.arrow_right_alt_rounded,
