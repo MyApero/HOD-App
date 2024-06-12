@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/event_card.dart';
-import 'package:hod_app/features/home/view/widget/event_data.dart';
+import 'package:hod_app/features/home/view/widgets/event_card.dart';
+import 'package:hod_app/features/home/view/widgets/event_data.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,11 +27,7 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return EventCard(
                       large: false,
-                      date: events[index].startDate,
-                      name: events[index].name,
-                      pole: events[index].pole ?? "",
-                      location: events[index].location,
-                      description: events[index].description ?? "No description",
+                      event: events[index],
                     );
                   },
                 ),

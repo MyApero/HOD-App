@@ -15,7 +15,7 @@ class PlayerCardModel {
     return PlayerCardModel(
       keys: List<String>.from(json[DbConst.keys] as List),
       values: List<String>.from(json[DbConst.values] as List),
-      male: json[DbConst.male] as bool,
+      male: json[DbConst.male] ?? false,
     );
   }
 

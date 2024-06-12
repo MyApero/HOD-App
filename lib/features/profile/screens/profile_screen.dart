@@ -8,27 +8,32 @@ import 'package:hod_app/widgets/select_button.dart';
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
-  static route() => MaterialPageRoute(builder: (context) => ProfileScreen());
+  static route() =>
+      MaterialPageRoute(builder: (context) => const ProfileScreen());
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-        title: "Profil",
-        hasBackArrow: true,
-        child: PlayerCardData(
-          builder: (playerCard) => Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                PlayerCard(keys: playerCard.keys, values: playerCard.values, male: playerCard.male),
-                SelectButton(
-                    label: "Personnalisation",
-                    onPressed: () {
-                      Navigator.of(context)
-                          .push(PersonnalisationScreen.route());
-                    },
-                    icon: Icons.arrow_right_alt_rounded),
-              ]),
-        ));
+      title: "Profil",
+      hasBackArrow: true,
+      child: PlayerCardData(
+        builder: (playerCard) => Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              PlayerCard(
+                keys: playerCard.keys,
+                values: playerCard.values,
+                male: playerCard.male,
+              ),
+              SelectButton(
+                  label: "Personnalisation",
+                  onPressed: () {
+                    Navigator.of(context).push(PersonnalisationScreen.route());
+                  },
+                  icon: Icons.arrow_right_alt_rounded),
+            ]),
+      ),
+    );
   }
 }
