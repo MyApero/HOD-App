@@ -13,11 +13,13 @@ class DatetimeFormPicker extends StatefulWidget {
     required this.onChanged,
     this.label = "DATE",
     this.validator,
+    this.initialValue,
   });
 
   final void Function(DateTime) onChanged;
   final String label;
   final String? Function(String?)? validator;
+  final DateTime? initialValue;
 
   @override
   State<DatetimeFormPicker> createState() => _DatetimeFormPickerState();
@@ -68,6 +70,10 @@ class _DatetimeFormPickerState extends State<DatetimeFormPicker> {
   void initState() {
     super.initState();
     initializeDateFormatting();
+    controller.text = widget.initialValue == null
+        ? ""
+        : "${DateFormat.MMMMEEEEd('fr_FR').format(widget.initialValue!)} à ${DateFormat.Hm('fr_FR').format(widget.initialValue!)}"
+            .capitalize();
   }
 
   @override
