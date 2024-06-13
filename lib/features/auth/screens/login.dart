@@ -5,6 +5,7 @@ import 'package:hod_app/features/auth/widgets/password_form_field.dart';
 import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
+import 'package:hod_app/widgets/simple_text.dart';
 import 'package:hod_app/widgets/small_text.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -41,7 +42,9 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return AppScaffold(
       hasBackArrow: widget.reauth,
-      title: widget.reauth ? "Reconnectez-vous pour supprimer votre compte" : "Me connecter",
+      title: widget.reauth
+          ? "Reconnectez-vous pour supprimer votre compte"
+          : "Me connecter",
       child: Form(
         key: _formKey,
         child: Column(
@@ -100,7 +103,40 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             Column(
               children: [
-                const SmallClickableText("J'ai oublié mon mot de passe"),
+                SmallClickableText(
+                  "J'ai oublié mon mot de passe",
+                  onPressed: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: const SimpleText("Mot de passe oublié"),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            HodFormField(
+                                label: "Email", controller: emailController),
+                            const SimpleText(
+                                "Le mail peut prendre quelque minutes à arriver."),
+                          ],
+                        ),
+                        actions: [
+                          HodButton(
+                            label: "Envoyer",
+                            onTapped: () async {
+                              if (emailController.text.isNotEmpty) {
+                                bool mailSent = await AuthApi.resetPassword(
+                                    context, emailController.text);
+                                if (mailSent && context.mounted) {
+                                  Navigator.pop(context);
+                                }
+                              }
+                            },
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
                 const SizedBox(height: 10),
                 if (!widget.reauth)
                   SmallClickableText("M'inscrire", onPressed: () {
