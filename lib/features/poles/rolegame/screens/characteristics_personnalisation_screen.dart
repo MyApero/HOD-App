@@ -121,6 +121,7 @@ class _CharacteristicsPersonnalisationScreenState
             ),
             SelectButton(
               label: "Actualiser",
+              icon: Icons.refresh,
               onPressed: () {
                 RoleCardApi.updateRoleCard(
                     context: context, roleCard: roleCard[0]);

@@ -18,7 +18,8 @@ class MainWereWolfScreen extends StatelessWidget {
           children: [
             SelectButton(label: "Rôles"),
             SelectButton(
-              label: "Events details",
+              label: "Prochains événements",
+              icon: Icons.event,
               onPressed: () => Navigator.of(context).push(
                 EventDetailsScreen.route(title: "Loup-garou", pole: "werewolf"),
               ),
