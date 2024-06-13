@@ -36,6 +36,7 @@ Future<bool> showCreateNewCharacter(BuildContext context) async {
                     context: context,
                     roleCard: RoleCardModel(
                       name: characterNameController.text,
+                      url: "",
                       keys: ["", "", "", "", "", ""],
                       values: ["", "", "", "", "", ""],
                       inventory: RoleInventoryModel(items: [], values: []),

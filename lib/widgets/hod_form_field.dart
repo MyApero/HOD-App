@@ -37,6 +37,7 @@ class HodFormField extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 10),
       child: TextFormField(
+        keyboardType: keyboardType,
         maxLines: maxLines ?? 1,
         onChanged: onChanged,
         initialValue: controller != null ? null : initialValue,
