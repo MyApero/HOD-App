@@ -88,10 +88,9 @@ class _RegisterPageState extends State<RegisterScreen> {
               const SizedBox(height: TEXT_FIELD_MARGIN),
               HodFormField(
                 onChanged: (value) async {
-                    isUsernameAvailable =
-                        await AuthApi.usernameAvailable(value);
-                    setState(() {});
-  },
+                  isUsernameAvailable = await AuthApi.usernameAvailable(value);
+                  setState(() {});
+                },
                 controller: usernameController,
                 label: "Nom d'utilisateur",
                 validator: (name) {
@@ -107,8 +106,8 @@ class _RegisterPageState extends State<RegisterScreen> {
                 controller: emailController,
                 label: "Adresse email",
                 validator: (name) {
-                  if (name!.isEmpty || !name.contains("@epitech.eu")) {
-                    return "Veuillez entrer votre adresse mail epitech";
+                  if (name!.isEmpty || !name.contains("@")) {
+                    return "Veuillez entrer votre adresse mail";
                   }
                   return null;
                 },

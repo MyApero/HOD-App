@@ -41,7 +41,7 @@ class _VerifyMailScreenState extends State<VerifyMailScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          SimpleText("Bonjour ${FirebaseAuth.instance.currentUser!.displayName}"),
+          const SimpleText("Bonjour,"),
           SimpleText(
               "Un email de vérification a été envoyé à ${FirebaseAuth.instance.currentUser!.email}. (il devrait arriver dans moins de 10 minutes)"),
           const SimpleText(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/core/utils.dart';
 import 'package:hod_app/models/event_model.dart';
+import 'package:uuid/uuid.dart';
 
 enum Pole {
   rolegame,
@@ -32,8 +33,13 @@ class EventApi {
         showSnackBar(context, 'No user is currently logged in');
         return false;
       }
-      await FirebaseFirestore.instance.collection(DbConst.events).add({
+      final eventid = const Uuid().v1();
+      await FirebaseFirestore.instance
+          .collection(DbConst.events)
+          .doc(eventid)
+          .set({
         ...EventModel(
+          id: eventid,
           name: name,
           location: location,
           startDate: startDate,
@@ -68,5 +74,16 @@ class EventApi {
           .toList();
     }
     return events;
+  }
+
+  static Future<EventModel?> getEvent({required String eventId}) async {
+    final doc = await FirebaseFirestore.instance
+        .collection(DbConst.events)
+        .doc(eventId)
+        .get();
+    if (!doc.exists || doc.data() == null) {
+      return null;
+    }
+    return EventModel.fromJson(doc.data()!);
   }
 }
