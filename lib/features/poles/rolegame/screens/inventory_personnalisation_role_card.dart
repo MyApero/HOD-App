@@ -14,7 +14,6 @@ class InventoryPersonnalisationRoleCard extends StatefulWidget {
   const InventoryPersonnalisationRoleCard(
       {super.key, required this.cardName, required this.cardId});
 
-
   final String cardName;
   final String cardId;
 
@@ -63,7 +62,8 @@ class _InventoryPersonnalisationRoleCardState
                                   padding: const EdgeInsets.only(bottom: 10.0),
                                   child: HodFormField(
                                       label: "Item ${i + 1}",
-                                      initialValue: roleCard[0].inventory.items[i],
+                                      initialValue:
+                                          roleCard[0].inventory.items[i],
                                       onChanged: (value) {
                                         roleCard[0].inventory.items[i] = value;
                                       }),
@@ -86,7 +86,8 @@ class _InventoryPersonnalisationRoleCardState
                                 child: HodFormField(
                                     keyboardType: TextInputType.number,
                                     label: "Valeur ${i + 1}",
-                                    initialValue: roleCard[0].inventory.values[i],
+                                    initialValue:
+                                        roleCard[0].inventory.values[i],
                                     onChanged: (value) {
                                       roleCard[0].inventory.values[i] = value;
                                     }),
@@ -99,6 +100,14 @@ class _InventoryPersonnalisationRoleCardState
                 ),
               ),
             ),
+            SelectButton(
+              label: "Actualiser",
+              onPressed: () {
+                RoleCardApi.updateRoleCard(
+                    context: context, roleCard: roleCard[0]);
+              },
+            ),
+            SizedBox(height: 10),
             SelectButton(
               label: "Créer un nouvel item",
               onPressed: () {

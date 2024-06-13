@@ -6,6 +6,7 @@ class RoleCardModel {
   RoleCardModel({
     required this.name,
     required this.keys,
+    required this.url,
     required this.values,
     required this.inventory,
     required this.characteristics,
@@ -14,6 +15,7 @@ class RoleCardModel {
 
   final String name;
   final List<String> keys;
+  final String ?url;
   final List<String> values;
   final RoleInventoryModel inventory;
   final RoleCharacteristicsModel characteristics;
@@ -25,6 +27,7 @@ class RoleCardModel {
     return RoleCardModel(
       name: json[DbConst.name],
       keys: List<String>.from(json[DbConst.keys] as List),
+      url: json[DbConst.imageUrl] ?? "",
       values: List<String>.from(json[DbConst.values] as List),
       inventory: RoleInventoryModel.fromJson(json[DbConst.inventory]),
       characteristics: RoleCharacteristicsModel.fromJson(json[DbConst.characteristics]),
@@ -36,6 +39,7 @@ class RoleCardModel {
     return {
       DbConst.name: name,
       DbConst.keys: keys,
+      DbConst.imageUrl: url,
       DbConst.values: values,
       DbConst.inventory: inventory.toJson(),
       DbConst.characteristics: characteristics.toJson()

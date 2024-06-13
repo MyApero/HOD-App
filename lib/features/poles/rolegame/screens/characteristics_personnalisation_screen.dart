@@ -55,16 +55,28 @@ class _CharacteristicsPersonnalisationScreenState
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               for (var i = 0;
-                                  i < roleCard[0].characteristics.characteristics.length &&
-                                      i < roleCard[0].characteristics.values.length;
+                                  i <
+                                          roleCard[0]
+                                              .characteristics
+                                              .characteristics
+                                              .length &&
+                                      i <
+                                          roleCard[0]
+                                              .characteristics
+                                              .values
+                                              .length;
                                   i++)
                                 Padding(
                                   padding: const EdgeInsets.only(bottom: 10.0),
                                   child: HodFormField(
                                       label: "Caractéristique ${i + 1}",
-                                      initialValue: roleCard[0].characteristics.characteristics[i],
+                                      initialValue: roleCard[0]
+                                          .characteristics
+                                          .characteristics[i],
                                       onChanged: (value) {
-                                        roleCard[0].characteristics.characteristics[i] = value;
+                                        roleCard[0]
+                                            .characteristics
+                                            .characteristics[i] = value;
                                       }),
                                 ),
                             ],
@@ -77,16 +89,26 @@ class _CharacteristicsPersonnalisationScreenState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             for (var i = 0;
-                                i < roleCard[0].characteristics.characteristics.length &&
-                                    i < roleCard[0].characteristics.values.length;
+                                i <
+                                        roleCard[0]
+                                            .characteristics
+                                            .characteristics
+                                            .length &&
+                                    i <
+                                        roleCard[0]
+                                            .characteristics
+                                            .values
+                                            .length;
                                 i++)
                               Padding(
                                 padding: const EdgeInsets.only(bottom: 10.0),
                                 child: HodFormField(
                                     label: "Valeur ${i + 1}",
-                                    initialValue: roleCard[0].characteristics.values[i],
+                                    initialValue:
+                                        roleCard[0].characteristics.values[i],
                                     onChanged: (value) {
-                                      roleCard[0].characteristics.values[i] = value;
+                                      roleCard[0].characteristics.values[i] =
+                                          value;
                                     }),
                               )
                           ],
@@ -97,6 +119,14 @@ class _CharacteristicsPersonnalisationScreenState
                 ),
               ),
             ),
+            SelectButton(
+              label: "Actualiser",
+              onPressed: () {
+                RoleCardApi.updateRoleCard(
+                    context: context, roleCard: roleCard[0]);
+              },
+            ),
+            SizedBox(height: 10),
             SelectButton(
               label: "Créer une nouvelle caractéristique",
               icon: Icons.add,
@@ -111,8 +141,7 @@ class _CharacteristicsPersonnalisationScreenState
                       actions: [
                         HodFormField(label: "Nom", controller: keyController),
                         HodFormField(
-                            label: "Valeur",
-                            controller: valueController),
+                            label: "Valeur", controller: valueController),
                         TextButton(
                           child: const Text("Confirmer"),
                           onPressed: () {

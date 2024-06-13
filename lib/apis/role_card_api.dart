@@ -123,6 +123,7 @@ class RoleCardApi {
         ...RoleCardModel(
                 name: roleCard.name,
                 keys: roleCard.keys,
+                url: roleCard.url,
                 values: roleCard.values,
                 inventory: roleCard.inventory,
                 characteristics: roleCard.characteristics)
