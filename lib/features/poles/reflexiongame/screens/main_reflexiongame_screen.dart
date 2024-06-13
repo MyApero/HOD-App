@@ -27,7 +27,8 @@ class MainReflexionGameScreen extends StatelessWidget {
             // SelectButton(label: "Elo chess"),
             // SelectButton(label: "Leaderboard"),
             SelectButton(
-              label: "Events details",
+              label: "Prochains événements",
+              icon: Icons.event,
               onPressed: () => Navigator.of(context).push(
                 EventDetailsScreen.route(title: "Réflexion", pole: "chess"),
               ),

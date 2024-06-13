@@ -20,12 +20,14 @@ class MainRoleGameScreen extends StatelessWidget {
           children: [
             SelectButton(
               label: "Mes personnages",
+              icon: Icons.person_outline_outlined,
               onPressed: () => Navigator.of(context).push(
                 RoleCharacters.route(),
               ),
             ),
             SelectButton(
               label: "Prochains événements",
+              icon: Icons.event,
               onPressed: () => Navigator.of(context).push(
                 EventDetailsScreen.route(
                     title: "Jeux de rôle", pole: Pole.rolegame.name),

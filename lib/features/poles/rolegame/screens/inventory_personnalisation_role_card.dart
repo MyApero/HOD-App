@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hod_app/apis/role_card_api.dart';
 import 'package:hod_app/features/poles/rolegame/widgets/role_card_game_data.dart';
 import 'package:hod_app/features/background/app_scaffold.dart';
@@ -102,6 +103,7 @@ class _InventoryPersonnalisationRoleCardState
             ),
             SelectButton(
               label: "Actualiser",
+              icon: Icons.refresh,
               onPressed: () {
                 RoleCardApi.updateRoleCard(
                     context: context, roleCard: roleCard[0]);
@@ -110,6 +112,7 @@ class _InventoryPersonnalisationRoleCardState
             SizedBox(height: 10),
             SelectButton(
               label: "Créer un nouvel item",
+              icon: Icons.add,
               onPressed: () {
                 showDialog(
                   context: context,
