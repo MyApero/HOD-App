@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:hod_app/apis/event_api.dart';
+import 'package:hod_app/features/home/view/widgets/event_details_dialog.dart';
+import 'package:hod_app/models/event_model.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 class Calendar extends StatelessWidget {
@@ -10,8 +13,7 @@ class Calendar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SfCalendar(
       view: CalendarView.week,
-      timeSlotViewSettings: const TimeSlotViewSettings(
-     timeFormat: 'H:mm'),
+      timeSlotViewSettings: const TimeSlotViewSettings(timeFormat: 'H:mm'),
       allowedViews: const [
         CalendarView.day,
         CalendarView.week,
@@ -19,8 +21,20 @@ class Calendar extends StatelessWidget {
       ],
       showNavigationArrow: true,
       dataSource: MeetingDataSource(appointments),
-      onTap: (CalendarTapDetails details) {
-        print(details.appointments);
+      onTap: (CalendarTapDetails details) async {
+        if (details.appointments == null) return;
+        final String eventId =
+            (details.appointments![0] as Appointment).id.toString();
+        final EventModel? event = await EventApi.getEvent(eventId: eventId);
+        if (event == null) {
+          return;
+        }
+        if (context.mounted) {
+          showDialog(
+            context: context,
+            builder: (context) => EventDetailsDialog(event: event),
+          );
+        }
       },
     );
   }

@@ -71,7 +71,7 @@ class ManageUsersRoleScreen extends StatelessWidget {
                           });
                         },
                         items: Role.values.map((e) => e.name).toList(),
-                        label: "Pole",
+                        label: "Role",
                         isChildEnabled: (value) {
                           final bool notStaff = localRole == Role.user ||
                               localRole == Role.member;

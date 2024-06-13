@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hod_app/constants/db_const.dart';
 
 class EventModel {
+  final String id;
   final String name;
   final String location;
   final DateTime startDate;
@@ -12,6 +13,7 @@ class EventModel {
   final String? description;
 
   EventModel({
+    required this.id,
     required this.name,
     required this.location,
     required this.startDate,
@@ -29,6 +31,7 @@ class EventModel {
 
   factory EventModel.fromJson(Map<String, dynamic> json) {
     return EventModel(
+      id: json[DbConst.id] ?? '!No event id!',
       name: json[DbConst.name] ?? '!No event name!',
       location: json[DbConst.location] ?? "Epitech",
       startDate: (json[DbConst.startDate] ?? Timestamp.now()).toDate(),
@@ -42,6 +45,7 @@ class EventModel {
 
   Map<String, dynamic> toJson() {
     return {
+      DbConst.uid: id,
       DbConst.name: name,
       DbConst.location: location,
       DbConst.startDate: Timestamp.fromDate(startDate),
