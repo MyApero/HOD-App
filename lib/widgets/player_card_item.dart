@@ -16,28 +16,32 @@ class PlayerCardItem extends StatelessWidget {
           Radius.circular(20),
         ),
       ),
-      height: 25,
+      // height: 25,
       margin: const EdgeInsets.symmetric(vertical: 5),
       padding: const EdgeInsets.all(5.0),
       child: Row(
         textDirection: TextDirection.ltr,
         children: [
           const SizedBox(width: 5),
-          Text(
-              style: const TextStyle(
-                fontSize: 12,
-                fontFamily: "CoolveticaCondensed",
-                color: Colors.black,
-              ),
-              fieldKey.toUpperCase()),
+          Center(
+            child: Text(
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontFamily: "CoolveticaCondensed",
+                  color: Colors.black,
+                ),
+                fieldKey.toUpperCase()),
+          ),
           Spacer(),
-           Text(
-              style: TextStyle(
-                fontSize: 14,
-                fontFamily: "CoolveticaCondensed",
-                color: Color(0xFF909090),
-              ),
-              fieldValue),
+           Center(
+             child: Text(
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontFamily: "CoolveticaCondensed",
+                  color: Color(0xFF909090),
+                ),
+                fieldValue.toUpperCase()),
+           ),
         ],
       ),
     );
