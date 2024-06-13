@@ -9,10 +9,11 @@ import 'package:hod_app/models/user_model.dart';
 import 'package:hod_app/features/auth/screens/verify_mail.dart';
 
 class AuthApi {
-
-  static Future<bool> usernameAvailable(String username) async
-  {
-    var docs = await FirebaseFirestore.instance.collection(DbConst.users).where(DbConst.username, isEqualTo: username).get();
+  static Future<bool> usernameAvailable(String username) async {
+    var docs = await FirebaseFirestore.instance
+        .collection(DbConst.users)
+        .where(DbConst.username, isEqualTo: username)
+        .get();
 
     return (docs.docs.isEmpty);
   }
@@ -55,10 +56,10 @@ class AuthApi {
           .doc(userCredential.user!.uid)
           .set(
             PlayerCardModel(
-              keys: <String>["", "", "", "", "", ""],
-              values: <String>["", "", "", "", "", ""],
-              male: true
-            ).toJson(),
+                    keys: <String>["", "", "", "", "", ""],
+                    values: <String>["", "", "", "", "", ""],
+                    male: true)
+                .toJson(),
           );
 
       userCredential.user!.sendEmailVerification();
@@ -161,5 +162,18 @@ class AuthApi {
         .doc(currentUser!.uid)
         .get();
     return UserModel.fromJson(userDoc.data()!);
+  }
+
+  static Future<bool> resetPassword(BuildContext context, String email) async {
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      return true;
+    } on FirebaseAuthException catch (e) {
+      if (context.mounted) {
+        showSnackBar(context,
+            e.message ?? 'Some unexpected FirebaseAuthException occured');
+      }
+      return false;
+    }
   }
 }
