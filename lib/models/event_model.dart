@@ -45,7 +45,7 @@ class EventModel {
 
   Map<String, dynamic> toJson() {
     return {
-      DbConst.uid: id,
+      DbConst.id: id,
       DbConst.name: name,
       DbConst.location: location,
       DbConst.startDate: Timestamp.fromDate(startDate),
