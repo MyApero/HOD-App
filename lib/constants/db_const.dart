@@ -25,7 +25,6 @@ class DbConst {
   static const String roleAdmin = 'admin';
   static const String roleMember = 'member';
   static const String roleUser = 'user';
-  static const String lastConnection = 'lastConnection';
   static const String createdAt = 'createdAt';
 
   // Player Card
@@ -58,4 +57,7 @@ class DbConst {
   static const String password = 'password';
   static const String multipleChoice = 'multipleChoice';
   static const String id = 'id';
+
+  // User
+  static const String user = 'user';
 }
