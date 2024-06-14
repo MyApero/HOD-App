@@ -18,6 +18,7 @@ class RoleScreen extends StatelessWidget {
         title: role.name,
         hasBackArrow: true,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Container(
                 color: Palette.purple,
@@ -25,12 +26,13 @@ class RoleScreen extends StatelessWidget {
                 child: SimpleText(
                   role.message,
                   color: Palette.white,
-                  textSize: 18,
+                  textSize: 20,
                 )),
             SizedBox(height: 20),
             Icon(
+              color: Palette.purple,
               role.icon,
-              size: 100,
+              size: 130,
             ),
           ],
         ));
