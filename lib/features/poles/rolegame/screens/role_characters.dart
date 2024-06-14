@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hod_app/features/poles/rolegame/screens/create_new_character.dart';
 import 'package:hod_app/features/poles/rolegame/screens/role_card_info_screen.dart';
 import 'package:hod_app/features/poles/rolegame/widgets/role_card_game_data.dart';
@@ -37,7 +38,7 @@ class _RoleCharactersState extends State<RoleCharacters> {
                         padding: const EdgeInsets.only(bottom: 10),
                         child: SelectButton(
                           label: e.name,
-                          icon: Icons.arrow_right_alt_rounded,
+                          icon: FontAwesomeIcons.arrowRight,
                           onPressed: () async {
                             await Navigator.of(context).push(
                                 RoleCardInfoScreen.route(

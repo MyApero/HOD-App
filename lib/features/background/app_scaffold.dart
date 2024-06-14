@@ -5,6 +5,7 @@ class AppScaffold extends StatelessWidget {
   const AppScaffold({
     super.key,
     this.title,
+    this.header = true,
     this.hasBackArrow = false,
     this.hasProfileIcon = false,
     this.child,
@@ -13,12 +14,13 @@ class AppScaffold extends StatelessWidget {
   final String? title;
   final bool hasBackArrow;
   final bool hasProfileIcon;
+  final bool header;
   final Widget? child;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AppBackground(title:title, hasBackArrow: hasBackArrow, child: child),
+      body: AppBackground(title:title, header: header, hasBackArrow: hasBackArrow, child: child),
     );
   }
 }
