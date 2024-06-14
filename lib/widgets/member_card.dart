@@ -1,7 +1,7 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:hod_app/apis/local_api.dart';
+import 'package:hod_app/models/user_model.dart';
 import 'package:hod_app/theme/palette.dart';
 import 'package:hod_app/widgets/player_card_item.dart';
 
@@ -13,21 +13,23 @@ class MemberCard extends StatefulWidget {
 }
 
 class _MemberCardState extends State<MemberCard> {
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.landscapeRight,
-    ]);
-  }
+  UserModel user = LocalApi.getCurrentUser();
 
-  @override
-  void dispose() {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-    super.dispose();
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   SystemChrome.setPreferredOrientations([
+  //     DeviceOrientation.landscapeRight,
+  //   ]);
+  // }
+
+  // @override
+  // void dispose() {
+  //   SystemChrome.setPreferredOrientations([
+  //     DeviceOrientation.portraitUp,
+  //   ]);
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +42,7 @@ class _MemberCardState extends State<MemberCard> {
       },
       child: Container(
         color: Palette.purple,
-        child: const Column(
+        child: Column(
           children: [
             Text(
               "Carte de Membre",
@@ -50,19 +52,13 @@ class _MemberCardState extends State<MemberCard> {
               ),
             ),
             const SizedBox(height: 15),
-            Row(
-              children: [
-                Expanded(
-                  child: Column(
-                    children: [
-                      PlayerCardItem(fieldKey: "ok", fieldValue: "ok"),
-                      PlayerCardItem(fieldKey: "ok", fieldValue: "ok"),
-                      PlayerCardItem(fieldKey: "ok", fieldValue: "ok"),
-                    ],
-                  ),
-                ),
-              ],
-            )
+            // PlayerCardItem(fieldKey: "ID", fieldValue: user.memberCard.id),
+            // PlayerCardItem(fieldKey: "Status", fieldValue: user.role.name),
+            // PlayerCardItem(fieldKey: "Nom", fieldValue: user.lastName),
+            // PlayerCardItem(fieldKey: "Prénom", fieldValue: user.firstName),
+            // PlayerCardItem(
+            //     fieldKey: "Date de péremption",
+            //     fieldValue: user.memberCard.peremptionDate.toString()),
           ],
         ),
       ),

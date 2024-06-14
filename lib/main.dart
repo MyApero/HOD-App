@@ -21,7 +21,7 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]);
   sharedPref = await SharedPreferences.getInstance();
-  await LocalApi.storeUserInLocal();
+  LocalApi.storeUserInLocal();
   runApp(const ProviderScope(child: MyApp()));
 }
 

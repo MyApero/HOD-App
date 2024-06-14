@@ -1,6 +1,5 @@
 import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/constants/db_const.dart';
-import 'package:hod_app/models/user_model.dart';
 
 class MemberCardModel {
   MemberCardModel({
@@ -14,14 +13,16 @@ class MemberCardModel {
   factory MemberCardModel.fromJson(Map<String, dynamic> json) {
     return MemberCardModel(
       id: json[DbConst.id],
-      peremptionDate: json[DbConst.peremptionDate],
+      peremptionDate: json[DbConst.peremptionDate] == null
+          ? DateTime.now()
+          : DateTime.parse(json[DbConst.peremptionDate]),
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
       DbConst.id: id,
-      DbConst.peremptionDate: peremptionDate
+      DbConst.peremptionDate: peremptionDate.toIso8601String()
     };
   }
 }
