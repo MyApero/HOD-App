@@ -19,7 +19,7 @@ class MainWereWolfScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            SelectButton(label: "Rôles", 
+            SelectButton(label: "Rôles",
             icon: FontAwesomeIcons.hatCowboy,
             onPressed: () {
               Navigator.of(context).push(MainRoleScreen.route());
