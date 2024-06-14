@@ -47,7 +47,7 @@ class _SetOrCreateEventState extends State<SetOrCreateEvent> {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      title: "Créer un event",
+      title: widget.event != null ? "Modifie cet event" : "Créer un event",
       hasBackArrow: true,
       child: SingleChildScrollView(
         child: Form(

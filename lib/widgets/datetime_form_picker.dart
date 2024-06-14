@@ -29,13 +29,14 @@ class _DatetimeFormPickerState extends State<DatetimeFormPicker> {
   final TextEditingController controller = TextEditingController();
   late DateFormat dateformat;
 
-  Future<void> _selectDate(BuildContext context) async {
+  Future<void> _selectDate(BuildContext context, DateTime? selectedDate) async {
     DateTime? date;
     if (context.mounted) {
       date = Platform.isIOS
-          ? await showIosDatetimePicker(context)
+          ? await showIosDatetimePicker(context, selectedDate)
           : await showDatePicker(
               context: context,
+              initialDate: selectedDate,
               firstDate: DateTime.now(),
               lastDate: DateTime.now().add(const Duration(days: 365)),
             );
@@ -83,15 +84,10 @@ class _DatetimeFormPickerState extends State<DatetimeFormPicker> {
       label: widget.label,
       controller: controller,
       onTap: () {
-        _selectDate(context);
+        _selectDate(context, widget.initialValue ?? DateTime.now());
       },
       readOnly: true,
       suffixIcon: const Icon(Icons.calendar_today),
-      // decoration: InputDecoration(
-      //   labelText: widget.label,
-      //   filled: true,
-      //   prefixIcon: const Icon(Icons.calendar_today),
-      // ),
     );
   }
 }

@@ -21,6 +21,7 @@ class Calendar extends StatelessWidget {
       ],
       showNavigationArrow: true,
       dataSource: MeetingDataSource(appointments),
+      firstDayOfWeek: 1,
       onTap: (CalendarTapDetails details) async {
         if (details.appointments == null) return;
         final String eventId =

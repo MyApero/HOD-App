@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hod_app/theme/palette.dart';
 
-Future<DateTime?> showIosDatetimePicker(ctx) async {
-  DateTime? selectedDate = DateTime.now();
+Future<DateTime?> showIosDatetimePicker(
+    BuildContext ctx, DateTime? selectedDate) async {
   await showCupertinoModalPopup(
       context: ctx,
       builder: (_) => Container(

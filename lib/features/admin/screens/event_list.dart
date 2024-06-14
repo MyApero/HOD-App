@@ -2,13 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/features/admin/screens/set_or_create_event.dart';
 import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/features/home/view/widgets/event_details_dialog.dart';
 import 'package:hod_app/models/event_model.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
 class EventListScreen extends StatelessWidget {
-  static route() => MaterialPageRoute(builder: (context) => EventListScreen());
+  static route() => MaterialPageRoute(builder: (context) => const EventListScreen());
   const EventListScreen({super.key});
+
+  void _editEvent(BuildContext context, EventModel event) {
+    Navigator.of(context).push(SetOrCreateEvent.route(event: event));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,16 +83,11 @@ class EventListScreen extends StatelessWidget {
                 leading: IconButton(
                   icon: const Icon(Icons.edit),
                   onPressed: () {
-                    Navigator.of(context)
-                        .push(SetOrCreateEvent.route(event: event));
+                    _editEvent(context, event);
                   },
                 ),
                 onTap: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return EventDetailsDialog(event: event);
-                      });
+                  _editEvent(context, event);
                 },
               );
             },
