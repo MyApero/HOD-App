@@ -2,14 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:hod_app/apis/local_api.dart';
 import 'package:hod_app/models/user_model.dart';
 
 class NavigationScreen extends StatefulWidget {
-  const NavigationScreen(
-      {super.key, required this.pages, required this.userRole});
+  const NavigationScreen({super.key, required this.pages});
 
   final List<Widget> pages;
-  final Role userRole;
 
   @override
   State<NavigationScreen> createState() => _NavigationScreenState();
@@ -17,6 +16,8 @@ class NavigationScreen extends StatefulWidget {
 
 class _NavigationScreenState extends State<NavigationScreen> {
   int _selectedIndex = 0;
+
+  UserModel user = LocalApi.getCurrentUser();
 
   void _onItemTapped(int index) {
     setState(() {
@@ -44,14 +45,14 @@ class _NavigationScreenState extends State<NavigationScreen> {
             icon: Icon(Icons.calendar_month_rounded),
             label: 'Calendar',
           ),
-          if (widget.userRole == Role.admin || widget.userRole == Role.staff)
+          if (user.role == Role.admin || user.role == Role.staff)
             BottomNavigationBarItem(
               icon: FaIcon(Random().nextInt(5).remainder(5) == 0
                   ? FontAwesomeIcons.shieldCat
                   : FontAwesomeIcons.shieldDog),
               label: 'Administration',
             ),
-          if (widget.userRole == Role.member)
+          if (user.role == Role.member)
             const BottomNavigationBarItem(
               icon: Icon(Icons.poll),
               label: 'Sondages',

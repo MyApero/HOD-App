@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/models/role_card_model.dart';
@@ -49,7 +48,6 @@ class UserModel {
       DbConst.firstName: firstName,
       DbConst.lastName: lastName,
       DbConst.role: role.name,
-      DbConst.lastConnection: Timestamp.now(),
       DbConst.roleCards: roleCards
     };
   }

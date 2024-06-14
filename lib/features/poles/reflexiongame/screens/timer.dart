@@ -2,81 +2,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:hod_app/constants/constants.dart';
+import 'package:hod_app/features/poles/reflexiongame/widgets/timer_choose_dialog.dart';
+import 'package:hod_app/features/poles/reflexiongame/widgets/timer_side.dart';
+import 'package:hod_app/features/poles/reflexiongame/widgets/timer_utils.dart';
 import 'package:hod_app/theme/palette.dart';
-
-class TimerText extends StatelessWidget {
-  const TimerText({
-    super.key,
-    required this.time,
-    required this.color,
-    this.isActive = true,
-  });
-
-  // final String time;
-  final TimeOfDay time;
-  final Color color;
-  final bool isActive;
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      time.format(context),
-      textAlign: isActive ? TextAlign.start : TextAlign.end,
-      style: TextStyle(
-        fontSize: 100,
-        fontFeatures: const [FontFeature.tabularFigures()],
-        fontFamily: HodFonts.coolvetica,
-        color: color,
-      ),
-    );
-  }
-}
-
-class TimerSide extends StatelessWidget {
-  const TimerSide({
-    super.key,
-    required this.backgroundColor,
-    required this.textColor,
-    required this.time,
-    this.isActive = true,
-    this.onTap,
-    this.onLongPress,
-  });
-
-  final Color backgroundColor;
-  final Color textColor;
-  // final String time;
-  final TimeOfDay time;
-  final bool isActive;
-  final void Function()? onLongPress;
-  final void Function()? onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: isActive ? onTap : null,
-        onLongPress: onLongPress,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          color: backgroundColor,
-          child: Center(
-            child: Container(
-              // color: Colors.amber,
-              // width: 230,
-              child: TimerText(
-                time: time,
-                color: textColor,
-                isActive: isActive,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
 
 class TimerScreen extends StatefulWidget {
   static route() =>
@@ -87,11 +16,6 @@ class TimerScreen extends StatefulWidget {
   State<TimerScreen> createState() => _TimerScreenState();
 }
 
-const activeColor = Palette.purple;
-const inactiveColor = Palette.whitePurple;
-const activeTextColor = Palette.white;
-const inactiveTextColor = Palette.black;
-
 class _TimerScreenState extends State<TimerScreen> {
   bool isTopActive = true;
   Color topColor = activeColor;
@@ -100,15 +24,45 @@ class _TimerScreenState extends State<TimerScreen> {
   Color topTextColor = activeTextColor;
   Color bottomTextColor = inactiveTextColor;
 
-  TimeOfDay topTime = TimeOfDay.now();
-  TimeOfDay bottomTime = TimeOfDay.now();
+  int topMiliSec = 30 * 60 * 1000;
+  int bottomMiliSec = 30 * 60 * 1000;
 
-  int topTenMiliSec = 6000;
-  int bottomTenMiliSec = 6000;
+  GameStatus gameStatus = GameStatus.none;
 
-  late Timer timer;
+  Timer? timer;
 
   void flipSide() {
+    if (gameStatus == GameStatus.notstarted) {
+      timer = Timer.periodic(
+        const Duration(milliseconds: 1),
+        (t) {
+          setState(() {
+            if (topMiliSec < 0) {
+              timer!.cancel();
+              gameStatus = GameStatus.botwin;
+              topColor = looseColor;
+              bottomColor = winColor;
+              topMiliSec = 0;
+              return;
+            }
+            if (bottomMiliSec < 0) {
+              timer!.cancel();
+              gameStatus = GameStatus.topwin;
+              bottomColor = looseColor;
+              topColor = winColor;
+              bottomMiliSec = 0;
+              return;
+            }
+            if (isTopActive) {
+              topMiliSec--;
+            } else {
+              bottomMiliSec--;
+            }
+          });
+        },
+      );
+      gameStatus = GameStatus.ingame;
+    }
     setState(() {
       isTopActive = !isTopActive;
       topColor = isTopActive ? activeColor : inactiveColor;
@@ -119,42 +73,32 @@ class _TimerScreenState extends State<TimerScreen> {
     });
   }
 
-  String formatToTimer(int number) {
-    String numberString = number.toString().padLeft(4, '0');
-    return '${numberString.substring(0, 2)}:${numberString.substring(2, 4)}';
+  String formatToTimer(int totalMilliseconds) {
+    int totalSeconds = totalMilliseconds ~/ 1000;
+    int milliseconds = totalMilliseconds % 1000;
+    int minutes = totalSeconds ~/ 60;
+    int seconds = totalSeconds % 60;
+
+    if (minutes > 1) {
+      String minutesStr = minutes.toString().padLeft(2, '0');
+      String secondsStr = seconds.toString().padLeft(2, '0');
+      return '$minutesStr:$secondsStr';
+    } else {
+      String secondsStr = seconds.toString();
+      String millisecondsStr = (milliseconds / 100).round().toString();
+      return '$secondsStr.$millisecondsStr';
+    }
   }
 
   Future<int?> changeTime(BuildContext context, int localTime) async {
-    TextEditingController controller =
-        TextEditingController(text: ((localTime / 100).round()).toString());
     int? newTime = await showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          title: const Text("Change Time"),
-          content: TextField(
-            keyboardType: TextInputType.number,
-            controller: controller,
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text("Cancel"),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(int.parse(controller.text));
-              },
-              child: const Text("Ok"),
-            ),
-          ],
-        );
+        return TimerChooseDialog(defaultValue: localTime);
       },
     );
     if (newTime == null) return null;
-    return newTime * 100;
+    return newTime * 60 * 1000;
   }
 
   @override
@@ -162,53 +106,74 @@ class _TimerScreenState extends State<TimerScreen> {
     super.initState();
     isTopActive = Random().nextBool();
     flipSide();
-    timer = Timer.periodic(
-      const Duration(seconds: 1),
-      (timer) {
-        setState(() {
-          if (isTopActive) {
-            // topTenMiliSec--;
-            // topTime = TimeOfDay(hour: topTenMiliSec ~/ 100, minute: topTenMiliSec % 100);
-            topTime.replacing(hour: topTime.minute - 1);
-          } else {
-            // bottomTenMiliSec--;
-            // bottomTime = TimeOfDay(hour: bottomTenMiliSec ~/ 100, minute: bottomTenMiliSec % 100);
-          }
-        });
-      },
-    );
+    setState(() {
+      gameStatus = GameStatus.notstarted;
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    if (timer != null && timer!.isActive) timer!.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: Stack(
         children: [
-          TimerSide(
-            backgroundColor: topColor,
-            textColor: topTextColor,
-            // time: "00:00",
-            // time: formatToTimer(topTenMiliSec),
-            time: topTime,
-            isActive: isTopActive,
-            onTap: flipSide,
+          Column(
+            children: [
+              TimerSide(
+                backgroundColor: topColor,
+                textColor: topTextColor,
+                time: formatToTimer(topMiliSec),
+                isActive: isTopActive,
+                onLongPress: () async {
+                  int? newTime = await changeTime(context, topMiliSec);
+                  if (newTime != null) {
+                    setState(() {
+                      topMiliSec = newTime;
+                    });
+                  }
+                },
+                onTap: flipSide,
+                isTopSide: true,
+                gameStatus: gameStatus,
+              ),
+              TimerSide(
+                backgroundColor: bottomColor,
+                textColor: bottomTextColor,
+                time: formatToTimer(bottomMiliSec),
+                isActive: !isTopActive,
+                onLongPress: () async {
+                  int? newTime = await changeTime(context, bottomMiliSec);
+                  if (newTime != null) {
+                    setState(() {
+                      bottomMiliSec = newTime;
+                    });
+                  }
+                },
+                onTap: flipSide,
+                isTopSide: false,
+                gameStatus: gameStatus,
+              ),
+            ],
           ),
-          TimerSide(
-            backgroundColor: bottomColor,
-            textColor: bottomTextColor,
-            // time: formatToTimer(bottomTenMiliSec),
-            // time: "00:00",
-            time: bottomTime,
-            isActive: !isTopActive,
-            onLongPress: () async {
-              int? newTime = await changeTime(context, bottomTenMiliSec);
-              if (newTime != null) {
-                setState(() {
-                  bottomTenMiliSec = newTime;
-                });
-              }
-            },
-            onTap: flipSide,
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(
+                  Icons.cancel_outlined,
+                  size: 35,
+                  color: Palette.black,
+                ),
+              ),
+            ),
           ),
         ],
       ),
