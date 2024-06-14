@@ -31,7 +31,11 @@ class _ManageUsersRoleScreenState extends State<ManageUsersRoleScreen> {
           HodFormField(
             label: "Recherche...",
             controller: searchController,
-
+            onChanged: (value) {
+              setState(() {
+                searchText = value;
+              });
+            },
           ),
           Expanded(
             child: StreamBuilder(
@@ -58,7 +62,15 @@ class _ManageUsersRoleScreenState extends State<ManageUsersRoleScreen> {
                 final usersQuery = snapshots.data!.docs;
                 List<UserModel> users = usersQuery
                     .map((e) => UserModel.fromJson(e.data()))
-                    .toList();
+                    .toList()
+                    .where((element) {
+                  return element.username
+                          .toLowerCase()
+                          .contains(searchText.toLowerCase()) ||
+                      element.email
+                          .toLowerCase()
+                          .contains(searchText.toLowerCase());
+                }).toList();
 
                 return ListView.builder(
                   itemCount: users.length,
