@@ -1,5 +1,6 @@
 import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/constants/db_const.dart';
+import 'package:hod_app/models/member_card_model.dart';
 import 'package:hod_app/models/role_card_model.dart';
 
 enum Role { user, member, staff, admin }
@@ -12,6 +13,7 @@ class UserModel {
   final String lastName;
   final Role role;
   final List<RoleCardModel> roleCards;
+  final MemberCardModel memberCard;
 
   UserModel(
       {required this.uid,
@@ -20,7 +22,8 @@ class UserModel {
       required this.firstName,
       required this.lastName,
       required this.role,
-      required this.roleCards});
+      required this.roleCards,
+      required this.memberCard});
 
   @override
   String toString() {
@@ -37,6 +40,9 @@ class UserModel {
       role: Role.values.firstWhere((e) => e.name == json[DbConst.role],
           orElse: () => Role.user),
       roleCards: [],
+      memberCard: MemberCardModel(id: "0", peremptionDate: DateTime.now()
+      ),
+      // memberCard: json[DbConst.memberCard](json[DbConst.memberCard].fromJson()),
     );
   }
 
@@ -48,7 +54,8 @@ class UserModel {
       DbConst.firstName: firstName,
       DbConst.lastName: lastName,
       DbConst.role: role.name,
-      DbConst.roleCards: roleCards
+      DbConst.roleCards: roleCards,
+      DbConst.memberCard: memberCard.toJson(),
     };
   }
 }

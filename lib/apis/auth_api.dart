@@ -1,9 +1,12 @@
+import 'dart:math';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:hod_app/constants/db_const.dart';
 import 'package:hod_app/core/utils.dart';
+import 'package:hod_app/models/member_card_model.dart';
 import 'package:hod_app/models/player_card_model.dart';
 import 'package:hod_app/models/user_model.dart';
 import 'package:hod_app/features/auth/screens/verify_mail.dart';
@@ -41,13 +44,18 @@ class AuthApi {
           .doc(userCredential.user!.uid)
           .set({
         ...UserModel(
-            uid: userCredential.user!.uid,
-            username: username,
-            email: email,
-            firstName: firstName,
-            lastName: lastName,
-            role: Role.user,
-            roleCards: []).toJson(),
+          uid: userCredential.user!.uid,
+          username: username,
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          role: Role.user,
+          roleCards: [],
+          memberCard: MemberCardModel(
+            id: Random().nextInt(999999999999).toString(),
+            peremptionDate: DateTime.now().add(const Duration(days: 365)),
+          ),
+        ).toJson(),
         DbConst.createdAt: Timestamp.now(),
       });
 

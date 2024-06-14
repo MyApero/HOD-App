@@ -14,11 +14,7 @@ class MemberScreen extends StatelessWidget {
     return AppScaffold(
       hasBackArrow: true,
       header: false,
-      child: Container(
-        color: Palette.purple,
-        margin: EdgeInsets.all(20),
-        child: MemberCard(),
-      )
+      child: MemberCard(),
     );
   }
 }
