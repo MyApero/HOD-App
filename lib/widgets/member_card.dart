@@ -23,13 +23,13 @@ class _MemberCardState extends State<MemberCard> {
   //   ]);
   // }
 
-  // @override
-  // void dispose() {
-  //   SystemChrome.setPreferredOrientations([
-  //     DeviceOrientation.portraitUp,
-  //   ]);
-  //   super.dispose();
-  // }
+  @override
+  void dispose() {
+    super.dispose();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+  }
 
   @override
   Widget build(BuildContext context) {

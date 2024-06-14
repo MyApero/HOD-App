@@ -87,7 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.of(context).pop(true);
                             }
                           } else {
-                            AuthApi.login(
+                            await AuthApi.login(
                                 context: context,
                                 email: emailController.text,
                                 password: passwordController.text);

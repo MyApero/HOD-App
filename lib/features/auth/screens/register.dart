@@ -8,6 +8,7 @@ import 'package:hod_app/widgets/hod_button.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
 import 'package:hod_app/widgets/small_text.dart';
 
+// ignore: constant_identifier_names
 const double TEXT_FIELD_MARGIN = 10;
 
 class RegisterScreen extends StatefulWidget {

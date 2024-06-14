@@ -6,11 +6,15 @@ import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/constants/db_const.dart';
 
 class LocalApi {
-  static Future<bool> storeUserInLocal() async {
+  static Future<bool> storeCurrentUserInLocal() async {
     UserModel? currentUser = await AuthApi.getUser();
     if (currentUser == null) return (false);
-    sharedPref!.setString(DbConst.user, json.encode(currentUser.toJson()));
+    storeUserInLocal(currentUser);
     return (true);
+  }
+
+  static Future<void> storeUserInLocal(UserModel user) async {
+    sharedPref!.setString(DbConst.user, json.encode(user.toJson()));
   }
 
   static UserModel getCurrentUser() {
