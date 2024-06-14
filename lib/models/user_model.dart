@@ -40,13 +40,9 @@ class UserModel {
       role: Role.values.firstWhere((e) => e.name == json[DbConst.role],
           orElse: () => Role.user),
       roleCards: [],
-<<<<<<< Updated upstream
       memberCard: MemberCardModel(id: "0", peremptionDate: DateTime.now()
       ),
       // memberCard: json[DbConst.memberCard](json[DbConst.memberCard].fromJson()),
-=======
-      memberCard: (json[DbConst.memberCard].fromJson()),
->>>>>>> Stashed changes
     );
   }
 
