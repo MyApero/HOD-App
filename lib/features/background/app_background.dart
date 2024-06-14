@@ -6,6 +6,7 @@ class AppBackground extends StatelessWidget {
   const AppBackground({
     super.key,
     this.title,
+    this.header = true,
     this.hasBackArrow = false,
     this.hasProfileIcon = false,
     this.child,
@@ -13,6 +14,7 @@ class AppBackground extends StatelessWidget {
 
   final String? title;
   final bool hasBackArrow;
+  final bool header;
   final bool hasProfileIcon;
   final Widget? child;
 
@@ -24,7 +26,8 @@ class AppBackground extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: MediaQuery.of(context).viewPadding.top),
-          AppHeader(title: title),
+          if (header)
+            AppHeader(title: title),
           Expanded(
             child: Container(
               padding: EdgeInsets.only(

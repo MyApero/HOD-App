@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:hod_app/apis/auth_api.dart';
 import 'package:hod_app/features/auth/screens/login.dart';
 import 'package:hod_app/features/settings/screens/contact_screen.dart';
@@ -18,22 +19,22 @@ class SettingsScreen extends StatelessWidget {
       children: [
         SelectButton(
           label: "Faire un retour",
-          icon: Icons.arrow_right_alt_rounded,
+          icon: FontAwesomeIcons.arrowRight,
           onPressed: () => Navigator.of(context).push(ReportScreen.route()),
         ),
         SelectButton(
           label: "Contact",
-          icon: Icons.arrow_right_alt_rounded,
+          icon: FontAwesomeIcons.arrowRight,
           onPressed: () => Navigator.of(context).push(ContactScreen.route()),
         ),
         SelectButton(
           label: "Crédits",
-          icon: Icons.arrow_right_alt_rounded,
+          icon: FontAwesomeIcons.arrowRight,
           onPressed: () => Navigator.of(context).push(CreditScreen.route()),
         ),
         SelectButton(
           label: "Déconnexion",
-          icon: Icons.arrow_right_alt_rounded,
+          icon: FontAwesomeIcons.arrowRight,
           color: const Color(0xFFE43333),
           onPressed: () {
             AuthApi.signOut();

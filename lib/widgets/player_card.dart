@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hod_app/apis/player_card_api.dart';
 import 'package:hod_app/apis/role_card_api.dart';
+import 'package:hod_app/features/profile/screens/member_screen.dart';
 import 'package:hod_app/models/player_card_model.dart';
 import 'package:hod_app/theme/palette.dart';
 import 'package:hod_app/widgets/hod_form_field.dart';
@@ -50,7 +51,9 @@ class _PlayerCardState extends State<PlayerCard> {
       color: Palette.purple,
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
-        onTap: () {},
+        onTap: widget.roleCardId != null ? () {} : () {
+          Navigator.of(context).push(MemberScreen.route());
+        },
         child: SizedBox(
           width: double.infinity,
           child: Container(
