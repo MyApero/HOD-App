@@ -1,40 +1,45 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/common/async_waiting.dart';
+import 'package:hod_app/apis/local_api.dart';
 import 'package:hod_app/constants/constants.dart';
 import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/models/user_model.dart';
 import 'package:hod_app/widgets/dropdown_selection.dart';
+import 'package:hod_app/widgets/hod_form_field.dart';
 import 'package:hod_app/widgets/simple_text.dart';
 
-class ManageUsersRoleScreen extends StatelessWidget {
+class ManageUsersRoleScreen extends StatefulWidget {
   static route() =>
       MaterialPageRoute(builder: (context) => const ManageUsersRoleScreen());
   const ManageUsersRoleScreen({super.key});
 
-  Future<Role> getLocalRole() async {
-    UserModel? localUser = await AuthApi.getUser();
-    return localUser!.role;
-  }
+  @override
+  State<ManageUsersRoleScreen> createState() => _ManageUsersRoleScreenState();
+}
+
+class _ManageUsersRoleScreenState extends State<ManageUsersRoleScreen> {
+  final TextEditingController searchController = TextEditingController();
+  String searchText = "";
 
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
       title: "Gérer les membres",
       hasBackArrow: true,
-      child: FutureBuilder<Role>(
-        future: getLocalRole(),
-        builder: (context, snapshot) {
-          Widget? wait = getAsyncWaitingWidget(snapshot);
-          if (wait != null) return wait;
+      child: Column(
+        children: [
+          HodFormField(
+            label: "Recherche...",
+            controller: searchController,
 
-          Role localRole = snapshot.data!;
-          return StreamBuilder(
+          ),
+          Expanded(
+            child: StreamBuilder(
               stream: FirebaseFirestore.instance
                   .collection(DbConst.users)
                   .snapshots(),
               builder: (context, snapshots) {
+                Role localRole = LocalApi.getCurrentUser().role;
                 if (snapshots.connectionState == ConnectionState.waiting) {
                   return const Center(
                     child: CircularProgressIndicator(),
@@ -87,8 +92,10 @@ class ManageUsersRoleScreen extends StatelessWidget {
                     );
                   },
                 );
-              });
-        },
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
