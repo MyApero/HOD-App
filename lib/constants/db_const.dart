@@ -33,6 +33,10 @@ class DbConst {
   static const String values = 'values';
   static const String male = 'male';
 
+  // Member Card
+  static const String memberCard = 'memberCard';
+  static const String peremptionDate = 'peremptionDate';
+
   // Reports
   static const String reports = 'reports';
   static const String message = 'message';
