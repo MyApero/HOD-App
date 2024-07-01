@@ -10,9 +10,7 @@ class AppHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      SizedBox(
-        height: 10,
-      ),
+      const SizedBox(height: 10),
       HodLogo(width: MediaQuery.of(context).size.height * 10 / 100),
       Container(
         // color: Colors.red,
@@ -27,7 +25,7 @@ class AppHeader extends StatelessWidget {
           ),
         ),
       ),
-      SizedBox(height: 15)
+      const SizedBox(height: 30)
     ]);
   }
 }

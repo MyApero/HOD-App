@@ -19,7 +19,7 @@ class PersonnalisationScreen extends StatelessWidget {
       child: PlayerCardData(
         builder: (playerCard) => Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: Container(

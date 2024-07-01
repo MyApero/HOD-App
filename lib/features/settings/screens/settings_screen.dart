@@ -32,6 +32,7 @@ class SettingsScreen extends StatelessWidget {
           icon: FontAwesomeIcons.arrowRight,
           onPressed: () => Navigator.of(context).push(CreditScreen.route()),
         ),
+        const Expanded(child: SizedBox()),
         SelectButton(
           label: "Déconnexion",
           icon: FontAwesomeIcons.arrowRight,

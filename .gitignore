@@ -36,3 +36,4 @@ google-services.json
 GoogleService-Info.plist
 todo
 *-lock.json
+firebase_options.dart

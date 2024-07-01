@@ -34,12 +34,11 @@ class SelectButton extends StatelessWidget {
           Text(label,
               style: const TextStyle(
                 fontFamily: "CoolveticaCondensed",
-                fontSize: 20,
+                fontSize: 24,
                 color: Palette.white,
               )),
           const Spacer(),
-          if (icon != null) FaIcon(size: 40, icon!),
-          
+          if (icon != null) FaIcon(size: 25, icon!),
         ],
       ),
     );

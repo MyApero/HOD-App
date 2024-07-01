@@ -15,13 +15,13 @@ class MemberCard extends StatefulWidget {
 class _MemberCardState extends State<MemberCard> {
   UserModel user = LocalApi.getCurrentUser();
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   SystemChrome.setPreferredOrientations([
-  //     DeviceOrientation.landscapeRight,
-  //   ]);
-  // }
+  @override
+  void initState() {
+    super.initState();
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+    ]);
+  }
 
   @override
   void dispose() {
