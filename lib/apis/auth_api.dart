@@ -96,9 +96,9 @@ class AuthApi {
     required String password,
   }) async {
     try {
-      await LocalApi.storeCurrentUserInLocal();
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+      await LocalApi.storeCurrentUserInLocal();
       return true;
     } on FirebaseAuthException catch (e) {
       showSnackBar(context,

@@ -9,7 +9,7 @@ class LocalApi {
   static Future<bool> storeCurrentUserInLocal() async {
     UserModel? currentUser = await AuthApi.getUser();
     if (currentUser == null) return (false);
-    storeUserInLocal(currentUser);
+    await storeUserInLocal(currentUser);
     return (true);
   }
 
@@ -17,7 +17,8 @@ class LocalApi {
     sharedPref!.setString(DbConst.user, json.encode(user.toJson()));
   }
 
-  static UserModel getCurrentUser() {
+  static UserModel? getCurrentUser() {
+    if (sharedPref!.get(DbConst.user) == null) return null;
     return UserModel.fromJson(
       json.decode(sharedPref!.get(DbConst.user) as String),
     );

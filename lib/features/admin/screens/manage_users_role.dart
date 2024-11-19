@@ -43,7 +43,7 @@ class _ManageUsersRoleScreenState extends State<ManageUsersRoleScreen> {
                   .collection(DbConst.users)
                   .snapshots(),
               builder: (context, snapshots) {
-                Role localRole = LocalApi.getCurrentUser().role;
+                Role localRole = LocalApi.getCurrentUser()!.role;
                 if (snapshots.connectionState == ConnectionState.waiting) {
                   return const Center(
                     child: CircularProgressIndicator(),

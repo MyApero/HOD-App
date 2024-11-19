@@ -25,14 +25,14 @@ class NavigationPages extends StatelessWidget {
       title: "Calendrier",
       child: CalendarScreen(),
     ),
-    if (LocalApi.getCurrentUser().role == Role.admin ||
-        LocalApi.getCurrentUser().role == Role.staff)
+    if (LocalApi.getCurrentUser()?.role == Role.admin ||
+        LocalApi.getCurrentUser()?.role == Role.staff)
       const AppBackground(
         hasProfileIcon: true,
         title: "Administration",
         child: AdminScreen(),
       ),
-    if (LocalApi.getCurrentUser().role == Role.member)
+    if (LocalApi.getCurrentUser()?.role == Role.member)
       const AppBackground(
         hasProfileIcon: true,
         title: "Sondages",

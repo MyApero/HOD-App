@@ -37,3 +37,4 @@ GoogleService-Info.plist
 todo
 *-lock.json
 firebase_options.dart
+DS_Store

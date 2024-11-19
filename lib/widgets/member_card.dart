@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:hod_app/apis/local_api.dart';
 import 'package:hod_app/models/user_model.dart';
 import 'package:hod_app/theme/palette.dart';
-import 'package:hod_app/widgets/player_card_item.dart';
 
 class MemberCard extends StatefulWidget {
   const MemberCard({super.key});
@@ -13,7 +12,7 @@ class MemberCard extends StatefulWidget {
 }
 
 class _MemberCardState extends State<MemberCard> {
-  UserModel user = LocalApi.getCurrentUser();
+  UserModel user = LocalApi.getCurrentUser()!;
 
   @override
   void initState() {
@@ -42,7 +41,7 @@ class _MemberCardState extends State<MemberCard> {
       },
       child: Container(
         color: Palette.purple,
-        child: Column(
+        child: const Column(
           children: [
             Text(
               "Carte de Membre",
@@ -51,7 +50,7 @@ class _MemberCardState extends State<MemberCard> {
                 color: Palette.white,
               ),
             ),
-            const SizedBox(height: 15),
+            SizedBox(height: 15),
             // PlayerCardItem(fieldKey: "ID", fieldValue: user.memberCard.id),
             // PlayerCardItem(fieldKey: "Status", fieldValue: user.role.name),
             // PlayerCardItem(fieldKey: "Nom", fieldValue: user.lastName),

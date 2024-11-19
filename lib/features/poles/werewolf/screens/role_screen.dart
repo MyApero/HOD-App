@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/common/async_waiting.dart';
 import 'package:hod_app/features/background/app_scaffold.dart';
 import 'package:hod_app/models/werewolf_role_model.dart';
 import 'package:hod_app/theme/palette.dart';
@@ -22,13 +21,13 @@ class RoleScreen extends StatelessWidget {
           children: [
             Container(
                 color: Palette.purple,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 child: SimpleText(
                   role.message,
                   color: Palette.white,
                   textSize: 20,
                 )),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Icon(
               color: Palette.purple,
               role.icon,
