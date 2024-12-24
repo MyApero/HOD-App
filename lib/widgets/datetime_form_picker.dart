@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/widgets/hod_form_field.dart';
 import 'package:intl/intl.dart';
-import 'package:hod_app/widgets/ios_datetime_picker.dart';
+import 'package:hod/widgets/ios_datetime_picker.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 class DatetimeFormPicker extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
+import 'package:hod/widgets/hod_form_field.dart';
 
 class PasswordFormField extends StatefulWidget {
   const PasswordFormField({
@@ -23,33 +23,32 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
   @override
   Widget build(BuildContext context) {
     return HodFormField(
-      label: widget.label,
-      controller: widget.controller,
-      isTextShown: viewPwd,
-      enableSuggestions: false,
-      autocorrect: false,
-      suffixIcon: IconButton(
-          icon: Icon(viewPwd ? Icons.visibility : Icons.visibility_off),
-          onPressed: () {
-            setState(() {
-              viewPwd = !viewPwd;
-            });
-          }),
-      validator: (value) {
-        if (widget.validator == null) {
+        label: widget.label,
+        controller: widget.controller,
+        isTextShown: viewPwd,
+        enableSuggestions: false,
+        autocorrect: false,
+        suffixIcon: IconButton(
+            icon: Icon(viewPwd ? Icons.visibility : Icons.visibility_off),
+            onPressed: () {
+              setState(() {
+                viewPwd = !viewPwd;
+              });
+            }),
+        validator: (value) {
+          if (widget.validator == null) {
+            return null;
+          }
+          if (value == null || value.isEmpty) {
+            return 'Veuillez entrer un mot de passe';
+          }
+          if (value.length < 8) {
+            return 'Le mot de passe doit contenir au moins 8 caractères';
+          }
+          if (widget.validator != null) {
+            return widget.validator!.call(value);
+          }
           return null;
-        }
-        if (value == null || value.isEmpty) {
-          return 'Veuillez entrer un mot de passe';
-        }
-        if (value.length < 8) {
-          return 'Le mot de passe doit contenir au moins 8 caractères';
-        }
-        if (widget.validator != null) {
-          return widget.validator!.call(value);
-        }
-        return null;
-      }
-    );
+        });
   }
 }

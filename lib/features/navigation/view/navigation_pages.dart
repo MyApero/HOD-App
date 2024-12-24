@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/local_api.dart';
-import 'package:hod_app/features/admin/screens/admin_screen.dart';
-import 'package:hod_app/features/calendar/view/calendar_screen.dart';
-import 'package:hod_app/features/poles/home/screens/home_pole_screen.dart';
-import 'package:hod_app/features/home/view/home.dart';
-import 'package:hod_app/features/navigation/view/navigation_screen.dart';
-import 'package:hod_app/features/poll/view/poll_list.dart';
-import 'package:hod_app/features/settings/screens/settings_screen.dart';
-import 'package:hod_app/features/background/app_background.dart';
-import 'package:hod_app/models/user_model.dart';
+import 'package:hod/apis/local_api.dart';
+import 'package:hod/features/admin/screens/admin_screen.dart';
+import 'package:hod/features/calendar/view/calendar_screen.dart';
+import 'package:hod/features/poles/home/screens/home_pole_screen.dart';
+import 'package:hod/features/home/view/home.dart';
+import 'package:hod/features/navigation/view/navigation_screen.dart';
+import 'package:hod/features/poll/view/poll_list.dart';
+import 'package:hod/features/settings/screens/settings_screen.dart';
+import 'package:hod/features/background/app_background.dart';
+import 'package:hod/models/user_model.dart';
 
 class NavigationPages extends StatelessWidget {
   static route() => MaterialPageRoute(builder: (context) => NavigationPages());

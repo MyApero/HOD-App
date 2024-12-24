@@ -1,10 +1,8 @@
-import 'package:hod_app/constants/constants.dart';
+import 'package:hod/constants/constants.dart';
 
 class RoleCharacteristicsModel {
-  RoleCharacteristicsModel({
-    required this.characteristics,
-    required this.values
-  });
+  RoleCharacteristicsModel(
+      {required this.characteristics, required this.values});
 
   final List<String> characteristics;
   final List<String> values;

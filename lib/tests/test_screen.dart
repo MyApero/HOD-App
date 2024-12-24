@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/datetime_form_picker.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/widgets/datetime_form_picker.dart';
+import 'package:hod/widgets/hod_form_field.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/background/nice/nice_clipper.dart';
+import 'package:hod/features/background/nice/nice_clipper.dart';
 
 import 'package:sensors_plus/sensors_plus.dart';
 

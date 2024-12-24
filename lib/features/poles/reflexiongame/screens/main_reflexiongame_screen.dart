@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/poles/reflexiongame/screens/timer.dart';
-import 'package:hod_app/features/poles/widget/event_details_screen.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/select_button.dart';
+import 'package:hod/features/poles/reflexiongame/screens/timer.dart';
+import 'package:hod/features/poles/widget/event_details_screen.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/select_button.dart';
 
 class MainReflexionGameScreen extends StatelessWidget {
   const MainReflexionGameScreen({super.key});

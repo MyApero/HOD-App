@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hod_app/features/poles/rolegame/screens/create_new_character.dart';
-import 'package:hod_app/features/poles/rolegame/screens/role_card_info_screen.dart';
-import 'package:hod_app/features/poles/rolegame/widgets/role_card_game_data.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/select_button.dart';
+import 'package:hod/features/poles/rolegame/screens/create_new_character.dart';
+import 'package:hod/features/poles/rolegame/screens/role_card_info_screen.dart';
+import 'package:hod/features/poles/rolegame/widgets/role_card_game_data.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/hod_button.dart';
+import 'package:hod/widgets/select_button.dart';
 
 class RoleCharacters extends StatefulWidget {
   static route() =>

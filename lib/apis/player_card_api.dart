@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/models/player_card_model.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/constants/constants.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/models/player_card_model.dart';
 
 class PlayerCardApi {
   static DocumentReference<Map<String, dynamic>> getPlayerCard() {

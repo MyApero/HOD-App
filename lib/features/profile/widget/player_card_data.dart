@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/player_card_api.dart';
-import 'package:hod_app/models/player_card_model.dart';
+import 'package:hod/apis/player_card_api.dart';
+import 'package:hod/models/player_card_model.dart';
 
 class PlayerCardData extends StatelessWidget {
   const PlayerCardData({super.key, required this.builder});
@@ -21,7 +21,8 @@ class PlayerCardData extends StatelessWidget {
         if (snapshot.hasData) {
           final data = snapshot.data!.data();
           print(data);
-          final PlayerCardModel playerCard = PlayerCardModel.fromJson(snapshot.data!.data()!);
+          final PlayerCardModel playerCard =
+              PlayerCardModel.fromJson(snapshot.data!.data()!);
           // print(playerCard);
           return builder(playerCard);
         }

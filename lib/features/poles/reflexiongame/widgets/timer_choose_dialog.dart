@@ -1,6 +1,6 @@
 import 'package:duration_picker/duration_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class TimerChooseDialog extends StatefulWidget {
   const TimerChooseDialog({super.key, this.defaultValue});
@@ -25,7 +25,10 @@ class _TimerChooseDialogState extends State<TimerChooseDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const SimpleText("Change le temps (comme dans BTTF)", textSize: 17,),
+      title: const SimpleText(
+        "Change le temps (comme dans BTTF)",
+        textSize: 17,
+      ),
       content: DurationPicker(
         duration: Duration(minutes: minutes),
         onChange: (value) {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/features/auth/screens/login.dart';
-import 'package:hod_app/features/auth/widgets/cgu_checkbox.dart';
-import 'package:hod_app/features/auth/widgets/password_form_field.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/small_text.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/features/auth/screens/login.dart';
+import 'package:hod/features/auth/widgets/cgu_checkbox.dart';
+import 'package:hod/features/auth/widgets/password_form_field.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/hod_button.dart';
+import 'package:hod/widgets/hod_form_field.dart';
+import 'package:hod/widgets/small_text.dart';
 
 // ignore: constant_identifier_names
 const double TEXT_FIELD_MARGIN = 10;

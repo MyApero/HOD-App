@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/background/app_header.dart';
-import 'package:hod_app/features/background/nice/nice_background.dart';
+import 'package:hod/features/background/app_header.dart';
+import 'package:hod/features/background/nice/nice_background.dart';
 
 class AppBackground extends StatelessWidget {
   const AppBackground({
@@ -26,8 +26,7 @@ class AppBackground extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: MediaQuery.of(context).viewPadding.top),
-          if (header)
-            AppHeader(title: title),
+          if (header) AppHeader(title: title),
           Expanded(
             child: Container(
               padding: EdgeInsets.only(

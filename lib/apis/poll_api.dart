@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/constants/db_const.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/models/poll_model.dart';
+import 'package:hod/constants/db_const.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/models/poll_model.dart';
 
 class PollApi {
   static Future<bool> createPoll({

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/background/app_background.dart';
+import 'package:hod/features/background/app_background.dart';
 
 class AppScaffold extends StatelessWidget {
   const AppScaffold({
@@ -20,7 +20,11 @@ class AppScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: AppBackground(title:title, header: header, hasBackArrow: hasBackArrow, child: child),
+      body: AppBackground(
+          title: title,
+          header: header,
+          hasBackArrow: hasBackArrow,
+          child: child),
     );
   }
 }

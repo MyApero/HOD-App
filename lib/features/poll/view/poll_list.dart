@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/features/poll/view/join_poll.dart';
-import 'package:hod_app/models/poll_model.dart';
-import 'package:hod_app/theme/palette.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/constants/constants.dart';
+import 'package:hod/features/poll/view/join_poll.dart';
+import 'package:hod/models/poll_model.dart';
+import 'package:hod/theme/palette.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class PollList extends StatelessWidget {
   const PollList({super.key, this.isStaff = true});

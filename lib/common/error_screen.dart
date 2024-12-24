@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class ErrorScreen extends StatelessWidget {
   const ErrorScreen({super.key, this.errorMessage});

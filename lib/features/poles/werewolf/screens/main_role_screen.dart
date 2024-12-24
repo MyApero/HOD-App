@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/constants/role_list.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/features/poles/werewolf/screens/role_screen.dart';
-import 'package:hod_app/widgets/select_button.dart';
+import 'package:hod/constants/role_list.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/features/poles/werewolf/screens/role_screen.dart';
+import 'package:hod/widgets/select_button.dart';
 
 class MainRoleScreen extends StatelessWidget {
   const MainRoleScreen({super.key});

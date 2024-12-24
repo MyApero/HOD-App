@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/poll/view/create_poll.dart';
-import 'package:hod_app/features/poll/view/poll_list.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/select_button.dart';
+import 'package:hod/features/poll/view/create_poll.dart';
+import 'package:hod/features/poll/view/poll_list.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/select_button.dart';
 
 class PollHomeScreen extends StatelessWidget {
   static route() => MaterialPageRoute(builder: (ctx) => const PollHomeScreen());

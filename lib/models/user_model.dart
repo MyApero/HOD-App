@@ -1,7 +1,7 @@
-import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/constants/db_const.dart';
-import 'package:hod_app/models/member_card_model.dart';
-import 'package:hod_app/models/role_card_model.dart';
+import 'package:hod/constants/constants.dart';
+import 'package:hod/constants/db_const.dart';
+import 'package:hod/models/member_card_model.dart';
+import 'package:hod/models/role_card_model.dart';
 
 enum Role { user, member, staff, admin }
 
@@ -40,8 +40,7 @@ class UserModel {
       role: Role.values.firstWhere((e) => e.name == json[DbConst.role],
           orElse: () => Role.user),
       roleCards: [],
-      memberCard: MemberCardModel(id: "0", peremptionDate: DateTime.now()
-      ),
+      memberCard: MemberCardModel(id: "0", peremptionDate: DateTime.now()),
       // memberCard: json[DbConst.memberCard](json[DbConst.memberCard].fromJson()),
     );
   }

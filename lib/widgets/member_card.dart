@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hod_app/apis/local_api.dart';
-import 'package:hod_app/models/user_model.dart';
-import 'package:hod_app/theme/palette.dart';
+import 'package:hod/apis/local_api.dart';
+import 'package:hod/models/user_model.dart';
+import 'package:hod/theme/palette.dart';
 
 class MemberCard extends StatefulWidget {
   const MemberCard({super.key});

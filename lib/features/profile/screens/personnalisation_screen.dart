@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/player_card_api.dart';
-import 'package:hod_app/features/profile/widget/player_card_data.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
+import 'package:hod/apis/player_card_api.dart';
+import 'package:hod/features/profile/widget/player_card_data.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/hod_button.dart';
+import 'package:hod/widgets/hod_form_field.dart';
 
 class PersonnalisationScreen extends StatelessWidget {
   const PersonnalisationScreen({super.key});

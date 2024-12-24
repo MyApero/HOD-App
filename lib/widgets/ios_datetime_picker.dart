@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:hod_app/theme/palette.dart';
+import 'package:hod/theme/palette.dart';
 
 Future<DateTime?> showIosDatetimePicker(
     BuildContext ctx, DateTime? selectedDate) async {

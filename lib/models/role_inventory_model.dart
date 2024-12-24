@@ -1,10 +1,7 @@
-import 'package:hod_app/constants/constants.dart';
+import 'package:hod/constants/constants.dart';
 
 class RoleInventoryModel {
-  RoleInventoryModel({
-    required this.items,
-    required this.values
-  });
+  RoleInventoryModel({required this.items, required this.values});
 
   final List<String> items;
   final List<String> values;

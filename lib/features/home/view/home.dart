@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/home/view/widgets/event_card.dart';
-import 'package:hod_app/features/home/view/widgets/event_data.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/features/home/view/widgets/event_card.dart';
+import 'package:hod/features/home/view/widgets/event_data.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class HomeScreen extends StatelessWidget {
   static route() => MaterialPageRoute(builder: (context) => const HomeScreen());

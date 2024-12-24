@@ -1,5 +1,5 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hod_app/models/werewolf_role_model.dart';
+import 'package:hod/models/werewolf_role_model.dart';
 
 const List<WerewolfRoleModel> roleList = [
   WerewolfRoleModel(

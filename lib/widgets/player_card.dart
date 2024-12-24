@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/player_card_api.dart';
-import 'package:hod_app/apis/role_card_api.dart';
-import 'package:hod_app/features/profile/screens/member_screen.dart';
-import 'package:hod_app/models/player_card_model.dart';
-import 'package:hod_app/theme/palette.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/player_card_item.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/apis/player_card_api.dart';
+import 'package:hod/apis/role_card_api.dart';
+import 'package:hod/features/profile/screens/member_screen.dart';
+import 'package:hod/models/player_card_model.dart';
+import 'package:hod/theme/palette.dart';
+import 'package:hod/widgets/hod_form_field.dart';
+import 'package:hod/widgets/player_card_item.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class PlayerCard extends StatefulWidget {
   const PlayerCard(
@@ -51,9 +51,11 @@ class _PlayerCardState extends State<PlayerCard> {
       color: Palette.purple,
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
-        onTap: widget.roleCardId != null ? () {} : () {
-          Navigator.of(context).push(MemberScreen.route());
-        },
+        onTap: widget.roleCardId != null
+            ? () {}
+            : () {
+                Navigator.of(context).push(MemberScreen.route());
+              },
         child: SizedBox(
           width: double.infinity,
           child: Container(

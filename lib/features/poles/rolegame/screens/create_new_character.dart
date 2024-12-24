@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/role_card_api.dart';
-import 'package:hod_app/models/role_card_model.dart';
-import 'package:hod_app/models/role_characteristics_model.dart';
-import 'package:hod_app/models/role_inventory_model.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/apis/role_card_api.dart';
+import 'package:hod/models/role_card_model.dart';
+import 'package:hod/models/role_characteristics_model.dart';
+import 'package:hod/models/role_inventory_model.dart';
+import 'package:hod/widgets/hod_form_field.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 Future<bool> showCreateNewCharacter(BuildContext context) async {
   await showDialog(

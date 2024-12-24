@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/background/nice/nice_clipper.dart';
+import 'package:hod/features/background/nice/nice_clipper.dart';
 
 class NiceClipperAnimated extends StatefulWidget {
   const NiceClipperAnimated({super.key, this.child});
@@ -47,6 +47,8 @@ class _NiceClipperAnimatedState extends State<NiceClipperAnimated>
 
   @override
   Widget build(BuildContext context) {
-    return NiceClipper(value: value,);
+    return NiceClipper(
+      value: value,
+    );
   }
 }

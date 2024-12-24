@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hod_app/apis/local_api.dart';
-import 'package:hod_app/features/auth/widgets/firebase_auth.dart';
-import 'package:hod_app/theme/theme.dart';
+import 'package:hod/apis/local_api.dart';
+import 'package:hod/features/auth/widgets/firebase_auth.dart';
+import 'package:hod/theme/theme.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:shared_preferences/shared_preferences.dart';

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/apis/event_api.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/models/event_model.dart';
-import 'package:hod_app/widgets/datetime_form_picker.dart';
-import 'package:hod_app/widgets/dropdown_selection.dart';
-import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/apis/event_api.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/models/event_model.dart';
+import 'package:hod/widgets/datetime_form_picker.dart';
+import 'package:hod/widgets/dropdown_selection.dart';
+import 'package:hod/widgets/hod_button.dart';
+import 'package:hod/widgets/hod_form_field.dart';
 
 class SetOrCreateEvent extends StatefulWidget {
   static route({EventModel? event}) =>

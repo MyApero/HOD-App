@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/apis/local_api.dart';
-import 'package:hod_app/models/user_model.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/apis/local_api.dart';
+import 'package:hod/models/user_model.dart';
 
 class NavigationScreen extends StatefulWidget {
   const NavigationScreen({super.key, required this.pages});

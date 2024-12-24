@@ -4,13 +4,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/local_api.dart';
-import 'package:hod_app/constants/db_const.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/models/member_card_model.dart';
-import 'package:hod_app/models/player_card_model.dart';
-import 'package:hod_app/models/user_model.dart';
-import 'package:hod_app/features/auth/screens/verify_mail.dart';
+import 'package:hod/apis/local_api.dart';
+import 'package:hod/constants/db_const.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/models/member_card_model.dart';
+import 'package:hod/models/player_card_model.dart';
+import 'package:hod/models/user_model.dart';
+import 'package:hod/features/auth/screens/verify_mail.dart';
 
 class AuthApi {
   static Future<bool> usernameAvailable(String username) async {

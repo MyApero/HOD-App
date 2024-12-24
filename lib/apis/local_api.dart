@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:hod_app/main.dart';
-import 'package:hod_app/models/user_model.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/constants/db_const.dart';
+import 'package:hod/main.dart';
+import 'package:hod/models/user_model.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/constants/db_const.dart';
 
 class LocalApi {
   static Future<bool> storeCurrentUserInLocal() async {

@@ -1,5 +1,5 @@
-import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/constants/db_const.dart';
+import 'package:hod/constants/constants.dart';
+import 'package:hod/constants/db_const.dart';
 
 class MemberCardModel {
   MemberCardModel({

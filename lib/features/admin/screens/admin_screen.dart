@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hod_app/features/admin/screens/event_list.dart';
-import 'package:hod_app/features/admin/screens/set_or_create_event.dart';
-import 'package:hod_app/features/admin/screens/manage_users_role.dart';
-import 'package:hod_app/features/poll/view/poll_home.dart';
-import 'package:hod_app/widgets/select_button.dart';
+import 'package:hod/features/admin/screens/event_list.dart';
+import 'package:hod/features/admin/screens/set_or_create_event.dart';
+import 'package:hod/features/admin/screens/manage_users_role.dart';
+import 'package:hod/features/poll/view/poll_home.dart';
+import 'package:hod/widgets/select_button.dart';
 
 class AdminScreen extends ConsumerWidget {
   const AdminScreen({super.key});

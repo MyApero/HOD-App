@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/features/auth/screens/register.dart';
-import 'package:hod_app/features/auth/widgets/password_form_field.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/simple_text.dart';
-import 'package:hod_app/widgets/small_text.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/features/auth/screens/register.dart';
+import 'package:hod/features/auth/widgets/password_form_field.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/hod_button.dart';
+import 'package:hod/widgets/hod_form_field.dart';
+import 'package:hod/widgets/simple_text.dart';
+import 'package:hod/widgets/small_text.dart';
 
 class LoginScreen extends StatefulWidget {
   static route({bool? reauth}) => MaterialPageRoute(
@@ -142,7 +142,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(height: 10),
                   if (!widget.reauth)
                     SmallClickableText("M'inscrire", onPressed: () {
-                      Navigator.pushReplacement(context, RegisterScreen.route());
+                      Navigator.pushReplacement(
+                          context, RegisterScreen.route());
                     }),
                 ],
               ),

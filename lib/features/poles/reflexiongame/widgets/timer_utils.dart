@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/theme/palette.dart';
+import 'package:hod/theme/palette.dart';
 
 enum GameStatus {
   none,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/constants/pole_const.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/models/event_model.dart';
-import 'package:hod_app/theme/palette.dart';
-import 'package:hod_app/features/home/view/widgets/event_details_dialog.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/constants/pole_const.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/models/event_model.dart';
+import 'package:hod/theme/palette.dart';
+import 'package:hod/features/home/view/widgets/event_details_dialog.dart';
+import 'package:hod/widgets/simple_text.dart';
 import 'package:intl/intl.dart';
 
 class EventCard extends StatelessWidget {

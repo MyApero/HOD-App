@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/admin/screens/set_or_create_event.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/models/event_model.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/features/admin/screens/set_or_create_event.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/models/event_model.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class EventListScreen extends StatelessWidget {
-  static route() => MaterialPageRoute(builder: (context) => const EventListScreen());
+  static route() =>
+      MaterialPageRoute(builder: (context) => const EventListScreen());
   const EventListScreen({super.key});
 
   void _editEvent(BuildContext context, EventModel event) {

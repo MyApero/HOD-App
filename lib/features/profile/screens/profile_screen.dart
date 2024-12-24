@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hod_app/features/profile/screens/personnalisation_screen.dart';
-import 'package:hod_app/features/profile/widget/player_card_data.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/player_card.dart';
-import 'package:hod_app/widgets/select_button.dart';
+import 'package:hod/features/profile/screens/personnalisation_screen.dart';
+import 'package:hod/features/profile/widget/player_card_data.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/player_card.dart';
+import 'package:hod/widgets/select_button.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/apis/poll_api.dart';
-import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/features/auth/widgets/password_form_field.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/select_button_outlined.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/apis/poll_api.dart';
+import 'package:hod/constants/constants.dart';
+import 'package:hod/features/auth/widgets/password_form_field.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/hod_button.dart';
+import 'package:hod/widgets/hod_form_field.dart';
+import 'package:hod/widgets/select_button_outlined.dart';
 
 class CreatePollScreen extends StatefulWidget {
   static route() =>

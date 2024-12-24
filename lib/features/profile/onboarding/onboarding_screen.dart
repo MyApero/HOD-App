@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/features/background/nice/nice_background.dart';
-import 'package:hod_app/widgets/hod_logo.dart';
-import 'package:hod_app/widgets/small_text.dart';
+import 'package:hod/widgets/hod_button.dart';
+import 'package:hod/features/background/nice/nice_background.dart';
+import 'package:hod/widgets/hod_logo.dart';
+import 'package:hod/widgets/small_text.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -33,11 +33,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/640px-Cat03.jpg");
               },
             ),
-            SmallClickableText(
-                "Contactez nous",
-                onPressed: () {
-                  launchUrlString("https://discord.gg/CBSRt6mvsR");
-                }),
+            SmallClickableText("Contactez nous", onPressed: () {
+              launchUrlString("https://discord.gg/CBSRt6mvsR");
+            }),
           ],
         ),
       ),

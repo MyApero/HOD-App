@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hod_app/theme/palette.dart';
+import 'package:hod/theme/palette.dart';
 
 class SelectButton extends StatelessWidget {
   const SelectButton(

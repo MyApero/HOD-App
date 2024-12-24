@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/role_card_api.dart';
-import 'package:hod_app/features/poles/rolegame/widgets/role_card_game_data.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/select_button.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/apis/role_card_api.dart';
+import 'package:hod/features/poles/rolegame/widgets/role_card_game_data.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/hod_form_field.dart';
+import 'package:hod/widgets/select_button.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class PersonnalisationRoleCardScreen extends StatelessWidget {
   const PersonnalisationRoleCardScreen(

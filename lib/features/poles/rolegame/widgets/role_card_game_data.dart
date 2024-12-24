@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/role_card_api.dart';
-import 'package:hod_app/models/role_card_model.dart';
+import 'package:hod/apis/role_card_api.dart';
+import 'package:hod/models/role_card_model.dart';
 
 class RoleCardData extends StatelessWidget {
   const RoleCardData({super.key, required this.builder, this.idFilter});

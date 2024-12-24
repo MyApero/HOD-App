@@ -1,11 +1,8 @@
-import 'package:hod_app/constants/constants.dart';
+import 'package:hod/constants/constants.dart';
 
 class PlayerCardModel {
-  PlayerCardModel({
-    required this.keys,
-    required this.values,
-    required this.male
-  });
+  PlayerCardModel(
+      {required this.keys, required this.values, required this.male});
 
   final List<String> keys;
   final List<String> values;
@@ -20,10 +17,6 @@ class PlayerCardModel {
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      DbConst.keys: keys,
-      DbConst.values: values,
-      DbConst.male: male
-    };
+    return {DbConst.keys: keys, DbConst.values: values, DbConst.male: male};
   }
 }

@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hod_app/constants/constants.dart';
+import 'package:hod/constants/constants.dart';
 
 enum ReportType { asso, app }
 
@@ -8,7 +8,6 @@ class ReportModel {
   final String createdBy;
   final DateTime createdAt;
   final String type;
-
 
   ReportModel({
     required this.message,
@@ -19,11 +18,10 @@ class ReportModel {
 
   factory ReportModel.fromJson(Map<String, dynamic> json) {
     return ReportModel(
-      message: json[DbConst.message],
-      createdBy: json[DbConst.createdBy],
-      createdAt: json[DbConst.createdAt],
-      type: json[DbConst.type]
-    );
+        message: json[DbConst.message],
+        createdBy: json[DbConst.createdBy],
+        createdAt: json[DbConst.createdAt],
+        type: json[DbConst.type]);
   }
 
   Map<String, dynamic> toJson() {
@@ -34,5 +32,4 @@ class ReportModel {
       DbConst.type: type
     };
   }
-
 }

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/role_card_api.dart';
-import 'package:hod_app/features/poles/rolegame/screens/characteristics_personnalisation_screen.dart';
-import 'package:hod_app/features/poles/rolegame/screens/inventory_personnalisation_role_card.dart';
-import 'package:hod_app/features/poles/rolegame/screens/personnalisation_role_card_screen.dart';
-import 'package:hod_app/features/poles/rolegame/widgets/role_card_game_data.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/player_card.dart';
-import 'package:hod_app/widgets/select_button.dart';
-import 'package:hod_app/widgets/simple_text.dart';
-import 'package:hod_app/widgets/small_text.dart';
+import 'package:hod/apis/role_card_api.dart';
+import 'package:hod/features/poles/rolegame/screens/characteristics_personnalisation_screen.dart';
+import 'package:hod/features/poles/rolegame/screens/inventory_personnalisation_role_card.dart';
+import 'package:hod/features/poles/rolegame/screens/personnalisation_role_card_screen.dart';
+import 'package:hod/features/poles/rolegame/widgets/role_card_game_data.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/player_card.dart';
+import 'package:hod/widgets/select_button.dart';
+import 'package:hod/widgets/simple_text.dart';
+import 'package:hod/widgets/small_text.dart';
 
 class RoleCardInfoScreen extends StatefulWidget {
   static route({required String id, required String name}) => MaterialPageRoute(

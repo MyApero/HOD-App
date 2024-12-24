@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/theme/palette.dart';
-import 'package:hod_app/widgets/hod_logo.dart';
+import 'package:hod/theme/palette.dart';
+import 'package:hod/widgets/hod_logo.dart';
 
 class AppHeader extends StatelessWidget {
   const AppHeader({super.key, this.title});

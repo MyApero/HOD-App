@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/models/event_model.dart';
-import 'package:hod_app/theme/palette.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/models/event_model.dart';
+import 'package:hod/theme/palette.dart';
+import 'package:hod/widgets/simple_text.dart';
 import 'package:intl/intl.dart';
 
 class EventDetailsDialog extends StatelessWidget {

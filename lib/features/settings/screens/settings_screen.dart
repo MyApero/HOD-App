@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/features/auth/screens/login.dart';
-import 'package:hod_app/features/settings/screens/contact_screen.dart';
-import 'package:hod_app/features/settings/screens/credit_screen.dart';
-import 'package:hod_app/features/settings/screens/report_screen.dart';
-import 'package:hod_app/widgets/select_button.dart';
-import 'package:hod_app/widgets/simple_text.dart';
-import 'package:hod_app/widgets/small_text.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/features/auth/screens/login.dart';
+import 'package:hod/features/settings/screens/contact_screen.dart';
+import 'package:hod/features/settings/screens/credit_screen.dart';
+import 'package:hod/features/settings/screens/report_screen.dart';
+import 'package:hod/widgets/select_button.dart';
+import 'package:hod/widgets/simple_text.dart';
+import 'package:hod/widgets/small_text.dart';
 
 class SettingsScreen extends StatelessWidget {
   const SettingsScreen({super.key});

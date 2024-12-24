@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/apis/report_api.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/models/report_model.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/widgets/dropdown_selection.dart';
-import 'package:hod_app/widgets/hod_button.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/apis/report_api.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/models/report_model.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/widgets/dropdown_selection.dart';
+import 'package:hod/widgets/hod_button.dart';
+import 'package:hod/widgets/hod_form_field.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class ReportScreen extends StatefulWidget {
   ReportScreen({super.key});
@@ -35,7 +35,8 @@ class _ReportScreenState extends State<ReportScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                SimpleText("Quel type de rapport souhaitez-vous nous envoyer ?"),
+                SimpleText(
+                    "Quel type de rapport souhaitez-vous nous envoyer ?"),
                 DropdownSelection(
                     onValueChange: (value) {
                       setState(() {
@@ -63,8 +64,8 @@ class _ReportScreenState extends State<ReportScreen> {
                     label: "Envoyer",
                     onTapped: () {
                       if (selectedType.isEmpty) {
-                        showSnackBar(
-                            context, "Veuillez sélectionner un type de rapport");
+                        showSnackBar(context,
+                            "Veuillez sélectionner un type de rapport");
                         return;
                       }
                       if (_formKey.currentState!.validate()) {

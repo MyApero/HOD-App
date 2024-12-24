@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/event_api.dart';
-import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/models/event_model.dart';
+import 'package:hod/apis/event_api.dart';
+import 'package:hod/constants/constants.dart';
+import 'package:hod/models/event_model.dart';
 
 class EventData extends StatelessWidget {
   const EventData({super.key, required this.builder, this.poleFilter});

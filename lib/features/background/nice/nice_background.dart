@@ -1,11 +1,11 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/profile/screens/profile_screen.dart';
+import 'package:hod/features/profile/screens/profile_screen.dart';
 
-// import 'package:hod_app/widgets/background/nice/nice_clipper.dart';
-import 'package:hod_app/features/background/nice/nice_clipper_animated.dart';
-// import 'package:hod_app/widgets/background/nice/nice_clipper_gyroscope.dart';
+// import 'package:hod/widgets/background/nice/nice_clipper.dart';
+import 'package:hod/features/background/nice/nice_clipper_animated.dart';
+// import 'package:hod/widgets/background/nice/nice_clipper_gyroscope.dart';
 
 class NiceBackground extends StatelessWidget {
   const NiceBackground(

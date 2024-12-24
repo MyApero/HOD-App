@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/models/werewolf_role_model.dart';
-import 'package:hod_app/theme/palette.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/models/werewolf_role_model.dart';
+import 'package:hod/theme/palette.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class RoleScreen extends StatelessWidget {
   const RoleScreen({super.key, required this.role});
 
-  static route(WerewolfRoleModel role) => MaterialPageRoute(builder: (context) => RoleScreen(role: role));
+  static route(WerewolfRoleModel role) =>
+      MaterialPageRoute(builder: (context) => RoleScreen(role: role));
 
   final WerewolfRoleModel role;
 

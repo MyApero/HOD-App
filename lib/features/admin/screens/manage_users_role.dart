@@ -1,12 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/apis/local_api.dart';
-import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/models/user_model.dart';
-import 'package:hod_app/widgets/dropdown_selection.dart';
-import 'package:hod_app/widgets/hod_form_field.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/apis/local_api.dart';
+import 'package:hod/constants/constants.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/models/user_model.dart';
+import 'package:hod/widgets/dropdown_selection.dart';
+import 'package:hod/widgets/hod_form_field.dart';
+import 'package:hod/widgets/simple_text.dart';
 
 class ManageUsersRoleScreen extends StatefulWidget {
   static route() =>

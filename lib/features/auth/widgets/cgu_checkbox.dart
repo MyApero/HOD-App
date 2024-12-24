@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/features/auth/widgets/text_end_clickable.dart';
-import 'package:hod_app/theme/palette.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/features/auth/widgets/text_end_clickable.dart';
+import 'package:hod/theme/palette.dart';
 
 class CguCheckbox extends StatelessWidget {
   const CguCheckbox({

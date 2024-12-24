@@ -2,10 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:hod_app/apis/auth_api.dart';
-import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/models/role_card_model.dart';
+import 'package:hod/apis/auth_api.dart';
+import 'package:hod/constants/constants.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/models/role_card_model.dart';
 
 class RoleCardApi {
   static Future<String> getRoleCardImage(String roleCardId) async {

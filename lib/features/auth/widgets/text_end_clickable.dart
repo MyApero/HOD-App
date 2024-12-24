@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/theme/palette.dart';
+import 'package:hod/theme/palette.dart';
 
 class TextEndClickable extends StatelessWidget {
   const TextEndClickable({
@@ -23,8 +23,7 @@ class TextEndClickable extends StatelessWidget {
     return RichText(
       text: TextSpan(
           text: frontText,
-          style: TextStyle(
-              fontSize: 13, color: frontTextColor),
+          style: TextStyle(fontSize: 13, color: frontTextColor),
           children: [
             TextSpan(
                 text: endText,

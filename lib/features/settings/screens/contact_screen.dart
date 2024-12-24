@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:hod_app/constants/constants.dart';
-import 'package:hod_app/constants/contacts.dart';
-import 'package:hod_app/core/utils.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
-import 'package:hod_app/theme/palette.dart';
-import 'package:hod_app/widgets/select_button.dart';
-import 'package:hod_app/widgets/simple_text.dart';
+import 'package:hod/constants/constants.dart';
+import 'package:hod/constants/contacts.dart';
+import 'package:hod/core/utils.dart';
+import 'package:hod/features/background/app_scaffold.dart';
+import 'package:hod/theme/palette.dart';
+import 'package:hod/widgets/select_button.dart';
+import 'package:hod/widgets/simple_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactScreen extends StatelessWidget {

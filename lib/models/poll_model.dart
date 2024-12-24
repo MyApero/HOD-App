@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:hod_app/constants/db_const.dart';
+import 'package:hod/constants/db_const.dart';
 
 class PollItemModel {
   final String name;

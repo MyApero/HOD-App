@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/auth/screens/login.dart';
-import 'package:hod_app/features/auth/screens/verify_mail.dart';
-import 'package:hod_app/features/navigation/view/navigation_pages.dart';
-import 'package:hod_app/features/background/app_scaffold.dart';
+import 'package:hod/features/auth/screens/login.dart';
+import 'package:hod/features/auth/screens/verify_mail.dart';
+import 'package:hod/features/navigation/view/navigation_pages.dart';
+import 'package:hod/features/background/app_scaffold.dart';
 
 class FirebaseAuthWidget extends StatelessWidget {
   const FirebaseAuthWidget({super.key});

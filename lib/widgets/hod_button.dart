@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hod_app/widgets/loader.dart';
+import 'package:hod/widgets/loader.dart';
 
 class HodButton extends StatelessWidget {
   const HodButton(

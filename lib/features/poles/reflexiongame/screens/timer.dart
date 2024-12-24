@@ -2,10 +2,10 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:hod_app/features/poles/reflexiongame/widgets/timer_choose_dialog.dart';
-import 'package:hod_app/features/poles/reflexiongame/widgets/timer_side.dart';
-import 'package:hod_app/features/poles/reflexiongame/widgets/timer_utils.dart';
-import 'package:hod_app/theme/palette.dart';
+import 'package:hod/features/poles/reflexiongame/widgets/timer_choose_dialog.dart';
+import 'package:hod/features/poles/reflexiongame/widgets/timer_side.dart';
+import 'package:hod/features/poles/reflexiongame/widgets/timer_utils.dart';
+import 'package:hod/theme/palette.dart';
 
 class TimerScreen extends StatefulWidget {
   static route() =>
